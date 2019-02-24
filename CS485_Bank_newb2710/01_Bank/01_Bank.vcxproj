@@ -147,8 +147,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
+    <ClInclude Include="Bank.h" />
+    <ClInclude Include="CheckingAccount.h" />
+    <ClInclude Include="DepositCmd.h" />
+    <ClInclude Include="IAccountReader.h" />
+    <ClInclude Include="IBankWriter.h" />
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="ICommandReader.h" />
+    <ClInclude Include="IFee.h" />
+    <ClInclude Include="MonthCmd.h" />
+    <ClInclude Include="MonthlyFee.h" />
+    <ClInclude Include="PrintCmd.h" />
+    <ClInclude Include="SavingsAccount.h" />
+    <ClInclude Include="ScreenBankWriter.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StreamAccountReader.h" />
+    <ClInclude Include="StreamCommandReader.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TransactionalFee.h" />
+    <ClInclude Include="WithdrawCmd.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_Bank.cpp" />
