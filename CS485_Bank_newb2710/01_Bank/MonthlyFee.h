@@ -1,8 +1,22 @@
+//***************************************************************************
+// File name:  MonthlyFee
+// Author:     Hannah Newby
+// Date:       2/23/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    MonthlyFee class header
+//***************************************************************************
 #pragma once
-
-class MonthlyFee {
+#include "IFee.h"
+class MonthlyFee : IFee{
 public:
-
+	MonthlyFee(long long minBal, bool bWentBelow);
+	~MonthlyFee();
+	long long chargeMonthlyFee(const long long balance);
+	long long chargeDepositFee(const long long balance);
+	long long chargeWithdrawFee(const long long balance);
+	bool checkWentBelow();
 private:
-
+	long long mMinBal;
+	bool mbWentBelow;
 };
