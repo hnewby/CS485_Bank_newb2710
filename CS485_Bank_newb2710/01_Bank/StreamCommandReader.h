@@ -8,13 +8,14 @@
 //***************************************************************************
 #pragma once
 #include <iostream>
+#include <fstream>
 #include "ICommandReader.h"
 
 class StreamCommandReader : public ICommandReader{
 	public:
-		bool open(std::string);
+		bool openCommands(std::string file);
 		bool read(ICommand &rcCmd);
-		bool close();
+		bool closeCommands();
 	private:
 		std::istream mcInFile;
 };

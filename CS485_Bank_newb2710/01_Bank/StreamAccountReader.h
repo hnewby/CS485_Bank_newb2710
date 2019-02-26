@@ -8,11 +8,12 @@
 //***************************************************************************
 #pragma once
 #include "IAccountReader.h"
+#include <fstream>
 class StreamAccountReader : public IAccountReader{
 	public:
-		virtual bool open(std::string file);
-		virtual bool read(Account &rcTheAccount);
-		virtual bool close();
+		virtual bool openAccountsDB(std::string file);
+		virtual bool read(IAccount &rcTheAccount);
+		virtual bool closeAccountsDB();
 	private:
 
 };

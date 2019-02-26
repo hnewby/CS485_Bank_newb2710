@@ -1,6 +1,6 @@
 #include "TransactionalFee.h"
 
-TransactionalFee::TransactionalFee(long long minBalance)
+TransactionalFee::TransactionalFee(long long minBalance, long long amount) : IFee (amount)
 {
 	mMinBal = minBalance;
 }
@@ -15,7 +15,7 @@ long long TransactionalFee::chargeMonthlyFee(const long long balance)
 long long TransactionalFee::chargeDepositFee(const long long balance)
 {
 	long long fee = 0;
-	if (balance <= mMinBal)
+	if (balance < mMinBal)
 	{
 		fee = getAmount();
 	}
@@ -25,7 +25,7 @@ long long TransactionalFee::chargeDepositFee(const long long balance)
 long long TransactionalFee::chargeWithdrawFee(const long long balance)
 {
 	long long fee = 0;
-	if (balance <= mMinBal)
+	if (balance < mMinBal)
 	{
 		fee = getAmount();
 	}

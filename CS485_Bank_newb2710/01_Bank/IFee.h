@@ -11,12 +11,15 @@
 class IFee {
 	public:
 		IFee();
+		IFee(long long amount);
 		~IFee();
 		virtual long long chargeMonthlyFee(const long long balance) = 0;
 		virtual long long chargeDepositFee(const long long balance) = 0;
 		virtual long long chargeWithdrawFee(const long long balance) = 0;
-		long long getAmount(); // might not need this
-	private:
 
+protected:
+		long long getAmount(); // might not need this
+
+	private:
 		long long mAmount;
 };

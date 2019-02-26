@@ -8,12 +8,12 @@
 //***************************************************************************
 #pragma once
 #include <string>
-#include "Account.h"
+#include "IAccount.h"
 class IAccountReader {
 	public:
-		virtual bool open(std::string file) = 0;
-		virtual bool read(Account &rcTheAccount) = 0;
-		virtual bool close() = 0;
+		virtual bool openAccountsDB(std::string file) = 0;
+		virtual bool read(IAccount &rcTheAccount) = 0;
+		virtual bool closeAccountsDB() = 0;
 	private:
 
 };

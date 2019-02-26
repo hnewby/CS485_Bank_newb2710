@@ -7,7 +7,7 @@
 // Purpose:    Bank class header
 //***************************************************************************
 #pragma once
-#include "Account.h"
+#include "IAccount.h"
 #include "IAccountReader.h"
 #include "ICommandReader.h"
 #include "IBankWriter.h"
@@ -22,12 +22,12 @@ class Bank {
 		void deposit(int acctNum, long long amount);
 		void withdraw(int acctNum, long long amount);
 		void generateAllInterest();
-		void generateInterest(Account &rcTheAccount);
+		void generateInterest(IAccount &rcTheAccount);
 		int getAccount(int acctNum);
-		void addAccount(Account *pTheAccount);
+		void addAccount(IAccount *pTheAccount);
 
 	private:
 		static int const mMAX_ACCOUNTS = 100;
-		Account * mapcAccount[mMAX_ACCOUNTS];
+		IAccount * mapcAccount[mMAX_ACCOUNTS];
 		int mNumAccts;
 };

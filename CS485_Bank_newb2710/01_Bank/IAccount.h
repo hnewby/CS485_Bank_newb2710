@@ -8,11 +8,12 @@
 //***************************************************************************
 #pragma once
 #include "IFee.h"
-class Account {
+#include <iostream>
+class IAccount {
 	public:
-		Account();
-		~Account();
-		Account(int acctNum, long long acctBalance, float interestRate, IFee theFee);
+		IAccount();
+		~IAccount();
+		IAccount(int acctNum, long long acctBalance, float interestRate, IFee theFee);
 		int getAcctNum();
 		long long getAcctBal();
 		void deposit(long long amt);
@@ -20,7 +21,7 @@ class Account {
 		void generateInterest();
 		void setInterestRate(float interestRate);
 		void endOfMonth();
-		friend std::istream& operator >> (std::istream &rcIn, Account &rcTheAccount);
+		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
 
 	protected:
 		bool checkNegBal();

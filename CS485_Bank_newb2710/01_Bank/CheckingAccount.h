@@ -7,8 +7,8 @@
 // Purpose:    CheckingAccount class header
 //***************************************************************************
 #pragma once
-#include "Account.h"
-class CheckingAccount : Account {
+#include "IAccount.h"
+class CheckingAccount : IAccount {
 	public:
 		CheckingAccount();
 		CheckingAccount(int acctNum, long long amt, float interestRate, IFee theFee);

@@ -10,7 +10,7 @@
 #include "IFee.h"
 class TransactionalFee : IFee {
 	public:
-		TransactionalFee(long long minBalance);
+		TransactionalFee(long long minBalance, long long amount);
 		~TransactionalFee();
 		long long chargeMonthlyFee(const long long balance);
 		long long chargeDepositFee(const long long balance);

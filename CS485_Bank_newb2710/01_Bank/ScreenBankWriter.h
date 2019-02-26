@@ -12,9 +12,9 @@
 
 class ScreenBankWriter : IBankWriter {
 	public:
-		virtual bool open(std::ostream);
-		virtual bool writeAcctOut(Account &rcTheAccount);
-		virtual bool close();
+	//	virtual bool openBankDB(std::ostream &rcOut);
+		virtual bool write(std::ostream, IAccount &rcTheAccount);
+		virtual bool closeBankDB();
 	private:
 
 };
