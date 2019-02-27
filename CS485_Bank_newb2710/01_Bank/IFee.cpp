@@ -1,6 +1,6 @@
 #include "IFee.h"
 
-IFee::IFee() {
+IFee::IFee() : IFee(0) {
 
 }
 IFee::IFee(long long amount){

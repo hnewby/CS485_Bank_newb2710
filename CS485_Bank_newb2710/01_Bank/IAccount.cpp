@@ -3,16 +3,17 @@
 IAccount::IAccount() {
 	mAcctBalance = 0;
 	mAcctNum = 0;
-	//mcFee = new IFee();
+	mInterestRate = 0.0;
+	mpcFee = nullptr;
 }
 IAccount::~IAccount() {
 
 }
-IAccount::IAccount(int acctNum, long long acctBalance, float interestRate, IFee &rcTheFee) {
+IAccount::IAccount(int acctNum, long long acctBalance, float interestRate, IFee* pcTheFee) {
 	mAcctNum = acctNum;
 	mAcctBalance = acctBalance;
 	mInterestRate = interestRate;
-	//mcFee = theFee; // this wont work need to figure out
+	mpcFee = pcTheFee;
 }
 int IAccount::getAcctNum() {
 	return mAcctNum;
@@ -39,7 +40,7 @@ void IAccount::endOfMonth() {
 	mAcctBalance -= mpcFee->chargeMonthlyFee(mAcctBalance);
 }
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
-	rcIn >> rcTheAccount.mAcctBalance >> 
+	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mAcctBalance >> 
 		rcTheAccount.mInterestRate >> *rcTheAccount.mpcFee;
 	return (rcIn);
 }

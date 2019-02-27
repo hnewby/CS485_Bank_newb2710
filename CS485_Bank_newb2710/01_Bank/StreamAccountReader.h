@@ -12,7 +12,7 @@
 class StreamAccountReader : public IAccountReader{
 	public:
 		virtual bool openAccountsDB(std::string file);
-		virtual bool read(IAccount &rcTheAccount);
+		virtual bool read(AccountCollection &rcTheCollection);
 		virtual bool closeAccountsDB();
 	private:
 		std::ifstream mcInFile;

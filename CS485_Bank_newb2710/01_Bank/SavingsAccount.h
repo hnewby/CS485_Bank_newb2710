@@ -8,10 +8,11 @@
 //***************************************************************************
 #pragma once
 #include "IAccount.h"
+#include "MonthlyFee.h"
 class SavingsAccount : public IAccount {
 	public:
 		SavingsAccount();
-		SavingsAccount(int acctNum, long long amt, float interestRate, IFee &rcTheFee);
+		SavingsAccount(int acctNum, long long amt, float interestRate, IFee* pcTheFee);
 		~SavingsAccount();
 	private:
 

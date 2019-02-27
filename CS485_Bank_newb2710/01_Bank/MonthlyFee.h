@@ -10,6 +10,7 @@
 #include "IFee.h"
 class MonthlyFee : public IFee{
 public:
+	MonthlyFee();
 	MonthlyFee(long long minBal, bool bWentBelow, long long amount);
 	~MonthlyFee();
 	long long chargeMonthlyFee(const long long balance);

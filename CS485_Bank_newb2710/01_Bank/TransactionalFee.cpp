@@ -1,5 +1,8 @@
 #include "TransactionalFee.h"
 
+TransactionalFee::TransactionalFee() : IFee() {
+
+}
 TransactionalFee::TransactionalFee(long long minBalance, long long amount) : IFee (amount)
 {
 	mMinBal = minBalance;

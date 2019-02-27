@@ -13,6 +13,7 @@
 #include "IAccountReader.h"
 #include "ICommandReader.h"
 #include "IBankWriter.h"
+#include "AccountCollection.h"
 
 class Bank {
 	public:
@@ -26,11 +27,12 @@ class Bank {
 		void generateAllInterest();
 		void generateInterest(IAccount &rcTheAccount);
 		int getAccount(int acctNum);
-		void addAccount(IAccount *pTheAccount);
+		void addAccount(IAccount *pcTheAccount);
 
 	private:
+		AccountCollection mcTheCollection;
 		static int const mMAX_ACCOUNTS = 100;
-		IAccount *mapcAccount[mMAX_ACCOUNTS];
+		IAccount *mapcAccounts[mMAX_ACCOUNTS];
 		int mNumAccts;
 };
 #endif

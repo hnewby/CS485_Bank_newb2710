@@ -1,5 +1,9 @@
 #include "MonthlyFee.h"
 
+MonthlyFee::MonthlyFee() : IFee() {
+	mMinBal = 0;
+	mbWentBelow = false;
+}
 MonthlyFee::MonthlyFee(long long minBal, bool bWentBelow, long long amount) : IFee (amount){
 	mMinBal = minBal;
 	mbWentBelow = bWentBelow;
@@ -41,5 +45,5 @@ bool MonthlyFee::checkWentBelow() {
 
 void MonthlyFee::read(std::istream &rcIn){
 	IFee::read(rcIn);
-	rcIn >> mMinBal;
+	rcIn >> mMinBal;// >> mbWentBelow;
 }

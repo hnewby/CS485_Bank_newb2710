@@ -1,10 +1,12 @@
 #include "SavingsAccount.h"
 
 SavingsAccount::SavingsAccount() : IAccount (){
-	//mcFee = new IFee();
+	//IFee* pcFee = new MonthlyFee();
+	//SavingsAccount(0, 0, 0, pcFee);
+	// might need to delt
 }
-SavingsAccount::SavingsAccount(int acctNum, long long amt, float interestRate, IFee &rcTheFee) : IAccount(acctNum, amt, interestRate, rcTheFee) {
-
+SavingsAccount::SavingsAccount(int acctNum, long long amt, float interestRate, IFee* pcTheFee) : IAccount(acctNum, amt, interestRate, pcTheFee) {
+	
 }
 SavingsAccount::~SavingsAccount() {
 

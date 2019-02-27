@@ -9,10 +9,11 @@
 #pragma once
 #include <string>
 #include "IAccount.h"
+#include "AccountCollection.h"
 class IAccountReader {
 	public:
 		virtual bool openAccountsDB(std::string file) = 0;
-		virtual bool read(IAccount &rcTheAccount) = 0;
+		virtual bool read(AccountCollection & rcTheCollection) = 0;
 		virtual bool closeAccountsDB() = 0;
 	private:
 

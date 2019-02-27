@@ -8,7 +8,10 @@ Bank::~Bank() {
 }
 void Bank::readAccounts(IAccountReader &rcAcctReader) {
 
-	rcAcctReader.read(*mapcAccount[(mNumAccts - 1)]); // could be off by one here but dont think so
+	rcAcctReader.read(mcTheCollection);
+	// could be off by one here but dont think so
+
+	//addAccount(mapcAccounts[(mNumAccts - 1)]);
 }
 void Bank::readCommand(ICommandReader &rcCmdReader) {
 
@@ -17,10 +20,10 @@ void Bank::writeBank(IBankWriter &rcOut) {
 
 }
 void Bank::deposit(int acctNum, long long amount) {
-	mapcAccount[getAccount(acctNum)]->deposit(amount);
+	mapcAccounts[getAccount(acctNum)]->deposit(amount);
 }
 void Bank::withdraw(int acctNum, long long amount) {
-	mapcAccount[getAccount(acctNum)]->withdraw(amount);
+	mapcAccounts[getAccount(acctNum)]->withdraw(amount);
 }
 void Bank::generateAllInterest() {
 
@@ -34,7 +37,7 @@ int Bank::getAccount(int acctNum) {
 
 	while (!bIsFound && index < mMAX_ACCOUNTS)
 	{
-		if (mapcAccount[index]->getAcctNum() == acctNum)
+		if (mapcAccounts[index]->getAcctNum() == acctNum)
 		{
 			bIsFound = true;
 		}
@@ -45,6 +48,10 @@ int Bank::getAccount(int acctNum) {
 	}
 	return index;
 }
-void Bank::addAccount(IAccount *pTheAccount) {
-
-}
+//void Bank::addAccount(IAccount *pcTheAccount) {
+//	if (mNumAccts <= mMAX_ACCOUNTS)
+//	{
+//		mapcAccounts[mNumAccts] = pcTheAccount;
+//		mNumAccts++;
+//	}
+//}
