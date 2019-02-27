@@ -1,9 +1,9 @@
 #include "CheckingAccount.h"
 
-CheckingAccount::CheckingAccount() {
+CheckingAccount::CheckingAccount() : IAccount() {
 
 }
-CheckingAccount::CheckingAccount(int acctNum, long long amt, float interestRate, IFee theFee) : IAccount(actNum, amt, interestRate, theFee) {
+CheckingAccount::CheckingAccount(int acctNum, long long amt, float interestRate, IFee &rcTheFee) : IAccount(acctNum, amt, interestRate, rcTheFee) {
 	
 }
 CheckingAccount::~CheckingAccount() {

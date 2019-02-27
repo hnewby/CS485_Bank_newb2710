@@ -38,3 +38,8 @@ long long MonthlyFee::chargeWithdrawFee(const long long balance) {
 bool MonthlyFee::checkWentBelow() {
 	return mbWentBelow;
 }
+
+void MonthlyFee::read(std::istream &rcIn){
+	IFee::read(rcIn);
+	rcIn >> mMinBal;
+}

@@ -1,6 +1,6 @@
 #include "PrintCmd.h"
 
-PrintCmd::PrintCmd() {
+PrintCmd::PrintCmd(){
 
 }
 PrintCmd::~PrintCmd() {

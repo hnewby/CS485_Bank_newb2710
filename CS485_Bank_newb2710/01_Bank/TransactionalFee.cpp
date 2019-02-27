@@ -10,6 +10,7 @@ TransactionalFee::~TransactionalFee()
 }
 long long TransactionalFee::chargeMonthlyFee(const long long balance)
 {
+	return 0;
 	//do nothing not a monthly fee
 }
 long long TransactionalFee::chargeDepositFee(const long long balance)
@@ -30,4 +31,9 @@ long long TransactionalFee::chargeWithdrawFee(const long long balance)
 		fee = getAmount();
 	}
 	return fee;
+}
+
+void TransactionalFee::read(std::istream &rcIn) {
+	rcIn >> mMinBal; //minBal first because thats the way file is
+	IFee::read(rcIn);
 }

@@ -1,11 +1,12 @@
 #include "StreamCommandReader.h"
 #include "StreamAccountReader.h"
 #include "IAccountReader.h"
+#include "Bank.h"
 #include <string>
 int main() {
 	//ICommandReader cCommandReader = new StreamCommandReader ();
 	//const string 
-	StreamCommandReader cCommandReader;
+	//StreamCommandReader cCommandReader;
 	StreamAccountReader cAccountReader;
 	//IAccountReader cAcctReader = new StreamAccountReader;
 	Bank cTheBank;

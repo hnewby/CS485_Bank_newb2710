@@ -9,7 +9,7 @@
 #pragma once
 #include "ICommand.h"
 
-class PrintCmd : ICommand {
+class PrintCmd : public ICommand {
 	public:
 		PrintCmd();
 		~PrintCmd();

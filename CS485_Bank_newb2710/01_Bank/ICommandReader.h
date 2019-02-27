@@ -8,8 +8,8 @@
 //***************************************************************************
 #pragma once
 #include <string>
-#include "ICommand.h"
-
+//#include "ICommand.h"
+class ICommand;
 class ICommandReader {
 	public:
 		virtual bool openCommands(std::string file) = 0;

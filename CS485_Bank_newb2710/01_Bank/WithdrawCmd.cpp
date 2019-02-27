@@ -1,6 +1,6 @@
 #include "WithdrawCmd.h"
 
-WithdrawCmd::WithdrawCmd(int acctNum, long long amount) {
+WithdrawCmd::WithdrawCmd(int acctNum, long long amount){
 	mAcctNum = acctNum;
 	mAmt = amount;
 }

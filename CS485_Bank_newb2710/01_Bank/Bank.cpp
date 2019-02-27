@@ -1,18 +1,19 @@
 #include "Bank.h"
 
 Bank::Bank() {
-
+	mNumAccts = 0;
 }
 Bank::~Bank() {
 
 }
 void Bank::readAccounts(IAccountReader &rcAcctReader) {
-	rcAcctReader.read(mapcAccount[(mNumAccts - 1)]); // could be off by one here but dont think so
+
+	rcAcctReader.read(*mapcAccount[(mNumAccts - 1)]); // could be off by one here but dont think so
 }
 void Bank::readCommand(ICommandReader &rcCmdReader) {
 
 }
-void Bank::writeBank(IBankWriter cOut) {
+void Bank::writeBank(IBankWriter &rcOut) {
 
 }
 void Bank::deposit(int acctNum, long long amount) {
@@ -33,7 +34,7 @@ int Bank::getAccount(int acctNum) {
 
 	while (!bIsFound && index < mMAX_ACCOUNTS)
 	{
-		if (mapcAccount[index]->getAcctNum == acctNum)
+		if (mapcAccount[index]->getAcctNum() == acctNum)
 		{
 			bIsFound = true;
 		}

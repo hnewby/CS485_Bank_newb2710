@@ -6,7 +6,9 @@
 // Assignment: Bank
 // Purpose:    Bank class header
 //***************************************************************************
-#pragma once
+//#pragma once
+#ifndef Bank_h
+#define Bank_h
 #include "IAccount.h"
 #include "IAccountReader.h"
 #include "ICommandReader.h"
@@ -18,7 +20,7 @@ class Bank {
 		~Bank();
 		void readAccounts(IAccountReader &rcAcctReader);
 		void readCommand(ICommandReader &rcCmdReader);
-		void writeBank(IBankWriter cOut);
+		void writeBank(IBankWriter &rcOut);
 		void deposit(int acctNum, long long amount);
 		void withdraw(int acctNum, long long amount);
 		void generateAllInterest();
@@ -28,6 +30,7 @@ class Bank {
 
 	private:
 		static int const mMAX_ACCOUNTS = 100;
-		IAccount * mapcAccount[mMAX_ACCOUNTS];
+		IAccount *mapcAccount[mMAX_ACCOUNTS];
 		int mNumAccts;
 };
+#endif

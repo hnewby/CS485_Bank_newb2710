@@ -8,10 +8,10 @@
 //***************************************************************************
 #pragma once
 #include "IAccount.h"
-class SavingsAccount : IAccount {
+class SavingsAccount : public IAccount {
 	public:
 		SavingsAccount();
-		SavingsAccount(int acctNum, long long amt, float interestRate, IFee theFee);
+		SavingsAccount(int acctNum, long long amt, float interestRate, IFee &rcTheFee);
 		~SavingsAccount();
 	private:
 

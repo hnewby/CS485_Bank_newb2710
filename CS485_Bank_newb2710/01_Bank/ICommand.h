@@ -6,14 +6,18 @@
 // Assignment: Bank
 // Purpose:    ICommand class header
 //***************************************************************************
-#pragma once
+//#pragma once
+#ifndef ICommand_h
+#define ICommand_h
+#include <iostream>
 #include "Bank.h"
 class ICommand {
 	public:
-		ICommand();
-		~ICommand();
-		void action(Bank &rcTheBank);
+		/*ICommand();
+		~ICommand();*/
+		virtual void action(Bank &rcTheBank) = 0;
 		friend std::istream& operator >> (std::istream &rcIn, ICommand &rcCmd);
 	private:
 
 };
+#endif

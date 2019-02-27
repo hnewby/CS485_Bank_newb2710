@@ -8,13 +8,14 @@
 //***************************************************************************
 #pragma once
 #include "IFee.h"
-class TransactionalFee : IFee {
+class TransactionalFee : public IFee {
 	public:
 		TransactionalFee(long long minBalance, long long amount);
 		~TransactionalFee();
 		long long chargeMonthlyFee(const long long balance);
 		long long chargeDepositFee(const long long balance);
 		long long chargeWithdrawFee(const long long balance);
+		void read(std::istream& rcIn);
 	private:
 		long long mMinBal;
 };

@@ -1,16 +1,18 @@
 #include "IAccount.h"
 
 IAccount::IAccount() {
-	mcFee = new IFee();
+	mAcctBalance = 0;
+	mAcctNum = 0;
+	//mcFee = new IFee();
 }
 IAccount::~IAccount() {
 
 }
-IAccount::IAccount(int acctNum, long long acctBalance, float interestRate, IFee theFee) {
+IAccount::IAccount(int acctNum, long long acctBalance, float interestRate, IFee &rcTheFee) {
 	mAcctNum = acctNum;
 	mAcctBalance = acctBalance;
 	mInterestRate = interestRate;
-	mcFee = theFee; // this wont work need to figure out
+	//mcFee = theFee; // this wont work need to figure out
 }
 int IAccount::getAcctNum() {
 	return mAcctNum;
@@ -20,11 +22,11 @@ long long IAccount::getAcctBal() {
 }
 void IAccount::deposit(long long amt) {
 	mAcctBalance += amt;
-	mAcctBalance -= mcFee.chargeDepositFee(mAcctBalance); //charge fee is one
+	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); //charge fee is one
 }
 void IAccount::withdraw(long long amt) {
 	mAcctBalance -= amt;
-	mAcctBalance -= mcFee.chargeDepositFee(mAcctBalance); //charge fee is one
+	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); //charge fee is one
 }
 void IAccount::generateInterest() {
 	//do nothing if acct bal neg
@@ -34,12 +36,12 @@ void IAccount::setInterestRate(float interestRate) {
 }
 void IAccount::endOfMonth() {
 	generateInterest(); //figure this out
-	mAcctBalance -= mcFee.chargeMonthlyFee(mAcctBalance);
+	mAcctBalance -= mpcFee->chargeMonthlyFee(mAcctBalance);
 }
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
-	rcIn >> rcTheAccount.mAcctBalance >> rcTheAccount.mInterestRate >> rcTheAccount.mcFee;
-	// how I am getting a feww going
-	//what is this doing?
+	rcIn >> rcTheAccount.mAcctBalance >> 
+		rcTheAccount.mInterestRate >> *rcTheAccount.mpcFee;
+	return (rcIn);
 }
 
 bool IAccount::checkNegBal() {

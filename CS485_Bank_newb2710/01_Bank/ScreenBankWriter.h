@@ -10,11 +10,11 @@
 
 #include "IBankWriter.h"
 
-class ScreenBankWriter : IBankWriter {
+class ScreenBankWriter : public IBankWriter {
 	public:
 	//	virtual bool openBankDB(std::ostream &rcOut);
-		virtual bool write(std::ostream, IAccount &rcTheAccount);
-		virtual bool closeBankDB();
+		bool write(std::ostream &rcOut, IAccount &rcTheAccount);
+		bool closeBankDB();
 	private:
 
 };

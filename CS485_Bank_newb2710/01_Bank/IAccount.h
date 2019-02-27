@@ -13,7 +13,7 @@ class IAccount {
 	public:
 		IAccount();
 		~IAccount();
-		IAccount(int acctNum, long long acctBalance, float interestRate, IFee theFee);
+		IAccount(int acctNum, long long acctBalance, float interestRate, IFee &rcTheFee);
 		int getAcctNum();
 		long long getAcctBal();
 		void deposit(long long amt);
@@ -30,5 +30,5 @@ class IAccount {
 		int mAcctNum;
 		long long mAcctBalance;
 		float mInterestRate;
-		IFee mcFee;
+		IFee *mpcFee;
 };

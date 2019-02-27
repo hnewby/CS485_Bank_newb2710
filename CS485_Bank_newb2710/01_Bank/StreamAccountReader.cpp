@@ -24,24 +24,12 @@ bool StreamAccountReader::read(IAccount &rcAccount) {
 				pcAccount = new CheckingAccount();
 				break;
 		}
-		mcInFile >> pcAccount;
+		mcInFile >> *pcAccount;
+		//need to add account to bank
 	}
-	/*char shapeType;
-	Shape *pcShape = nullptr;
-	while (mTheData >> shapeType)
-	{
-		switch (shapeType)
-		{
-		case 'S':
-			pcShape = new Square();
-			break;
-		case 'C':
-			pcShape = new Circle();
-			break;
-		}
-		mTheData >> *pcShape;
-		rcCol.addShape(pcShape);*/
+	return false;
 }
 bool StreamAccountReader::closeAccountsDB() {
 	mcInFile.close();
+	return false;
 }

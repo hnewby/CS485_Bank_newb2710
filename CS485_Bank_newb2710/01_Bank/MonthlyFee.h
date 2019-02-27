@@ -8,7 +8,7 @@
 //***************************************************************************
 #pragma once
 #include "IFee.h"
-class MonthlyFee : IFee{
+class MonthlyFee : public IFee{
 public:
 	MonthlyFee(long long minBal, bool bWentBelow, long long amount);
 	~MonthlyFee();
@@ -16,6 +16,7 @@ public:
 	long long chargeDepositFee(const long long balance);
 	long long chargeWithdrawFee(const long long balance);
 	bool checkWentBelow();
+	void read(std::istream& rcIn);
 private:
 	long long mMinBal;
 	bool mbWentBelow;
