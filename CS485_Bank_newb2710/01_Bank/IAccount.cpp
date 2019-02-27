@@ -1,7 +1,7 @@
 #include "IAccount.h"
 
 IAccount::IAccount() {
-
+	mcFee = new IFee();
 }
 IAccount::~IAccount() {
 
@@ -37,6 +37,8 @@ void IAccount::endOfMonth() {
 	mAcctBalance -= mcFee.chargeMonthlyFee(mAcctBalance);
 }
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
+	rcIn >> rcTheAccount.mAcctBalance >> rcTheAccount.mInterestRate >> rcTheAccount.mcFee;
+	// how I am getting a feww going
 	//what is this doing?
 }
 

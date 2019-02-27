@@ -7,7 +7,7 @@
 // Purpose:    IFee class header
 //***************************************************************************
 #pragma once
-
+#include <iostream>
 class IFee {
 	public:
 		IFee();
@@ -16,6 +16,7 @@ class IFee {
 		virtual long long chargeMonthlyFee(const long long balance) = 0;
 		virtual long long chargeDepositFee(const long long balance) = 0;
 		virtual long long chargeWithdrawFee(const long long balance) = 0;
+		friend std::istream& operator >> (std::istream &rcIn, IFee &rcFee);
 
 protected:
 		long long getAmount(); // might not need this

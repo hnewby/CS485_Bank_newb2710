@@ -16,8 +16,8 @@ class Bank {
 	public:
 		Bank();
 		~Bank();
-		void readAccounts(IAccountReader cAcctReader);
-		void readCommand(ICommandReader cCmdReader);
+		void readAccounts(IAccountReader &rcAcctReader);
+		void readCommand(ICommandReader &rcCmdReader);
 		void writeBank(IBankWriter cOut);
 		void deposit(int acctNum, long long amount);
 		void withdraw(int acctNum, long long amount);

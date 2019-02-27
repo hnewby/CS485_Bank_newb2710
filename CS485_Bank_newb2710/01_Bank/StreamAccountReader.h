@@ -15,5 +15,5 @@ class StreamAccountReader : public IAccountReader{
 		virtual bool read(IAccount &rcTheAccount);
 		virtual bool closeAccountsDB();
 	private:
-
+		std::ifstream mcInFile;
 };

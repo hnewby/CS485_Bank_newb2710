@@ -172,9 +172,13 @@
     <ClCompile Include="01_Bank.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
+    <ClCompile Include="DepositCmd.cpp" />
     <ClCompile Include="IAccount.cpp" />
     <ClCompile Include="IFee.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MonthCmd.cpp" />
     <ClCompile Include="MonthlyFee.cpp" />
+    <ClCompile Include="PrintCmd.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />
     <ClCompile Include="ScreenBankWriter.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -186,6 +190,11 @@
     <ClCompile Include="StreamAccountReader.cpp" />
     <ClCompile Include="StreamCommandReader.cpp" />
     <ClCompile Include="TransactionalFee.cpp" />
+    <ClCompile Include="WithdrawCmd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Accounts.txt" />
+    <Text Include="Commands.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

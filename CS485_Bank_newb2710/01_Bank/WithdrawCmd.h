@@ -10,7 +10,7 @@
 #include "ICommand.h"
 class WithdrawCmd : public ICommand{
 	public:
-		WithdrawCmd();
+		WithdrawCmd(int acctNum, long long amount);
 		~WithdrawCmd();
 		void action(Bank &rcTheBank);
 	private:

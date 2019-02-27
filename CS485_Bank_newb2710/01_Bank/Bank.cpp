@@ -6,10 +6,10 @@ Bank::Bank() {
 Bank::~Bank() {
 
 }
-void Bank::readAccounts(IAccountReader cAcctReader) {
-
+void Bank::readAccounts(IAccountReader &rcAcctReader) {
+	rcAcctReader.read(mapcAccount[(mNumAccts - 1)]); // could be off by one here but dont think so
 }
-void Bank::readCommand(ICommandReader cCmdReader) {
+void Bank::readCommand(ICommandReader &rcCmdReader) {
 
 }
 void Bank::writeBank(IBankWriter cOut) {

@@ -12,9 +12,9 @@
 
 class ICommandReader {
 	public:
-		virtual bool open(std::string file) = 0;
+		virtual bool openCommands(std::string file) = 0;
 		virtual bool read(ICommand &rcCmd) = 0;
-		virtual bool close() = 0;
+		virtual bool closeCommands() = 0;
 	private:
 
 };

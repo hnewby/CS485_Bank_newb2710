@@ -12,3 +12,6 @@ IFee::~IFee(){
 long long IFee::getAmount(){
 	return mAmount;
 }
+//std::istream& operator >> (std::istream &rcIn, IFee &rcFee) {
+//	rcIn >> rcFee.mAmount >> 
+//}
