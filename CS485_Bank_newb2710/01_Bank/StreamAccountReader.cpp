@@ -11,7 +11,7 @@ bool StreamAccountReader::openAccountsDB(std::string file) {
 	}
 	return bOpened;
 }
-bool StreamAccountReader::read(AccountCollection &rcTheCollection) {
+bool StreamAccountReader::read(Bank &rcTheBank) {
 	char accountType;
 	//rcAccount
 	IAccount* pcAccount = nullptr;
@@ -28,7 +28,7 @@ bool StreamAccountReader::read(AccountCollection &rcTheCollection) {
 				break;
 		}
 		mcInFile >> *pcAccount;
-		rcTheCollection.addAccount(pcAccount);
+		rcTheBank.addAccount(pcAccount);
 		//need to add account to bank
 	}
 	return false;

@@ -6,14 +6,16 @@
 // Assignment: Bank
 // Purpose:    IBankWriter class header
 //***************************************************************************
-#pragma once
+#ifndef IBankWriter_h
+#define IBankWriter_h
 #include <iostream>
 #include "IAccount.h"
 class IBankWriter {
 	public:
 		//virtual bool open(std::ostream) = 0;
-		virtual bool write(std::ostream, IAccount &rcTheAccount) = 0;
+		virtual bool write(std::ostream &rcOut, IAccount &rcTheAccount) = 0;
 		virtual bool close() = 0;
 	private:
-
+		
 };
+#endif

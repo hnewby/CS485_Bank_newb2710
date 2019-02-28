@@ -19,3 +19,12 @@ std::istream& operator >> (std::istream &rcIn, IFee &rcFee) {
 	rcFee.read(rcIn);
 	return rcIn;
 }
+
+std::ostream& operator << (std::ostream &rcOut, IFee* pcFee) {
+	pcFee->write(rcOut);
+	return rcOut;
+}
+
+void IFee::write(std::ostream &rcOut) {
+	rcOut << mAmount << ' ';
+}

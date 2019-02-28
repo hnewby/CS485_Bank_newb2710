@@ -7,15 +7,15 @@
 // Purpose:    StreamCommandReader class header
 //***************************************************************************
 #pragma once
-#include <iostream>
-#include <fstream>
 #include "ICommandReader.h"
+#include <fstream>
 
 class StreamCommandReader : public ICommandReader{
 	public:
+		//StreamCommandReader() {};
 		bool openCommands(std::string file);
-		bool read(ICommand &rcCmd);
+		ICommand* read();
 		bool closeCommands();
 	private:
-		std::istream mcInFile;
+		std::ifstream mcInFile;
 };

@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AccountCollection.h" />
+    <ClInclude Include="BankApp.h" />
     <ClInclude Include="IAccount.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="CheckingAccount.h" />
@@ -172,9 +173,11 @@
   <ItemGroup>
     <ClCompile Include="AccountCollection.cpp" />
     <ClCompile Include="Bank.cpp" />
+    <ClCompile Include="BankApp.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
     <ClCompile Include="DepositCmd.cpp" />
     <ClCompile Include="IAccount.cpp" />
+    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IFee.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MonthCmd.cpp" />

@@ -6,7 +6,8 @@
 // Assignment: Bank
 // Purpose:    Account class header
 //***************************************************************************
-#pragma once
+#ifndef IAccount_h
+#define IAccount_h
 #include "IFee.h"
 #include <iostream>
 class IAccount {
@@ -21,8 +22,9 @@ class IAccount {
 		void generateInterest();
 		void setInterestRate(float interestRate);
 		void endOfMonth();
+		void print(std::ostream &rcOut);
 		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
-
+		friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
 	protected:
 		bool checkNegBal();
 
@@ -32,3 +34,4 @@ class IAccount {
 		float mInterestRate;
 		IFee *mpcFee;
 };
+#endif

@@ -7,5 +7,5 @@ MonthCmd::~MonthCmd() {
 
 }
 void MonthCmd::action(Bank &rcTheBank) {
-
+	//do things
 }

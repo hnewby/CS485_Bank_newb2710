@@ -78,6 +78,9 @@
     <ClInclude Include="AccountCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BankApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TransactionalFee.cpp">
@@ -126,6 +129,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AccountCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

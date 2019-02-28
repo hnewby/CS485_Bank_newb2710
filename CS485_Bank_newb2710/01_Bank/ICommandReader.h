@@ -6,15 +6,18 @@
 // Assignment: Bank
 // Purpose:    ICommandReader class header
 //***************************************************************************
-#pragma once
+#ifndef ICommandReader_h
+#define ICommandReader_h
 #include <string>
-//#include "ICommand.h"
-class ICommand;
+#include "ICommand.h"
+//class ICommand;
 class ICommandReader {
 	public:
+		//ICommandReader() {};
 		virtual bool openCommands(std::string file) = 0;
-		virtual bool read(ICommand &rcCmd) = 0;
+		virtual ICommand* read() = 0;
 		virtual bool closeCommands() = 0;
 	private:
 
 };
+#endif

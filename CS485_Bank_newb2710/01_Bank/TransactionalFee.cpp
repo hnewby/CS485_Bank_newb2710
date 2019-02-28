@@ -40,3 +40,8 @@ void TransactionalFee::read(std::istream &rcIn) {
 	rcIn >> mMinBal; //minBal first because thats the way file is
 	IFee::read(rcIn);
 }
+
+void TransactionalFee::write(std::ostream &rcOut) {
+	rcOut << mMinBal << ' ';
+	IFee::write(rcOut);
+}

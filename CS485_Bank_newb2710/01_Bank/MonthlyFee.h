@@ -18,6 +18,7 @@ public:
 	long long chargeWithdrawFee(const long long balance);
 	bool checkWentBelow();
 	void read(std::istream& rcIn);
+	void write(std::ostream &rcOut);
 private:
 	long long mMinBal;
 	bool mbWentBelow;

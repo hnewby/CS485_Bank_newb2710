@@ -1,17 +1,20 @@
 #include "StreamCommandReader.h"
 #include "StreamAccountReader.h"
-#include "IAccountReader.h"
-#include "Bank.h"
+//#include "ICommandReader.h"
+#include "BankApp.h"
 #include <string>
 int main() {
-	//ICommandReader cCommandReader = new StreamCommandReader ();
+	BankApp cBankApp;
+	ICommandReader* pcCommandReader = new StreamCommandReader;
 	//const string 
-	//StreamCommandReader cCommandReader;
-	StreamAccountReader cAccountReader;
-	//IAccountReader cAcctReader = new StreamAccountReader;
+	//StreamCommandReader cCommandReader = new StreamCommandReader ();
+	//StreamAccountReader cAccountReader;
+	IAccountReader* pcAccountReader = new StreamAccountReader;
 	Bank cTheBank;
-
-	cAccountReader.openAccountsDB("Accounts.txt");
-	cTheBank.readAccounts(cAccountReader);
+	
+	pcAccountReader->openAccountsDB("Accounts.txt");
+	cBankApp.readAccounts(*pcAccountReader);
+	pcCommandReader->openCommands("Commands.txt");
+	cBankApp.readCommand(*pcCommandReader);
 	return EXIT_SUCCESS;
 }

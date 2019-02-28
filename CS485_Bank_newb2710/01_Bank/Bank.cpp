@@ -1,23 +1,28 @@
 #include "Bank.h"
-
+#include "ScreenBankWriter.h"
 Bank::Bank() {
 	mNumAccts = 0;
 }
 Bank::~Bank() {
 
 }
-void Bank::readAccounts(IAccountReader &rcAcctReader) {
-
-	rcAcctReader.read(mcTheCollection);
-	// could be off by one here but dont think so
-
-	//addAccount(mapcAccounts[(mNumAccts - 1)]);
-}
-void Bank::readCommand(ICommandReader &rcCmdReader) {
-
-}
+//void Bank::readAccounts(IAccountReader &rcAcctReader) {
+//
+//	rcAcctReader.read(mcTheCollection);
+//	// could be off by one here but dont think so
+//
+//	//addAccount(mapcAccounts[(mNumAccts - 1)]);
+//}
+//void Bank::readCommand(ICommandReader &rcCmdReader) {
+//
+//}
 void Bank::writeBank(IBankWriter &rcOut) {
-
+	for (int i = 0; i < mNumAccts; i++)
+	{
+		//mapcAccounts[i]->print()
+		rcOut.write(std::cout, *mapcAccounts[i]);
+		std::cout << '\n';
+	}
 }
 void Bank::deposit(int acctNum, long long amount) {
 	mapcAccounts[getAccount(acctNum)]->deposit(amount);
@@ -48,10 +53,16 @@ int Bank::getAccount(int acctNum) {
 	}
 	return index;
 }
-//void Bank::addAccount(IAccount *pcTheAccount) {
-//	if (mNumAccts <= mMAX_ACCOUNTS)
-//	{
-//		mapcAccounts[mNumAccts] = pcTheAccount;
-//		mNumAccts++;
-//	}
-//}
+void Bank::addAccount(IAccount *pcTheAccount) {
+	if (mNumAccts <= mMAX_ACCOUNTS)
+	{
+		mapcAccounts[mNumAccts] = pcTheAccount;
+		mNumAccts++;
+	}
+}
+
+void Bank::print() {
+	IBankWriter* pcWriter = new ScreenBankWriter;
+
+	writeBank(*pcWriter);
+}

@@ -11,9 +11,9 @@
 #include <fstream>
 class StreamAccountReader : public IAccountReader{
 	public:
-		virtual bool openAccountsDB(std::string file);
-		virtual bool read(AccountCollection &rcTheCollection);
-		virtual bool closeAccountsDB();
+		bool openAccountsDB(std::string file);
+		bool read(Bank &rcTheBank);
+		bool closeAccountsDB();
 	private:
 		std::ifstream mcInFile;
 };

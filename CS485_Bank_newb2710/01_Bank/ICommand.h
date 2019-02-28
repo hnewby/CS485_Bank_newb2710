@@ -13,8 +13,8 @@
 #include "Bank.h"
 class ICommand {
 	public:
-		/*ICommand();
-		~ICommand();*/
+		ICommand();
+		~ICommand();
 		virtual void action(Bank &rcTheBank) = 0;
 		friend std::istream& operator >> (std::istream &rcIn, ICommand &rcCmd);
 	private:

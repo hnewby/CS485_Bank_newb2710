@@ -1,7 +1,7 @@
 #include "AccountCollection.h"
 
 AccountCollection::AccountCollection() {
-
+	mNumAccts = 0;
 }
 AccountCollection::~AccountCollection() {
 

@@ -13,7 +13,7 @@ class MonthCmd : public ICommand {
 	public:
 		MonthCmd();
 		~MonthCmd();
-		virtual void action(Bank &rcTheBank) = 0;
+		void action(Bank &rcTheBank);
 	private:
 
 };

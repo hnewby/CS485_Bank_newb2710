@@ -47,3 +47,8 @@ void MonthlyFee::read(std::istream &rcIn){
 	IFee::read(rcIn);
 	rcIn >> mMinBal;// >> mbWentBelow;
 }
+
+void MonthlyFee::write(std::ostream &rcOut) {
+	IFee::write(rcOut);
+	rcOut << mMinBal;
+}

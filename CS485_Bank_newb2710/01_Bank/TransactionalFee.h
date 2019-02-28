@@ -17,6 +17,7 @@ class TransactionalFee : public IFee {
 		long long chargeDepositFee(const long long balance);
 		long long chargeWithdrawFee(const long long balance);
 		void read(std::istream& rcIn);
+		void write(std::ostream &rcOut);
 	private:
 		long long mMinBal;
 };

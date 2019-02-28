@@ -1,5 +1,8 @@
 #include "DepositCmd.h"
 
+DepositCmd::DepositCmd() : DepositCmd(0, 0) {
+
+}
 DepositCmd::DepositCmd(int acctNum, long long amount) {
 	mAcctNum = acctNum;
 	mAmt = amount;

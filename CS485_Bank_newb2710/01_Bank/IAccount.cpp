@@ -45,6 +45,12 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 	return (rcIn);
 }
 
+std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
+//void IAccount::print(std::ostream &rcOut) {
+	rcOut << rcTheAccount.mAcctNum << ' ' << rcTheAccount.mAcctBalance << ' '
+		<< rcTheAccount.mInterestRate << ' ' << rcTheAccount.mpcFee;
+	return rcOut;
+}
 bool IAccount::checkNegBal() {
 	bool bNeg = false;
 	if (mAcctBalance < 0)

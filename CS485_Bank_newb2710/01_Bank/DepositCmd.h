@@ -11,6 +11,7 @@
 #include "ICommand.h"
 class DepositCmd : public ICommand {
 	public:
+		DepositCmd();
 		DepositCmd(int acctNum, long long amount);
 		~DepositCmd();
 		void action(Bank &rcTheBank);
