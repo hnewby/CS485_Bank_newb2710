@@ -24,8 +24,15 @@ bool StreamCommandReader::openCommands(std::string file) {
 	return bOpened;
 	return false;
 }
-
-//why is this a bool?
+//***************************************************************************
+// Function:		read
+//
+// Description: read in from stream and create command
+//
+// Parameters:  None
+//
+// Returned:    ICommand*
+//***************************************************************************
 ICommand* StreamCommandReader::read() {
 	char commandType;
 	ICommand *pcCmd = nullptr;
@@ -50,7 +57,15 @@ ICommand* StreamCommandReader::read() {
 	}
 	return pcCmd;
 }
-bool StreamCommandReader::closeCommands() {
+//***************************************************************************
+// Function:		closeCommands
+//
+// Description: close file read from
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+void StreamCommandReader::closeCommands() {
 	mcInFile.close();
-	return false;
 }

@@ -16,13 +16,12 @@ class IAccount {
 		~IAccount();
 		IAccount(int acctNum, long long acctBalance, float interestRate, IFee* pcTheFee);
 		int getAcctNum();
-		long long getAcctBal();
+		/*long long getAcctBal();*/
 		void deposit(long long amt);
 		void withdraw(long long amt);
 		void generateInterest();
-		void setInterestRate(float interestRate);
+		//void setInterestRate(float interestRate);
 		void endOfMonth();
-		void print(std::ostream &rcOut);
 		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
 		friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
 	protected:

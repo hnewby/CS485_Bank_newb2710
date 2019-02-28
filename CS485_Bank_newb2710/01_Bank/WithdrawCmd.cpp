@@ -49,7 +49,15 @@ WithdrawCmd::~WithdrawCmd() {
 void WithdrawCmd::read(std::istream &rcIn) {
 	rcIn >> mAcctNum >> mAmt;
 }
-
+//***************************************************************************
+// Function:		action
+//
+// Description: run withdraw function
+//
+// Parameters:  rcThebank - reference to the bank
+//
+// Returned:    None
+//***************************************************************************
 void WithdrawCmd::action(Bank &rcTheBank) {
 	rcTheBank.withdraw(mAcctNum, mAmt);
 }

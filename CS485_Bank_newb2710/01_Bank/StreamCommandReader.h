@@ -15,7 +15,7 @@ class StreamCommandReader : public ICommandReader{
 		//StreamCommandReader() {};
 		bool openCommands(std::string file);
 		ICommand* read();
-		bool closeCommands();
+		void closeCommands();
 	private:
 		std::ifstream mcInFile;
 };

@@ -16,7 +16,7 @@ class ICommandReader {
 		//ICommandReader() {};
 		virtual bool openCommands(std::string file) = 0;
 		virtual ICommand* read() = 0;
-		virtual bool closeCommands() = 0;
+		virtual void closeCommands() = 0;
 	private:
 
 };

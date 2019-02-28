@@ -98,7 +98,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AccountCollection.h" />
     <ClInclude Include="BankApp.h" />
     <ClInclude Include="IAccount.h" />
     <ClInclude Include="Bank.h" />
@@ -171,7 +170,6 @@
     <ClInclude Include="WithdrawCmd.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AccountCollection.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankApp.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />

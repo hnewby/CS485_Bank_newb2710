@@ -10,9 +10,7 @@
 // Returned:    None
 //***************************************************************************
 SavingsAccount::SavingsAccount() : IAccount (){
-	//IFee* pcFee = new MonthlyFee();
-	//SavingsAccount(0, 0, 0, pcFee);
-	// might need to delt
+	
 }
 //***************************************************************************
 // Constructor: SavingsAccount

@@ -84,12 +84,28 @@ long long TransactionalFee::chargeWithdrawFee(const long long balance) {
 	}
 	return fee;
 }
-
+//***************************************************************************
+// Function:		read
+//
+// Description: read in from stream to min balance
+//
+// Parameters:  rcIn - reference to istream
+//
+// Returned:    None
+//***************************************************************************
 void TransactionalFee::read(std::istream &rcIn) {
 	rcIn >> mMinBal; //minBal first because thats the way file is
 	IFee::read(rcIn);
 }
-
+//***************************************************************************
+// Function:		write
+//
+// Description: write to stream from min balance
+//
+// Parameters:  rcOut - reference to ostream
+//
+// Returned:    None
+//***************************************************************************
 void TransactionalFee::write(std::ostream &rcOut) {
 	rcOut << mMinBal << ", ";
 	IFee::write(rcOut);

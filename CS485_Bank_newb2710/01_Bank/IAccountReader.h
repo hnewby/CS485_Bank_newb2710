@@ -13,8 +13,8 @@
 class IAccountReader {
 	public:
 		virtual bool openAccountsDB(std::string file) = 0;
-		virtual bool read(Bank &rcTheBank) = 0;
-		virtual bool closeAccountsDB() = 0;
+		virtual void read(Bank &rcTheBank) = 0;
+		virtual void closeAccountsDB() = 0;
 	private:
 
 };

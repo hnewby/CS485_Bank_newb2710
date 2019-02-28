@@ -12,8 +12,8 @@
 class StreamAccountReader : public IAccountReader{
 	public:
 		bool openAccountsDB(std::string file);
-		bool read(Bank &rcTheBank);
-		bool closeAccountsDB();
+		void read(Bank &rcTheBank);
+		void closeAccountsDB();
 	private:
 		std::ifstream mcInFile;
 };

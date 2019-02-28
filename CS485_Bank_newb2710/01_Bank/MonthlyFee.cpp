@@ -92,16 +92,40 @@ long long MonthlyFee::chargeWithdrawFee(const long long balance) {
 	}
 	return 0;
 }
-
+//***************************************************************************
+// Function:		checkWentBelow
+//
+// Description: return bool if went below
+//
+// Parameters:  None
+//
+// Returned:    bool
+//***************************************************************************
 bool MonthlyFee::checkWentBelow() {
 	return mbWentBelow;
 }
-
+//***************************************************************************
+// Function:		read
+//
+// Description: read in from stream to fee
+//
+// Parameters:  rcIn				 - reference to istream
+//
+// Returned:    None
+//***************************************************************************
 void MonthlyFee::read(std::istream &rcIn){
 	IFee::read(rcIn);
-	rcIn >> mMinBal;// >> mbWentBelow;
+	rcIn >> mMinBal;
 }
-
+//***************************************************************************
+// Function:		write
+//
+// Description: read into stream from min balance
+//
+// Parameters:  rcOut				 - reference to ostream
+//
+// Returned:    None
+//***************************************************************************
 void MonthlyFee::write(std::ostream &rcOut) {
 	IFee::write(rcOut);
 	rcOut << ", " << mMinBal;

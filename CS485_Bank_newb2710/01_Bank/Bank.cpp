@@ -25,16 +25,15 @@ Bank::Bank() {
 Bank::~Bank() {
 
 }
-//void Bank::readAccounts(IAccountReader &rcAcctReader) {
+//***************************************************************************
+// Function:		writeBank
 //
-//	rcAcctReader.read(mcTheCollection);
-//	// could be off by one here but dont think so
+// Description: write bank out
 //
-//	//addAccount(mapcAccounts[(mNumAccts - 1)]);
-//}
-//void Bank::readCommand(ICommandReader &rcCmdReader) {
+// Parameters:  rcOut - ostream to write to
 //
-//}
+// Returned:    None
+//***************************************************************************
 void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mNumAccts; i++)
@@ -44,21 +43,41 @@ void Bank::writeBank(IBankWriter &rcOut) {
 	}
 	rcOut.displayLines(std::cout);
 }
+//***************************************************************************
+// Function:		deposit
+//
+// Description: deposit money into account
+//
+// Parameters:  acctNum - the account number
+//							amount	- amount to be depoisted
+//
+// Returned:    None
+//***************************************************************************
 void Bank::deposit(int acctNum, long long amount) {
 	mapcAccounts[getAccount(acctNum)]->deposit(amount);
 }
+//***************************************************************************
+// Function:		withdraw
+//
+// Description: withdraw money from account
+//
+// Parameters:  acctNum - the account number
+//							amount	- amount to be withdrawn
+//
+// Returned:    None
+//***************************************************************************
 void Bank::withdraw(int acctNum, long long amount) {
 	mapcAccounts[getAccount(acctNum)]->withdraw(amount);
 }
-void Bank::generateAllInterest() {
-	for (int i = 0; i < mNumAccts; i++)
-	{
-		generateInterest(*mapcAccounts[i]);
-	}
-}
-void Bank::generateInterest(IAccount &rcTheAccount) {
-	rcTheAccount.generateInterest();
-}
+//***************************************************************************
+// Function:		getAccount
+//
+// Description: given account number find index in array
+//
+// Parameters:  acctNum - the account number
+//
+// Returned:    int
+//***************************************************************************
 int Bank::getAccount(int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
@@ -76,6 +95,15 @@ int Bank::getAccount(int acctNum) {
 	}
 	return index;
 }
+//***************************************************************************
+// Function:		addAccount
+//
+// Description: add account* to array of accounts
+//
+// Parameters:  pcTheAccount - pointer to account
+//
+// Returned:    None
+//***************************************************************************
 void Bank::addAccount(IAccount *pcTheAccount) {
 	if (mNumAccts <= mMAX_ACCOUNTS)
 	{
@@ -83,17 +111,32 @@ void Bank::addAccount(IAccount *pcTheAccount) {
 		mNumAccts++;
 	}
 }
-
+//***************************************************************************
+// Function:		print
+//
+// Description: prints Accounts to screen
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 void Bank::print() {
-	IBankWriter* pcWriter = new ScreenBankWriter;
+	IBankWriter* pcWriter = new ScreenBankWriter; // where am I deleteing?
 
 	writeBank(*pcWriter);
 }
-
+//***************************************************************************
+// Function:		endOfMonthForAll
+//
+// Description: runs end of month commands for all accounts
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 void Bank::endOfMonthForAll() {
 	for (int i = 0; i < mNumAccts; i++)
 	{
 		mapcAccounts[i]->endOfMonth();
 	}
-	//generateAllInterest();
 }

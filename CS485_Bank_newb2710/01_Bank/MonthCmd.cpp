@@ -47,5 +47,4 @@ void MonthCmd::read(std::istream &rcIn) {
 //***************************************************************************
 void MonthCmd::action(Bank &rcTheBank) {
 	rcTheBank.endOfMonthForAll();
-	//do things
 }

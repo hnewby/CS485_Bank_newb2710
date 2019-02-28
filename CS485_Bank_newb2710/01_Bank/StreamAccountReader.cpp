@@ -1,6 +1,16 @@
 #include "StreamAccountReader.h"
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"
+
+//***************************************************************************
+// Function:		openAccountsDB
+//
+// Description: open file to read from
+//
+// Parameters:  file - file to open
+//
+// Returned:    bool
+//***************************************************************************
 bool StreamAccountReader::openAccountsDB(std::string file) {
 	bool bOpened = true;
 
@@ -11,7 +21,16 @@ bool StreamAccountReader::openAccountsDB(std::string file) {
 	}
 	return bOpened;
 }
-bool StreamAccountReader::read(Bank &rcTheBank) {
+//***************************************************************************
+// Function:		read
+//
+// Description: read in from stream and create account
+//
+// Parameters:  rcTheBank - refernce to bank
+//
+// Returned:    None
+//***************************************************************************
+void StreamAccountReader::read(Bank &rcTheBank) {
 	char accountType;
 	//rcAccount
 	IAccount* pcAccount = nullptr;
@@ -29,11 +48,17 @@ bool StreamAccountReader::read(Bank &rcTheBank) {
 		}
 		mcInFile >> *pcAccount;
 		rcTheBank.addAccount(pcAccount);
-		//need to add account to bank
 	}
-	return false;
 }
-bool StreamAccountReader::closeAccountsDB() {
+//***************************************************************************
+// Function:		closeAccountsDB
+//
+// Description: close file read from
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+void StreamAccountReader::closeAccountsDB() {
 	mcInFile.close();
-	return false;
 }

@@ -14,8 +14,7 @@ class ScreenBankWriter : public IBankWriter {
 	public:
 		//void open(std::ostream &rcOut);
 		void displayLines(std::ostream &rcOut);
-		bool write(std::ostream &rcOut, IAccount &rcTheAccount);
-		bool close();
+		void write(std::ostream &rcOut, IAccount &rcTheAccount);
 	//	virtual bool openBankDB(std::ostream &rcOut);
 	/*	bool write(std::ostream &rcOut, IAccount &rcTheAccount);
 		bool closeBankDB();*/

@@ -15,8 +15,7 @@ class IBankWriter {
 		//virtual void open(std::ostream &rcOut) = 0;
 		//virtual bool open(std::ostream) = 0;
 		virtual void displayLines(std::ostream &rcOut) = 0;
-		virtual bool write(std::ostream &rcOut, IAccount &rcTheAccount) = 0;
-		virtual bool close() = 0;
+		virtual void write(std::ostream &rcOut, IAccount &rcTheAccount) = 0;
 	private:
 		
 };
