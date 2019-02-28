@@ -14,6 +14,7 @@ class WithdrawCmd : public ICommand{
 		WithdrawCmd();
 		WithdrawCmd(int acctNum, long long amount);
 		~WithdrawCmd();
+		void read(std::istream &rcIn);
 		void action(Bank &rcTheBank);
 	private:
 		int mAcctNum;

@@ -42,8 +42,9 @@ void IAccount::setInterestRate(float interestRate) {
 	mInterestRate = interestRate;
 }
 void IAccount::endOfMonth() {
-	generateInterest(); //figure this out
+	
 	mAcctBalance -= mpcFee->chargeMonthlyFee(mAcctBalance);
+	generateInterest(); //figure this out
 }
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mAcctBalance >> 
@@ -54,18 +55,18 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
 	float bal;// = rcTheAccount.mAcctBalance;
 	float interest = rcTheAccount.mInterestRate;
-	std::string dollar = "$";
+	//std::string dollar = "$";
 
 	bal = rcTheAccount.mAcctBalance / 100.00;
 	interest *= 100;
 
-	if (rcTheAccount.checkNegBal())
+	/*if (rcTheAccount.checkNegBal())
 	{
 		dollar = "$-";
-	}
+	}*/
 
 	rcOut << rcTheAccount.mAcctNum << ", " <<
-		dollar << std::fixed << std::setprecision(2) << bal << ", " 
+		"$" << std::fixed << std::setprecision(2) << bal << ", " 
 		<< std::fixed << std::setprecision(2)
 		<< interest << "%, " << rcTheAccount.mpcFee;
 	return rcOut;

@@ -38,12 +38,8 @@ ICommand* StreamCommandReader::read() {
 		case 'M':
 			pcCmd = new MonthCmd();
 			break;
-
-			mcInFile >> *pcCmd;
-
-			//rcTheCollection.addAccount(pcAccount);
-			//need to add account to bank
 		}
+		mcInFile >> *pcCmd;
 	}
 	return pcCmd;
 }

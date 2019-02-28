@@ -10,6 +10,9 @@ DepositCmd::DepositCmd(int acctNum, long long amount) {
 DepositCmd::~DepositCmd() {
 
 }
+void DepositCmd::read(std::istream &rcIn) {
+	rcIn >> mAcctNum >> mAmt;
+}
 void DepositCmd::action(Bank &rcTheBank) {
 	rcTheBank.deposit(mAcctNum, mAmt);
 }

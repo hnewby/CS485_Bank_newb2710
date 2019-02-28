@@ -13,6 +13,7 @@ class PrintCmd : public ICommand {
 	public:
 		PrintCmd();
 		~PrintCmd();
+		void read(std::istream &rcIn); //not using for this assignment
 		void action(Bank &rcTheBank);
 	private:
 

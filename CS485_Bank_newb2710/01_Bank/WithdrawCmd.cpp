@@ -9,6 +9,9 @@ WithdrawCmd::WithdrawCmd(int acctNum, long long amount){
 WithdrawCmd::~WithdrawCmd() {
 
 }
+void WithdrawCmd::read(std::istream &rcIn) {
+	rcIn >> mAcctNum >> mAmt;
+}
 void WithdrawCmd::action(Bank &rcTheBank) {
 	rcTheBank.withdraw(mAcctNum, mAmt);
 }

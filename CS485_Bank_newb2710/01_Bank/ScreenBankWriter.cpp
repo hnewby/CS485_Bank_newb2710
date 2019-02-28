@@ -1,7 +1,11 @@
 #include "ScreenBankWriter.h"
-//void ScreenBankWriter::openToWrite()
+//void ScreenBankWriter::openToWrite(std::ostream &rcOut)
+//{
+//}
 
-
+void ScreenBankWriter::displayLines(std::ostream &rcOut) {
+	rcOut << "-------------\n";
+}
 bool ScreenBankWriter::write(std::ostream &rcOut, IAccount &rcTheAccount) {
 	//rcTheAccount.print(rcOut);
 	rcOut << rcTheAccount;

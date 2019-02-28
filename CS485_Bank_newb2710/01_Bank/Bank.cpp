@@ -17,12 +17,13 @@ Bank::~Bank() {
 //
 //}
 void Bank::writeBank(IBankWriter &rcOut) {
+	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		//mapcAccounts[i]->print()
 		rcOut.write(std::cout, *mapcAccounts[i]);
 		std::cout << '\n';
 	}
+	rcOut.displayLines(std::cout);
 }
 void Bank::deposit(int acctNum, long long amount) {
 	mapcAccounts[getAccount(acctNum)]->deposit(amount);

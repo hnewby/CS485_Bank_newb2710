@@ -14,6 +14,7 @@ class DepositCmd : public ICommand {
 		DepositCmd();
 		DepositCmd(int acctNum, long long amount);
 		~DepositCmd();
+		void read(std::istream &rcIn);
 		void action(Bank &rcTheBank);
 	private:
 		int mAcctNum;

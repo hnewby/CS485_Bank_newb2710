@@ -13,6 +13,7 @@ class MonthCmd : public ICommand {
 	public:
 		MonthCmd();
 		~MonthCmd();
+		void read(std::istream &rcIn); //not using for this assignment
 		void action(Bank &rcTheBank);
 	private:
 
