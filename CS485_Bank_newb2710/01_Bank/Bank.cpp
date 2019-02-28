@@ -1,8 +1,27 @@
 #include "Bank.h"
 #include "ScreenBankWriter.h"
+
+//***************************************************************************
+// Constructor: Bank
+//
+// Description: Initialize Bank
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 Bank::Bank() {
 	mNumAccts = 0;
 }
+//***************************************************************************
+// Destructor:  Bank
+//
+// Description: Deconstructor for Bank
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 Bank::~Bank() {
 
 }

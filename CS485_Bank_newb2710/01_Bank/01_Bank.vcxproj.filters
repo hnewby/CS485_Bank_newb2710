@@ -145,5 +145,11 @@
     <Text Include="Commands.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="AccountsHundo.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="CommandsTest.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

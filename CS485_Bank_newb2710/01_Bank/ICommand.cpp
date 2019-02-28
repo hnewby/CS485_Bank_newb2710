@@ -1,8 +1,25 @@
 #include "ICommand.h"
-
+//***************************************************************************
+// Constructor: ICommand
+//
+// Description: Initialize ICommand
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 ICommand::ICommand() {
 
 }
+//***************************************************************************
+// Destructor:  ICommand
+//
+// Description: Deconstructor for ICommand
+//
+// Parameters:  none
+//
+// Returned:    None
+//***************************************************************************
 ICommand::~ICommand() {
 
 }

@@ -4,8 +4,15 @@
 #include "PrintCmd.h"
 #include "MonthCmd.h"
 
-// SOMEWHERE IN HERE NEED TO MAKE COMMAND OBJECT I THINK
-
+//***************************************************************************
+// Function:		openCommands
+//
+// Description: open file to read commands
+//
+// Parameters:  file - file name to read
+//
+// Returned:		bool
+//***************************************************************************
 bool StreamCommandReader::openCommands(std::string file) {
 	bool bOpened = true;
 
@@ -44,6 +51,6 @@ ICommand* StreamCommandReader::read() {
 	return pcCmd;
 }
 bool StreamCommandReader::closeCommands() {
-	//mcInFile.close();
+	mcInFile.close();
 	return false;
 }

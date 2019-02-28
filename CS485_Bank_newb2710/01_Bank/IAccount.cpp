@@ -1,15 +1,46 @@
 #include "IAccount.h"
 #include <string>
 #include <iomanip>
+
+//***************************************************************************
+// Constructor: IAccount
+//
+// Description: Initialize IAccount
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 IAccount::IAccount() {
 	mAcctBalance = 0;
 	mAcctNum = 0;
 	mInterestRate = 0.0;
 	mpcFee = nullptr;
 }
+//***************************************************************************
+// Destructor:  IAccount
+//
+// Description: Deconstructor for IAccount
+//
+// Parameters:  none
+//
+// Returned:    None
+//***************************************************************************
 IAccount::~IAccount() {
 
 }
+//***************************************************************************
+// Constructor: IAccount
+//
+// Description: Initialize IAccount
+//
+// Parameters:  acctNum			 - Account Number
+//							amt					 - Account Amount
+//							interestRate - Account Interest Rate
+//							pcTheFee		 - pointer to Acccounts fee
+//
+// Returned:    None
+//***************************************************************************
 IAccount::IAccount(int acctNum, long long acctBalance, float interestRate, IFee* pcTheFee) {
 	mAcctNum = acctNum;
 	mAcctBalance = acctBalance;

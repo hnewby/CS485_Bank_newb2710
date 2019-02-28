@@ -1,23 +1,66 @@
 #include "TransactionalFee.h"
 
+//***************************************************************************
+// Constructor: TransactionalFee
+//
+// Description: Initialize TransactionalFee
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 TransactionalFee::TransactionalFee() : IFee() {
 
 }
-TransactionalFee::TransactionalFee(long long minBalance, long long amount) : IFee (amount)
-{
+//***************************************************************************
+// Constructor: TransactionalFee
+//
+// Description: Initialize TransactionalFee
+//
+// Parameters:  minBalance - Minimum Balance
+//							amount		 - fee amount
+//
+// Returned:    None
+//***************************************************************************
+TransactionalFee::TransactionalFee(long long minBalance,
+	long long amount) : IFee (amount) {
 	mMinBal = minBalance;
 }
-TransactionalFee::~TransactionalFee()
-{
+//***************************************************************************
+// Destructor:  TransactionalFee
+//
+// Description: Deconstructor for TransactionalFee
+//
+// Parameters:  none
+//
+// Returned:    None
+//***************************************************************************
+TransactionalFee::~TransactionalFee() {
 
 }
-long long TransactionalFee::chargeMonthlyFee(const long long balance)
-{
+//***************************************************************************
+// Function:		chargeMonthlyFee
+//
+// Description: charge the monthly fee to account
+//
+// Parameters:  balance - balance of account
+//
+// Returned:    long long
+//***************************************************************************
+long long TransactionalFee::chargeMonthlyFee(const long long balance) {
 	return 0;
 	//do nothing not a monthly fee
 }
-long long TransactionalFee::chargeDepositFee(const long long balance)
-{
+//***************************************************************************
+// Function:		chargeDepositFee
+//
+// Description: charge the deposit fee to account
+//
+// Parameters:  balance - balance of account
+//
+// Returned:    long long
+//***************************************************************************
+long long TransactionalFee::chargeDepositFee(const long long balance) {
 	long long fee = 0;
 	if (balance < mMinBal)
 	{
@@ -25,12 +68,18 @@ long long TransactionalFee::chargeDepositFee(const long long balance)
 	}
 	return fee;
 }
-
-long long TransactionalFee::chargeWithdrawFee(const long long balance)
-{
+//***************************************************************************
+// Function:		chargeWithdraeFee
+//
+// Description: charge the withdraw fee to account
+//
+// Parameters:  balance - balance of account
+//
+// Returned:    long long
+//***************************************************************************
+long long TransactionalFee::chargeWithdrawFee(const long long balance) {
 	long long fee = 0;
-	if (balance < mMinBal)
-	{
+	if (balance < mMinBal) {
 		fee = getAmount();
 	}
 	return fee;
