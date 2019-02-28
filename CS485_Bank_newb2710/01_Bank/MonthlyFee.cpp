@@ -50,5 +50,5 @@ void MonthlyFee::read(std::istream &rcIn){
 
 void MonthlyFee::write(std::ostream &rcOut) {
 	IFee::write(rcOut);
-	rcOut << mMinBal;
+	rcOut << ", " << mMinBal;
 }

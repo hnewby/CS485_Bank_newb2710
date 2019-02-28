@@ -31,10 +31,13 @@ void Bank::withdraw(int acctNum, long long amount) {
 	mapcAccounts[getAccount(acctNum)]->withdraw(amount);
 }
 void Bank::generateAllInterest() {
-
+	for (int i = 0; i < mNumAccts; i++)
+	{
+		generateInterest(*mapcAccounts[i]);
+	}
 }
 void Bank::generateInterest(IAccount &rcTheAccount) {
-
+	rcTheAccount.generateInterest();
 }
 int Bank::getAccount(int acctNum) {
 	bool bIsFound = false;
@@ -65,4 +68,12 @@ void Bank::print() {
 	IBankWriter* pcWriter = new ScreenBankWriter;
 
 	writeBank(*pcWriter);
+}
+
+void Bank::endOfMonthForAll() {
+	for (int i = 0; i < mNumAccts; i++)
+	{
+		mapcAccounts[i]->endOfMonth();
+	}
+	//generateAllInterest();
 }

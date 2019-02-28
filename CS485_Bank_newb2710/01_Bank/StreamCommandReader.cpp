@@ -23,25 +23,27 @@ ICommand* StreamCommandReader::read() {
 	char commandType;
 	ICommand *pcCmd = nullptr;
 
-	mcInFile >> commandType;
-	switch (commandType) {
-	case 'W':
-		pcCmd = new WithdrawCmd();
-		break;
-	case 'D':
-		pcCmd = new DepositCmd();
-		break;
-	case 'P':
-		pcCmd = new PrintCmd();
-		break;
-	case 'M':
-		pcCmd = new MonthCmd();
-		break;
-		
-		mcInFile >> *pcCmd;
-		
-		//rcTheCollection.addAccount(pcAccount);
-		//need to add account to bank
+	if (mcInFile >> commandType)
+	{
+		switch (commandType) {
+		case 'W':
+			pcCmd = new WithdrawCmd();
+			break;
+		case 'D':
+			pcCmd = new DepositCmd();
+			break;
+		case 'P':
+			pcCmd = new PrintCmd();
+			break;
+		case 'M':
+			pcCmd = new MonthCmd();
+			break;
+
+			mcInFile >> *pcCmd;
+
+			//rcTheCollection.addAccount(pcAccount);
+			//need to add account to bank
+		}
 	}
 	return pcCmd;
 }

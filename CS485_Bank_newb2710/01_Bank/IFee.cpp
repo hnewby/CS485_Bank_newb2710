@@ -26,5 +26,5 @@ std::ostream& operator << (std::ostream &rcOut, IFee* pcFee) {
 }
 
 void IFee::write(std::ostream &rcOut) {
-	rcOut << mAmount << ' ';
+	rcOut << mAmount;
 }

@@ -8,8 +8,10 @@ void BankApp::readAccounts(IAccountReader &rcAcctReader) {
 }
 void BankApp::readCommand(ICommandReader &rcCmdReader) {
 	ICommand *pcTheCmd = nullptr;
-	pcTheCmd = rcCmdReader.read(); // be careful of when to delete pcTheCmd
-	runCommand(pcTheCmd);
+	do {
+		pcTheCmd = rcCmdReader.read(); // be careful of when to delete pcTheCmd
+		runCommand(pcTheCmd);
+	} while (pcTheCmd != nullptr);
 }
 void BankApp::runCommand(ICommand *pcCmd)
 {

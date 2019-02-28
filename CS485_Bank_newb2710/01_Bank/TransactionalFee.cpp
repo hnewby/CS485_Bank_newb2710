@@ -42,6 +42,6 @@ void TransactionalFee::read(std::istream &rcIn) {
 }
 
 void TransactionalFee::write(std::ostream &rcOut) {
-	rcOut << mMinBal << ' ';
+	rcOut << mMinBal << ", ";
 	IFee::write(rcOut);
 }

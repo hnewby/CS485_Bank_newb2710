@@ -29,6 +29,7 @@ class Bank {
 		int getAccount(int acctNum);
 		void addAccount(IAccount *pcTheAccount);
 		void print();
+		void endOfMonthForAll();
 
 	private:
 		AccountCollection mcTheCollection;

@@ -1,5 +1,6 @@
 #include "IAccount.h"
-
+#include <string>
+#include <iomanip>
 IAccount::IAccount() {
 	mAcctBalance = 0;
 	mAcctNum = 0;
@@ -30,7 +31,12 @@ void IAccount::withdraw(long long amt) {
 	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); //charge fee is one
 }
 void IAccount::generateInterest() {
-	//do nothing if acct bal neg
+	float temp;
+	if (!checkNegBal())
+	{
+		temp = mAcctBalance * mInterestRate;
+		mAcctBalance += static_cast<long long>(temp);
+	}
 }
 void IAccount::setInterestRate(float interestRate) {
 	mInterestRate = interestRate;
@@ -46,11 +52,35 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 }
 
 std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
-//void IAccount::print(std::ostream &rcOut) {
-	rcOut << rcTheAccount.mAcctNum << ' ' << rcTheAccount.mAcctBalance << ' '
-		<< rcTheAccount.mInterestRate << ' ' << rcTheAccount.mpcFee;
+	float bal;// = rcTheAccount.mAcctBalance;
+	float interest = rcTheAccount.mInterestRate;
+	std::string dollar = "$";
+
+	bal = rcTheAccount.mAcctBalance / 100.00;
+	interest *= 100;
+
+	if (rcTheAccount.checkNegBal())
+	{
+		dollar = "$-";
+	}
+
+	rcOut << rcTheAccount.mAcctNum << ", " <<
+		dollar << std::fixed << std::setprecision(2) << bal << ", " 
+		<< std::fixed << std::setprecision(2)
+		<< interest << "%, " << rcTheAccount.mpcFee;
 	return rcOut;
 }
+//void IAccount::print(std::ostream &rcOut) {
+//	float bal = mAcctBalance, interest = mInterestRate;
+//
+//
+//	bal /= 100;
+//	interest *= 100;
+//	
+//	rcOut << mAcctNum << ", " << std::fixed << std::setprecision(2) <<
+//		"$" << bal << ", " << std::fixed << std::setprecision(2) 
+//		<< interest << "%, " << mpcFee;
+//}
 bool IAccount::checkNegBal() {
 	bool bNeg = false;
 	if (mAcctBalance < 0)
