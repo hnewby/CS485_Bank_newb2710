@@ -18,7 +18,6 @@
 // Returned:    None
 //***************************************************************************
 BankApp::BankApp() {
-	mpcCurrentCmd = nullptr;
 }
 //***************************************************************************
 // Destructor: BankApp
@@ -30,7 +29,7 @@ BankApp::BankApp() {
 // Returned:    None
 //***************************************************************************
 BankApp::~BankApp() {
-
+	mcTheBank.deleteAll();
 }
 //***************************************************************************
 // Function:		readAccounts
@@ -44,6 +43,7 @@ BankApp::~BankApp() {
 //***************************************************************************
 void BankApp::readAccounts(IAccountReader &rcAcctReader) {
 	rcAcctReader.read(mcTheBank);
+	
 }
 //***************************************************************************
 // Function:		readCommand
@@ -58,8 +58,12 @@ void BankApp::readAccounts(IAccountReader &rcAcctReader) {
 void BankApp::readCommand(ICommandReader &rcCmdReader) {
 	ICommand *pcTheCmd = nullptr;
 	do {
-		pcTheCmd = rcCmdReader.read(); // be careful of when to delete pcTheCmd
-		runCommand(pcTheCmd);
+		pcTheCmd = rcCmdReader.read();
+		if (pcTheCmd != nullptr)// be careful of when to delete pcTheCmd
+		{
+			runCommand(pcTheCmd);
+		}
+		delete pcTheCmd;
 	} while (pcTheCmd != nullptr);
 }
 //***************************************************************************

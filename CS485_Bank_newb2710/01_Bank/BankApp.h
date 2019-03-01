@@ -12,5 +12,4 @@ class BankApp {
 		void runCommand(ICommand* pcCmd);
 	private:
 		Bank mcTheBank;
-		ICommand* mpcCurrentCmd;
 };

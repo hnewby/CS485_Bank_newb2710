@@ -31,7 +31,12 @@ Bank::Bank() {
 // Returned:    None
 //***************************************************************************
 Bank::~Bank() {
-
+	for (int i = 0; i < mNumAccts; i++)
+	{
+		mapcAccounts[i]->cleanUp();
+	}
+	
+	//delete[] mapcAccounts;
 }
 //***************************************************************************
 // Function:		writeBank
@@ -132,6 +137,7 @@ void Bank::print() {
 	IBankWriter* pcWriter = new ScreenBankWriter; // where am I deleteing?
 
 	writeBank(*pcWriter);
+	delete pcWriter;
 }
 //***************************************************************************
 // Function:		endOfMonthForAll
@@ -146,5 +152,13 @@ void Bank::endOfMonthForAll() {
 	for (int i = 0; i < mNumAccts; i++)
 	{
 		mapcAccounts[i]->endOfMonth();
+	}
+}
+
+void Bank::deleteAll () {
+	for (int i = 0; i < mNumAccts; i++)
+	{
+	//	mapcAccounts[i]->cleanUp();
+		delete mapcAccounts[i];
 	}
 }

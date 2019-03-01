@@ -35,7 +35,7 @@ IAccount::IAccount() {
 // Returned:    None
 //***************************************************************************
 IAccount::~IAccount() {
-
+	delete mpcFee;
 }
 //***************************************************************************
 // Constructor: IAccount
@@ -180,4 +180,8 @@ bool IAccount::checkNegBal() {
 		bNeg = true;
 	}
 	return bNeg;
+}
+
+void IAccount::cleanUp() {
+	//delete mpcFee;
 }

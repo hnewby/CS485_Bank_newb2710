@@ -20,6 +20,7 @@ class IAccount {
 		void withdraw(long long amt);
 		void generateInterest();
 		void endOfMonth();
+		void cleanUp();
 		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
 		friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
 	protected:

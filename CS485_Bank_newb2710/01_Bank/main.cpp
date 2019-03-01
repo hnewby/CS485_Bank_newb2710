@@ -10,7 +10,7 @@
 #include "StreamAccountReader.h"
 #include "BankApp.h"
 #include <string>
-
+#include <vld.h>
 //***************************************************************************
 // Function:		main
 //
@@ -34,5 +34,8 @@ int main() {
 
 	pcAccountReader->closeAccountsDB();
 	pcCommandReader->closeCommands();
+
+	delete pcAccountReader;
+	delete pcCommandReader;
 	return EXIT_SUCCESS;
 }

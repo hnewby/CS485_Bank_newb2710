@@ -22,7 +22,7 @@ class Bank {
 		void addAccount(IAccount *pcTheAccount);
 		void print();
 		void endOfMonthForAll();
-
+		void deleteAll();
 	private:
 		static int const mMAX_ACCOUNTS = 100;
 		IAccount *mapcAccounts[mMAX_ACCOUNTS];
