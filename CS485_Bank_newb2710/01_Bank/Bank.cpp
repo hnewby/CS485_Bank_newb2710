@@ -31,12 +31,7 @@ Bank::Bank() {
 // Returned:    None
 //***************************************************************************
 Bank::~Bank() {
-	for (int i = 0; i < mNumAccts; i++)
-	{
-		mapcAccounts[i]->cleanUp();
-	}
 	
-	//delete[] mapcAccounts;
 }
 //***************************************************************************
 // Function:		writeBank
@@ -154,11 +149,18 @@ void Bank::endOfMonthForAll() {
 		mapcAccounts[i]->endOfMonth();
 	}
 }
-
+//***************************************************************************
+// Function:		deleteAll
+//
+// Description: runs through all accounts and deletes them
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 void Bank::deleteAll () {
 	for (int i = 0; i < mNumAccts; i++)
 	{
-	//	mapcAccounts[i]->cleanUp();
 		delete mapcAccounts[i];
 	}
 }

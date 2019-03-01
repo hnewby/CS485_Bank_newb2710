@@ -181,7 +181,3 @@ bool IAccount::checkNegBal() {
 	}
 	return bNeg;
 }
-
-void IAccount::cleanUp() {
-	//delete mpcFee;
-}
