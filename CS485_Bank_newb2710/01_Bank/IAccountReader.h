@@ -10,11 +10,12 @@
 #include <string>
 #include "IAccount.h"
 #include "Bank.h"
+
 class IAccountReader {
 	public:
 		virtual bool openAccountsDB(std::string file) = 0;
 		virtual void read(Bank &rcTheBank) = 0;
 		virtual void closeAccountsDB() = 0;
-	private:
 
+	private:
 };

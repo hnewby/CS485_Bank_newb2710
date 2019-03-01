@@ -10,6 +10,7 @@
 #define IBankWriter_h
 #include <iostream>
 #include "IAccount.h"
+
 class IBankWriter {
 	public:
 		virtual void displayLines(std::ostream &rcOut) = 0;

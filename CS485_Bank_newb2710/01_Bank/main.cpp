@@ -10,7 +10,7 @@
 #include "StreamAccountReader.h"
 #include "BankApp.h"
 #include <string>
-#include <vld.h>
+//#include <vld.h>
 //***************************************************************************
 // Function:		main
 //

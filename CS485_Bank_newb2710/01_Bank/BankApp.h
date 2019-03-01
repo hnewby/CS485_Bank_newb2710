@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  BankApp.h
+// Author:     Hannah Newby
+// Date:       2/23/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    BankApp class header
+//***************************************************************************
 #pragma once
 #include "IAccountReader.h"
 #include "ICommandReader.h"

@@ -57,7 +57,7 @@ TransactionalFee::~TransactionalFee() {
 //***************************************************************************
 long long TransactionalFee::chargeMonthlyFee(const long long balance) {
 	return 0;
-	//do nothing not a monthly fee
+	//not a monthly fee no charge
 }
 //***************************************************************************
 // Function:		chargeDepositFee

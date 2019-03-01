@@ -8,6 +8,7 @@
 //***************************************************************************
 #pragma once
 #include <iostream>
+
 class IFee {
 	public:
 		IFee();
@@ -21,7 +22,7 @@ class IFee {
 		virtual void read(std::istream& rcIn);
 		virtual void write(std::ostream &rcOut);
 protected:
-		long long getAmount(); // might not need this
+		long long getAmount(); 
 
 	private:
 		long long mAmount;

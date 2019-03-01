@@ -10,10 +10,9 @@
 #define ICommandReader_h
 #include <string>
 #include "ICommand.h"
-//class ICommand;
+
 class ICommandReader {
 	public:
-		//ICommandReader() {};
 		virtual bool openCommands(std::string file) = 0;
 		virtual ICommand* read() = 0;
 		virtual void closeCommands() = 0;

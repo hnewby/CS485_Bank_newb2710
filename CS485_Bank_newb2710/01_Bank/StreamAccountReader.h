@@ -9,6 +9,7 @@
 #pragma once
 #include "IAccountReader.h"
 #include <fstream>
+
 class StreamAccountReader : public IAccountReader{
 	public:
 		bool openAccountsDB(std::string file);

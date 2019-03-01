@@ -6,7 +6,6 @@
 // Assignment: Bank
 // Purpose:    Bank class header
 //***************************************************************************
-//#pragma once
 #ifndef Bank_h
 #define Bank_h
 #include "IBankWriter.h"

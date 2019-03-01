@@ -55,7 +55,5 @@ void PrintCmd::read(std::istream &rcIn) {
 // Returned:    None
 //***************************************************************************
 void PrintCmd::action(Bank &rcTheBank) {
-	//IBankWriter* pcWriter = new ScreenBankWriter;
-	//rcTheBank.writeBank(*pcWriter
 	rcTheBank.print();
 }

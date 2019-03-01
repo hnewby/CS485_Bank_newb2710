@@ -79,7 +79,7 @@ int IAccount::getAcctNum() {
 //***************************************************************************
 void IAccount::deposit(long long amt) {
 	mAcctBalance += amt;
-	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); //charge fee is one
+	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); 
 }
 //***************************************************************************
 // Function:		withdraw
@@ -92,7 +92,7 @@ void IAccount::deposit(long long amt) {
 //***************************************************************************
 void IAccount::withdraw(long long amt) {
 	mAcctBalance -= amt;
-	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); //charge fee is one
+	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); 
 }
 //***************************************************************************
 // Function:		generateInterest
@@ -152,15 +152,16 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 //***************************************************************************
 std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
 	const double DIV = 100.00;
+	const int DECIMAL = 2;
 	double bal;
 	double interest = rcTheAccount.mInterestRate;
 
 	bal = rcTheAccount.mAcctBalance / DIV;
-	interest *= 100;
+	interest *= DIV;
 
 	rcOut << rcTheAccount.mAcctNum << ", " <<
-		"$" << std::fixed << std::setprecision(2) << bal << ", " 
-		<< std::fixed << std::setprecision(2)
+		"$" << std::fixed << std::setprecision(DECIMAL) << bal << ", " 
+		<< std::fixed << std::setprecision(DECIMAL)
 		<< interest << "%, " << rcTheAccount.mpcFee;
 	return rcOut;
 }

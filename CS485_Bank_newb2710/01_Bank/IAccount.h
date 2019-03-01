@@ -10,18 +10,23 @@
 #define IAccount_h
 #include "IFee.h"
 #include <iostream>
+
 class IAccount {
 	public:
 		IAccount();
 		~IAccount();
-		IAccount(int acctNum, long long acctBalance, double interestRate, IFee* pcTheFee);
+		IAccount(int acctNum, long long acctBalance, double interestRate,
+			IFee* pcTheFee);
 		int getAcctNum();
 		void deposit(long long amt);
 		void withdraw(long long amt);
 		void generateInterest();
 		void endOfMonth();
-		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
-		friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
+		friend std::istream& operator >> (std::istream &rcIn,
+			IAccount &rcTheAccount);
+		friend std::ostream& operator << (std::ostream &rcOut,
+			IAccount &rcTheAccount);
+
 	protected:
 		bool checkNegBal();
 

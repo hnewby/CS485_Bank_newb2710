@@ -8,6 +8,7 @@
 //***************************************************************************
 #pragma once
 #include "IFee.h"
+
 class MonthlyFee : public IFee{
 public:
 	MonthlyFee();

@@ -40,7 +40,6 @@ bool StreamAccountReader::openAccountsDB(std::string file) {
 //***************************************************************************
 void StreamAccountReader::read(Bank &rcTheBank) {
 	char accountType;
-	//rcAccount
 	IAccount* pcAccount = nullptr;
 	IFee* pcFee = nullptr;
 	while (mcInFile >> accountType) {
@@ -56,8 +55,6 @@ void StreamAccountReader::read(Bank &rcTheBank) {
 		}
 		mcInFile >> *pcAccount;
 		rcTheBank.addAccount(pcAccount);
-		//delete pcFee;
-		//delete pcAccount;
 	}
 }
 //***************************************************************************
