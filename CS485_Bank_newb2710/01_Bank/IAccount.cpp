@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  IAccount.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    IAccount class implamentation
+//***************************************************************************
 #include "IAccount.h"
 #include <string>
 #include <iomanip>
@@ -41,7 +49,7 @@ IAccount::~IAccount() {
 //
 // Returned:    None
 //***************************************************************************
-IAccount::IAccount(int acctNum, long long acctBalance, float interestRate,
+IAccount::IAccount(int acctNum, long long acctBalance, double interestRate,
 	IFee* pcTheFee) {
 	mAcctNum = acctNum;
 	mAcctBalance = acctBalance;
@@ -96,7 +104,7 @@ void IAccount::withdraw(long long amt) {
 // Returned:    None
 //***************************************************************************
 void IAccount::generateInterest() {
-	float temp;
+	double temp;
 	if (!checkNegBal())
 	{
 		temp = mAcctBalance * mInterestRate;
@@ -143,9 +151,9 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 // Returned:    ostream
 //***************************************************************************
 std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
-	const float DIV = 100.00;
-	float bal;
-	float interest = rcTheAccount.mInterestRate;
+	const double DIV = 100.00;
+	double bal;
+	double interest = rcTheAccount.mInterestRate;
 
 	bal = rcTheAccount.mAcctBalance / DIV;
 	interest *= 100;

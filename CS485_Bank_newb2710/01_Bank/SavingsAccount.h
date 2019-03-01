@@ -12,7 +12,7 @@
 class SavingsAccount : public IAccount {
 	public:
 		SavingsAccount();
-		SavingsAccount(int acctNum, long long amt, float interestRate, IFee* pcTheFee);
+		SavingsAccount(int acctNum, long long amt, double interestRate, IFee* pcTheFee);
 		~SavingsAccount();
 	private:
 

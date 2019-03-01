@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  CheckingAccount.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    Checking Account class implamentation
+//***************************************************************************
 #include "CheckingAccount.h"
 
 //***************************************************************************
@@ -26,7 +34,7 @@ CheckingAccount::CheckingAccount() : IAccount() {
 // Returned:    None
 //***************************************************************************
 CheckingAccount::CheckingAccount(int acctNum, long long amt,
-	float interestRate, IFee* pcTheFee) : IAccount(acctNum, amt, interestRate,
+	double interestRate, IFee* pcTheFee) : IAccount(acctNum, amt, interestRate,
 		pcTheFee) {
 	
 }

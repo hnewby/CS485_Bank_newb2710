@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  MonthlyFee.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    MonthlyFee class implamentation
+//***************************************************************************
 #include "MonthlyFee.h"
 
 //***************************************************************************
@@ -52,7 +60,7 @@ MonthlyFee::~MonthlyFee() {
 //***************************************************************************
 long long MonthlyFee::chargeMonthlyFee(const long long balance) {
 	long long feeAmount = 0;
-	if (mbWentBelow)
+	if (mbWentBelow || (balance < mMinBal))
 	{
 		feeAmount = getAmount();
 	}

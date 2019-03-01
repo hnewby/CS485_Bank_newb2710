@@ -1,5 +1,37 @@
+//***************************************************************************
+// File name:  BankApp.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    BankApp class implamentation
+//***************************************************************************
 #include "BankApp.h"
 
+//***************************************************************************
+// Constructor: BankApp
+//
+// Description: Initialize BankApp
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+BankApp::BankApp() {
+	mpcCurrentCmd = nullptr;
+}
+//***************************************************************************
+// Destructor: BankApp
+//
+// Description: Destruct Bank App
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+BankApp::~BankApp() {
+
+}
 //***************************************************************************
 // Function:		readAccounts
 //

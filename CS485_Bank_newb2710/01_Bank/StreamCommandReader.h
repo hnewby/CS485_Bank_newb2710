@@ -12,7 +12,6 @@
 
 class StreamCommandReader : public ICommandReader{
 	public:
-		//StreamCommandReader() {};
 		bool openCommands(std::string file);
 		ICommand* read();
 		void closeCommands();

@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  StreamAccountReader.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    StreamAccountReader class implamentation
+//***************************************************************************
 #include "StreamAccountReader.h"
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"

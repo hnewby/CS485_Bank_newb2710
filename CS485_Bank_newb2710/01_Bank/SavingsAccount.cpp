@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  SavingsAccount.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    SavingsAccount class implamentation
+//***************************************************************************
 #include "SavingsAccount.h"
 
 //***************************************************************************
@@ -25,7 +33,7 @@ SavingsAccount::SavingsAccount() : IAccount (){
 // Returned:    None
 //***************************************************************************
 SavingsAccount::SavingsAccount(int acctNum, long long amt,
-	float interestRate, IFee* pcTheFee) : IAccount(acctNum, amt, interestRate,
+	double interestRate, IFee* pcTheFee) : IAccount(acctNum, amt, interestRate,
 		pcTheFee) {
 	
 }

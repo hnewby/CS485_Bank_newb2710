@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  StreamCommandReader.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    StreamCommandReader class implamentation
+//***************************************************************************
 #include "StreamCommandReader.h"
 #include "WithdrawCmd.h"
 #include "DepositCmd.h"

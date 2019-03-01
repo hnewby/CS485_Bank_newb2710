@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  ICommand.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    ICommand class implamentation
+//***************************************************************************
 #include "ICommand.h"
 //***************************************************************************
 // Constructor: ICommand

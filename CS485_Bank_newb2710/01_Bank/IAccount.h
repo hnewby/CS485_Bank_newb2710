@@ -14,13 +14,11 @@ class IAccount {
 	public:
 		IAccount();
 		~IAccount();
-		IAccount(int acctNum, long long acctBalance, float interestRate, IFee* pcTheFee);
+		IAccount(int acctNum, long long acctBalance, double interestRate, IFee* pcTheFee);
 		int getAcctNum();
-		/*long long getAcctBal();*/
 		void deposit(long long amt);
 		void withdraw(long long amt);
 		void generateInterest();
-		//void setInterestRate(float interestRate);
 		void endOfMonth();
 		friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
 		friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
@@ -30,7 +28,7 @@ class IAccount {
 	private:
 		int mAcctNum;
 		long long mAcctBalance;
-		float mInterestRate;
+		double mInterestRate;
 		IFee *mpcFee;
 };
 #endif
