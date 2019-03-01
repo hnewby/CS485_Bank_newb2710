@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  Bank.cpp
+// Author:     Hannah Newby
+// Date:       2/28/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    Bank class implamentation
+//***************************************************************************
 #include "Bank.h"
 #include "ScreenBankWriter.h"
 
