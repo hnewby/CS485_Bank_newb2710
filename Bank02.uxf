@@ -828,6 +828,7 @@ lw=5</panel_attributes>
 -mBalanceAmount : Money
 --
 +generateInterest(Money &amp;) : Money
++checkBalacne (Money &amp;) : bool
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
