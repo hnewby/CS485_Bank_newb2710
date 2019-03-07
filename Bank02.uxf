@@ -41,7 +41,7 @@ lw=5</panel_attributes>
 --
 -mAcctNum : int
 -mcAcctBalance : Money
--mcInterestRate : InterestRate
+-mpcInterestRate : InterestRate *
 -mpcFee : IFee*
 --
 +IAccount()
@@ -809,10 +809,10 @@ lw=5</panel_attributes>
 --
 +TieredInterestRate(TieredType)
 +~TieredInterestRate()
-+generateInterest(Money &amp;) = 0 : Money
-+findTier (Money  &amp;) : int
++generateInterest(Money &amp;) : Money
 +read(istream &amp;) : void
 +write(ostream &amp;) : void
+-findTier (Money  &amp;) : int
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -889,5 +889,16 @@ lw=5</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>890.0;10.0;490.0;10.0;490.0;630.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1576</x>
+      <y>928</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Hannah Newby</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
