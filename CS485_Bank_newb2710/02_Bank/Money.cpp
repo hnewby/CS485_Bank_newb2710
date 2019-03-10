@@ -18,6 +18,9 @@ Money& Money::operator - (Money &rcAmount) {
 Money& Money::operator / (Money &rcAmount) {
 	mAmount /= rcAmount.mAmount;
 }
+double Money::operator / (double amount) {
+	mAmount / amount;
+}
 Money& Money::operator * (Money &rcAmount) {
 	mAmount *= rcAmount.mAmount;
 }
@@ -31,6 +34,12 @@ bool Money::operator == (Money &rcAmount) {
 		bIsEqual = true;
 	}
 	return bIsEqual;
+}
+Money& Money::operator -= (Money &rcAmount) {
+	mAmount -= rcAmount.mAmount;
+}
+Money& Money::operator += (Money &rcAmount) {
+	mAmount += rcAmount.mAmount;
 }
 bool Money::operator < (Money &rcAmount) {
 	bool bIsLess = false;
@@ -58,11 +67,17 @@ bool Money::operator <= (Money &rcAmount) {
 }
 bool Money::operator >= (Money &rcAmount) {
 	bool bIsGreaterEq = false;
-	if (mAmount >= rcAmount.mAmount)
-	{
+	if (mAmount >= rcAmount.mAmount) {
 		bIsGreaterEq = true;
 	}
 	return bIsGreaterEq;
+}
+bool Money::operator < (int amt) {
+	bool bIsLess = false;
+	if (mAmount < amt) {
+		bIsLess = true;
+	}
+	return bIsLess;
 }
 Money& Money::operator * (double amount) {
 	mAmount *= static_cast<long long>(amount); //might have to static cast whole thing

@@ -21,17 +21,24 @@ class Money {
 		Money& operator + (Money &rcAmount);
 		Money& operator - (Money &rcAmount);
 		Money& operator / (Money &rcAmount);
+		double operator / (double amount);
 		Money& operator * (Money &rcAmount);
 		Money& operator = (Money &rcAmount);
-		Money& operator == (Money &rcAmount);
-		Money& operator < (Money &rcAmount);
-		Money& operator > (Money &rcAmount);
-		Money& operator <= (Money &rcAmount);
-		Money& operator >= (Money &rcAmount);
+		Money& operator -= (Money &rcAmount);
+		Money& operator += (Money &rcAmount);
+		bool operator == (Money &rcAmount);
+		bool operator < (Money &rcAmount);
+		bool operator > (Money &rcAmount);
+		bool operator <= (Money &rcAmount);
+		bool operator >= (Money &rcAmount);
+		bool operator < (int amt);
 		Money& operator * (double amount);
 		friend Money& operator * (double dblAmount, Money& moneyAmount);
 		friend std::istream& operator >> (std::istream &rcIn, Money &rcAmount);
 		friend std::ostream& operator << (std::ostream &rcOut, Money &rcAmount);
+
+		void read(std::istream& rcIn);
+		void write(std::ostream& rcOut);
 
 	private:
 		long long mAmount;

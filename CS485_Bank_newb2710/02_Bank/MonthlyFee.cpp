@@ -32,8 +32,8 @@ MonthlyFee::MonthlyFee() : IFee() {
 //
 // Returned:    None
 //***************************************************************************
-MonthlyFee::MonthlyFee(long long minBal, bool bWentBelow,
-	long long amount) : IFee (amount){
+MonthlyFee::MonthlyFee(Money minBal, bool bWentBelow,
+	Money amount) : IFee (amount){
 	mMinBal = minBal;
 	mbWentBelow = bWentBelow;
 }
@@ -56,10 +56,10 @@ MonthlyFee::~MonthlyFee() {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long MonthlyFee::chargeMonthlyFee(const long long balance) {
-	long long feeAmount = 0;
+Money MonthlyFee::chargeMonthlyFee(const Money balance) {
+	Money feeAmount = 0;
 	if (mbWentBelow || (balance < mMinBal))
 	{
 		feeAmount = getAmount();
@@ -74,9 +74,9 @@ long long MonthlyFee::chargeMonthlyFee(const long long balance) {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long MonthlyFee::chargeDepositFee(const long long balance) {
+Money MonthlyFee::chargeDepositFee(const Money balance) {
 	
 	if (balance < mMinBal)
 	{
@@ -91,9 +91,9 @@ long long MonthlyFee::chargeDepositFee(const long long balance) {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long MonthlyFee::chargeWithdrawFee(const long long balance) {
+Money MonthlyFee::chargeWithdrawFee(const Money balance) {
 	if (balance < mMinBal)
 	{
 		mbWentBelow = true;

@@ -32,7 +32,7 @@ SavingsAccount::SavingsAccount() : IAccount (){
 //
 // Returned:    None
 //***************************************************************************
-SavingsAccount::SavingsAccount(int acctNum, long long amt,
+SavingsAccount::SavingsAccount(int acctNum, Money amt,
 	double interestRate, IFee* pcTheFee) : IAccount(acctNum, amt,
 		interestRate, pcTheFee) {
 	

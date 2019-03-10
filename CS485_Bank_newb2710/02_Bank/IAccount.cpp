@@ -20,9 +20,9 @@
 // Returned:    None
 //***************************************************************************
 IAccount::IAccount() {
-	mAcctBalance = 0;
+	//mcAcctBalance = 0;
 	mAcctNum = 0;
-	mInterestRate = 0.0;
+	mpcInterestRate = nullptr;
 	mpcFee = nullptr;
 }
 //***************************************************************************
@@ -49,11 +49,11 @@ IAccount::~IAccount() {
 //
 // Returned:    None
 //***************************************************************************
-IAccount::IAccount(int acctNum, long long acctBalance, double interestRate,
+IAccount::IAccount(int acctNum, Money acctBalance, IInterestRate *pInterestRate,
 	IFee* pcTheFee) {
 	mAcctNum = acctNum;
-	mAcctBalance = acctBalance;
-	mInterestRate = interestRate;
+	mcAcctBalance = acctBalance;
+	mpcInterestRate = pInterestRate;
 	mpcFee = pcTheFee;
 }
 //***************************************************************************
@@ -77,9 +77,9 @@ int IAccount::getAcctNum() {
 //
 // Returned:    None
 //***************************************************************************
-void IAccount::deposit(long long amt) {
-	mAcctBalance += amt;
-	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); 
+void IAccount::deposit(Money amt) {
+	mcAcctBalance += amt;
+	mcAcctBalance -= mpcFee->chargeDepositFee(mcAcctBalance); 
 }
 //***************************************************************************
 // Function:		withdraw
@@ -90,26 +90,9 @@ void IAccount::deposit(long long amt) {
 //
 // Returned:    None
 //***************************************************************************
-void IAccount::withdraw(long long amt) {
-	mAcctBalance -= amt;
-	mAcctBalance -= mpcFee->chargeDepositFee(mAcctBalance); 
-}
-//***************************************************************************
-// Function:		generateInterest
-//
-// Description: determine interest on account
-//
-// Parameters:  None
-//
-// Returned:    None
-//***************************************************************************
-void IAccount::generateInterest() {
-	double temp;
-	if (!checkNegBal())
-	{
-		temp = mAcctBalance * mInterestRate;
-		mAcctBalance += static_cast<long long>(temp);
-	}
+void IAccount::withdraw(Money amt) {
+	mcAcctBalance -= amt;
+	mcAcctBalance -= mpcFee->chargeDepositFee(mcAcctBalance); 
 }
 //***************************************************************************
 // Function:		endOfMonth
@@ -122,8 +105,8 @@ void IAccount::generateInterest() {
 //***************************************************************************
 void IAccount::endOfMonth() {
 	
-	mAcctBalance -= mpcFee->chargeMonthlyFee(mAcctBalance);
-	generateInterest(); 
+	mcAcctBalance -= mpcFee->chargeMonthlyFee(mcAcctBalance);
+	mpcInterestRate->generateInterest(mcAcctBalance); 
 }
 //***************************************************************************
 // Function:		operator >>
@@ -136,8 +119,8 @@ void IAccount::endOfMonth() {
 // Returned:    istream
 //***************************************************************************
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
-	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mAcctBalance >> 
-		rcTheAccount.mInterestRate >> *rcTheAccount.mpcFee;
+	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance >> 
+		*rcTheAccount.mpcInterestRate >> *rcTheAccount.mpcFee;
 	return (rcIn);
 }
 //***************************************************************************
@@ -154,15 +137,12 @@ std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
 	const double DIV = 100.00;
 	const int DECIMAL = 2;
 	double bal;
-	double interest = rcTheAccount.mInterestRate;
 
-	bal = rcTheAccount.mAcctBalance / DIV;
-	interest *= DIV;
+	bal = rcTheAccount.mcAcctBalance / DIV;
 
 	rcOut << rcTheAccount.mAcctNum << ", " <<
 		"$" << std::fixed << std::setprecision(DECIMAL) << bal << ", " 
-		<< std::fixed << std::setprecision(DECIMAL)
-		<< interest << "%, " << rcTheAccount.mpcFee;
+		<< rcTheAccount.mpcInterestRate << "%, " << rcTheAccount.mpcFee;
 	return rcOut;
 }
 //***************************************************************************
@@ -176,7 +156,7 @@ std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
 //***************************************************************************
 bool IAccount::checkNegBal() {
 	bool bNeg = false;
-	if (mAcctBalance < 0)
+	if (mcAcctBalance < 0)
 	{
 		bNeg = true;
 	}

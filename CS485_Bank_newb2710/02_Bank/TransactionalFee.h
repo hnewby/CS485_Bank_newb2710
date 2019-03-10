@@ -12,13 +12,13 @@
 class TransactionalFee : public IFee {
 	public:
 		TransactionalFee();
-		TransactionalFee(long long minBalance, long long amount);
+		TransactionalFee(Money minBalance, Money amount);
 		~TransactionalFee();
-		long long chargeMonthlyFee(const long long balance);
-		long long chargeDepositFee(const long long balance);
-		long long chargeWithdrawFee(const long long balance);
+		Money chargeMonthlyFee(const Money balance);
+		Money chargeDepositFee(const Money balance);
+		Money chargeWithdrawFee(const Money balance);
 		void read(std::istream& rcIn);
 		void write(std::ostream &rcOut);
 	private:
-		long long mMinBal;
+		Money mMinBal;
 };

@@ -33,7 +33,7 @@ CheckingAccount::CheckingAccount() : IAccount() {
 //
 // Returned:    None
 //***************************************************************************
-CheckingAccount::CheckingAccount(int acctNum, long long amt,
+CheckingAccount::CheckingAccount(int acctNum, Money amt,
 	double interestRate, IFee* pcTheFee) : IAccount(acctNum, amt,
 		interestRate, pcTheFee) {
 	

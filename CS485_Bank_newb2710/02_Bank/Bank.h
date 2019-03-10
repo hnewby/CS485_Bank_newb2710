@@ -9,22 +9,22 @@
 #ifndef Bank_h
 #define Bank_h
 #include "IBankWriter.h"
+#include "IAccountsContainer.h"
 
 class Bank {
 	public:
 		Bank();
 		~Bank();
 		void writeBank(IBankWriter &rcOut);
-		void deposit(int acctNum, long long amount);
-		void withdraw(int acctNum, long long amount);
-		int getAccount(int acctNum);
+		void deposit(int acctNum, Money amount);
+		void withdraw(int acctNum, Money amount);
 		void addAccount(IAccount *pcTheAccount);
 		void print();
 		void endOfMonthForAll();
 		void deleteAll();
 	private:
 		static int const mMAX_ACCOUNTS = 100;
-		IAccount *mapcAccounts[mMAX_ACCOUNTS];
+		IAccountsContainer *mpcAccounts;
 		int mNumAccts;
 };
 #endif

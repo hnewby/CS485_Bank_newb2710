@@ -13,7 +13,7 @@
 class CheckingAccount : public IAccount {
 	public:
 		CheckingAccount();
-		CheckingAccount(int acctNum, long long amt,
+		CheckingAccount(int acctNum, Money amt,
 			double interestRate, IFee* pcTheFee);
 		~CheckingAccount();
 	private:

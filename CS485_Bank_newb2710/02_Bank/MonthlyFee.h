@@ -12,15 +12,15 @@
 class MonthlyFee : public IFee{
 public:
 	MonthlyFee();
-	MonthlyFee(long long minBal, bool bWentBelow, long long amount);
+	MonthlyFee(Money minBal, bool bWentBelow, Money amount);
 	~MonthlyFee();
-	long long chargeMonthlyFee(const long long balance);
-	long long chargeDepositFee(const long long balance);
-	long long chargeWithdrawFee(const long long balance);
+	Money chargeMonthlyFee(const Money balance);
+	Money chargeDepositFee(const Money balance);
+	Money chargeWithdrawFee(const Money balance);
 	bool checkWentBelow();
 	void read(std::istream& rcIn);
 	void write(std::ostream &rcOut);
 private:
-	long long mMinBal;
+	Money mMinBal;
 	bool mbWentBelow;
 };

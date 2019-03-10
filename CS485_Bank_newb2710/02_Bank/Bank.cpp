@@ -8,7 +8,7 @@
 //***************************************************************************
 #include "Bank.h"
 #include "ScreenBankWriter.h"
-
+#include "ArrayAccountsContainer.h"
 //***************************************************************************
 // Constructor: Bank
 //
@@ -20,6 +20,8 @@
 //***************************************************************************
 Bank::Bank() {
 	mNumAccts = 0;
+	mpcAccounts = new ArrayAccountsContainer;
+
 }
 //***************************************************************************
 // Destructor:  Bank
@@ -46,7 +48,7 @@ void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		rcOut.write(std::cout, *mapcAccounts[i]);
+		rcOut.write(std::cout, mpcAccounts[i]);
 		std::cout << '\n';
 	}
 	rcOut.displayLines(std::cout);
@@ -61,8 +63,10 @@ void Bank::writeBank(IBankWriter &rcOut) {
 //
 // Returned:    None
 //***************************************************************************
-void Bank::deposit(int acctNum, long long amount) {
-	mapcAccounts[getAccount(acctNum)]->deposit(amount);
+void Bank::deposit(int acctNum, Money amount) {
+	int index;
+	index = mpcAccounts->findAccount(acctNum);
+	(mpcAccounts->operator[](index)).deposit(amount);
 }
 //***************************************************************************
 // Function:		withdraw
@@ -74,8 +78,8 @@ void Bank::deposit(int acctNum, long long amount) {
 //
 // Returned:    None
 //***************************************************************************
-void Bank::withdraw(int acctNum, long long amount) {
-	mapcAccounts[getAccount(acctNum)]->withdraw(amount);
+void Bank::withdraw(int acctNum, Money amount) {
+	mpcAccounts[getAccount(acctNum)]->withdraw(amount);
 }
 //***************************************************************************
 // Function:		getAccount

@@ -30,8 +30,8 @@ TransactionalFee::TransactionalFee() : IFee() {
 //
 // Returned:    None
 //***************************************************************************
-TransactionalFee::TransactionalFee(long long minBalance,
-	long long amount) : IFee (amount) {
+TransactionalFee::TransactionalFee(Money minBalance,
+	Money amount) : IFee (amount) {
 	mMinBal = minBalance;
 }
 //***************************************************************************
@@ -53,9 +53,9 @@ TransactionalFee::~TransactionalFee() {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long TransactionalFee::chargeMonthlyFee(const long long balance) {
+Money TransactionalFee::chargeMonthlyFee(const Money balance) {
 	return 0;
 	//not a monthly fee no charge
 }
@@ -66,10 +66,10 @@ long long TransactionalFee::chargeMonthlyFee(const long long balance) {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long TransactionalFee::chargeDepositFee(const long long balance) {
-	long long fee = 0;
+Money TransactionalFee::chargeDepositFee(const Money balance) {
+	Money fee = 0;
 	if (balance < mMinBal)
 	{
 		fee = getAmount();
@@ -83,10 +83,10 @@ long long TransactionalFee::chargeDepositFee(const long long balance) {
 //
 // Parameters:  balance - balance of account
 //
-// Returned:    long long
+// Returned:    Money
 //***************************************************************************
-long long TransactionalFee::chargeWithdrawFee(const long long balance) {
-	long long fee = 0;
+Money TransactionalFee::chargeWithdrawFee(const Money balance) {
+	Money fee = 0;
 	if (balance < mMinBal) {
 		fee = getAmount();
 	}

@@ -147,16 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayAccountsContainer.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="BankApp.h" />
     <ClInclude Include="CheckingAccount.h" />
     <ClInclude Include="DepositCmd.h" />
+    <ClInclude Include="FlatInterestRate.h" />
     <ClInclude Include="IAccount.h" />
     <ClInclude Include="IAccountReader.h" />
+    <ClInclude Include="IAccountsContainer.h" />
     <ClInclude Include="IBankWriter.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="ICommandReader.h" />
     <ClInclude Include="IFee.h" />
+    <ClInclude Include="IInterestRate.h" />
+    <ClInclude Include="Money.h" />
     <ClInclude Include="MonthCmd.h" />
     <ClInclude Include="MonthlyFee.h" />
     <ClInclude Include="PrintCmd.h" />
@@ -166,18 +171,24 @@
     <ClInclude Include="StreamAccountReader.h" />
     <ClInclude Include="StreamCommandReader.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TieredInterestRate.h" />
+    <ClInclude Include="TieredType.h" />
     <ClInclude Include="TransactionalFee.h" />
     <ClInclude Include="WithdrawCmd.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayAccountsContainer.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankApp.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
     <ClCompile Include="DepositCmd.cpp" />
+    <ClCompile Include="FlatInterestRate.cpp" />
     <ClCompile Include="IAccount.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IFee.cpp" />
+    <ClCompile Include="IInterestRate.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Money.cpp" />
     <ClCompile Include="MonthCmd.cpp" />
     <ClCompile Include="MonthlyFee.cpp" />
     <ClCompile Include="PrintCmd.cpp" />
@@ -191,6 +202,8 @@
     </ClCompile>
     <ClCompile Include="StreamAccountReader.cpp" />
     <ClCompile Include="StreamCommandReader.cpp" />
+    <ClCompile Include="TieredInterestRate.cpp" />
+    <ClCompile Include="TieredType.cpp" />
     <ClCompile Include="TransactionalFee.cpp" />
     <ClCompile Include="WithdrawCmd.cpp" />
   </ItemGroup>

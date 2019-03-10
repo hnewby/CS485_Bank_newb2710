@@ -8,22 +8,22 @@
 //***************************************************************************
 #pragma once
 #include <iostream>
-
+#include "Money.h"
 class IFee {
 	public:
 		IFee();
-		IFee(long long amount);
+		IFee(Money amount);
 		~IFee();
-		virtual long long chargeMonthlyFee(const long long balance) = 0;
-		virtual long long chargeDepositFee(const long long balance) = 0;
-		virtual long long chargeWithdrawFee(const long long balance) = 0;
+		virtual Money chargeMonthlyFee(const Money balance) = 0;
+		virtual Money chargeDepositFee(const Money balance) = 0;
+		virtual Money chargeWithdrawFee(const Money balance) = 0;
 		friend std::istream& operator >> (std::istream &rcIn, IFee &rcFee);
 		friend std::ostream& operator << (std::ostream &rcOut, IFee* pcFee);
 		virtual void read(std::istream& rcIn);
 		virtual void write(std::ostream &rcOut);
 protected:
-		long long getAmount(); 
+		Money getAmount(); 
 
 	private:
-		long long mAmount;
+		Money mAmount;
 };

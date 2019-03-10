@@ -8,19 +8,20 @@
 //***************************************************************************
 #ifndef IAccount_h
 #define IAccount_h
+#include "Money.h"
 #include "IFee.h"
+#include "IInterestRate.h"
 #include <iostream>
 
 class IAccount {
 	public:
 		IAccount();
 		~IAccount();
-		IAccount(int acctNum, long long acctBalance, double interestRate,
+		IAccount(int acctNum, Money acctBalance, IInterestRate * pInterestRate,
 			IFee* pcTheFee);
 		int getAcctNum();
-		void deposit(long long amt);
-		void withdraw(long long amt);
-		void generateInterest();
+		void deposit(Money amt);
+		void withdraw(Money amt);
 		void endOfMonth();
 		friend std::istream& operator >> (std::istream &rcIn,
 			IAccount &rcTheAccount);
@@ -32,8 +33,8 @@ class IAccount {
 
 	private:
 		int mAcctNum;
-		long long mAcctBalance;
-		double mInterestRate;
+		Money mcAcctBalance;
+		IInterestRate* mpcInterestRate;
 		IFee *mpcFee;
 };
 #endif
