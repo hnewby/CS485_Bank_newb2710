@@ -43,11 +43,11 @@ bool ArrayAccountsContainer::isFull() {
 	return bIsFull;
 }
 
-IAccount* ArrayAccountsContainer::operator[] (std::size_t index) {
-	return mapcAccounts[index];
+IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
+	return *mapcAccounts[index];
 }
-IAccount* ArrayAccountsContainer::operator[](std::size_t index) const {
-	return mapcAccounts[index];
+IAccount& ArrayAccountsContainer::operator[](std::size_t index) const {
+	return *mapcAccounts[index];
 }
 
 int ArrayAccountsContainer::getAccount(int acctNum) {

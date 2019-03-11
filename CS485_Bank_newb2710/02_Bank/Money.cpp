@@ -37,6 +37,7 @@ bool Money::operator == (Money &rcAmount) {
 }
 Money& Money::operator -= (Money &rcAmount) {
 	mAmount -= rcAmount.mAmount;
+	return *this;
 }
 Money& Money::operator += (Money &rcAmount) {
 	mAmount += rcAmount.mAmount;

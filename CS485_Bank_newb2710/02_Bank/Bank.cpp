@@ -96,7 +96,7 @@ int Bank::getAccount(int acctNum) {
 
 	while (!bIsFound && index < mMAX_ACCOUNTS)
 	{
-		if (mapcAccounts[index]->getAcctNum() == acctNum)
+		if (mpcAccounts[index]->getAcctNum() == acctNum)
 		{
 			bIsFound = true;
 		}
@@ -119,7 +119,7 @@ int Bank::getAccount(int acctNum) {
 void Bank::addAccount(IAccount *pcTheAccount) {
 	if (mNumAccts <= mMAX_ACCOUNTS)
 	{
-		mapcAccounts[mNumAccts] = pcTheAccount;
+		mpcAccounts[mNumAccts] = pcTheAccount;
 		mNumAccts++;
 	}
 }
@@ -150,7 +150,7 @@ void Bank::print() {
 void Bank::endOfMonthForAll() {
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		mapcAccounts[i]->endOfMonth();
+		mpcAccounts[i]->endOfMonth();
 	}
 }
 //***************************************************************************
@@ -165,6 +165,6 @@ void Bank::endOfMonthForAll() {
 void Bank::deleteAll () {
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		delete mapcAccounts[i];
+		delete mpcAccounts[i];
 	}
 }
