@@ -27,5 +27,11 @@ void TieredType::writeInterest(std::ostream &rcOut) {
 }
 //void read(std::istream &rcIn);
 bool TieredType::checkBalance(Money &rcMoney) {
-
+	return (rcMoney > mBalanceAmount);
+}
+//bool TieredType::operator > (TieredType cT1, TieredType cT2) {
+//	return (cT1)
+//}
+bool operator > (TieredType &rcT1, TieredType &rcT2) {
+	return (rcT1.mBalanceAmount > rcT2.mBalanceAmount);
 }

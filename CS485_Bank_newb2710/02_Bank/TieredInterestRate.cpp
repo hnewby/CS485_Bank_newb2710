@@ -1,14 +1,17 @@
 #include "TieredInterestRate.h"
 
 TieredInterestRate::TieredInterestRate() {
-	mvcInterest.clear;
+	mvcInterest.clear();
 	//mInterestAmount = 0;
 }
 TieredInterestRate::~TieredInterestRate() {
 
 }
 Money TieredInterestRate::generateInterest(Money &rcMoney) {
-	//return (rcMoney * mInterestAmount);
+	int tier = findTier(rcMoney);
+	Money interest;
+	interest = mvcInterest[tier].generateInterest(rcMoney);
+	return interest;
 }
 void TieredInterestRate::write(std::ostream &rcOut) {
 	rcOut << "T";
@@ -43,5 +46,7 @@ int TieredInterestRate::findTier(Money &rcMoney) {
 void TieredInterestRate::addTier(TieredType tier) {
 	mvcInterest.push_back(tier);
 	mNumTiers++;
-	std::sort(mvcInterest.begin, mvcInterest.end, std::greater<int>()); // I think this will do sorting
+	std::sort(mvcInterest.begin(), mvcInterest.end(), [](TieredType &rcT1, TieredType &rcT2) -> bool { //If breaks look at & 
+		return rcT1 > rcT2;
+	});
 }

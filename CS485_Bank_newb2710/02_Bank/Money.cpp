@@ -9,25 +9,36 @@ Money::Money(long long amount) {
 Money::~Money() {
 
 }
-Money& Money::operator + (Money &rcAmount) {
-	mAmount += rcAmount.mAmount;
+Money Money::operator + (const Money &rcAmount) const {
+	Money cAdd;
+	cAdd = mAmount + rcAmount.mAmount;
+	return cAdd;
 }
-Money& Money::operator - (Money &rcAmount) {
-	mAmount -= rcAmount.mAmount;
+Money Money::operator - (const Money &rcAmount) const {
+	Money cSub;
+	cSub = mAmount - rcAmount.mAmount;
+	return cSub;
 }
-Money& Money::operator / (Money &rcAmount) {
-	mAmount /= rcAmount.mAmount;
+Money Money::operator / (const Money &rcAmount) const {
+	Money cAmount;
+	cAmount = mAmount / rcAmount.mAmount;
+	return cAmount;
 }
-double Money::operator / (double amount) {
-	mAmount / amount;
+double Money::operator / (const double amount) const {
+	double amt;
+	amt = mAmount / amount;
+	return amt;
 }
-Money& Money::operator * (Money &rcAmount) {
-	mAmount *= rcAmount.mAmount;
+Money Money::operator * (const Money &rcAmount) const {
+	Money cAmount;
+	cAmount = mAmount * rcAmount.mAmount;
+	return cAmount;
 }
-Money& Money::operator = (Money &rcAmount) {
+Money& Money::operator = (const Money &rcAmount) {
 	mAmount = rcAmount.mAmount;
+	return *this;
 }
-bool Money::operator == (Money &rcAmount) {
+bool Money::operator == (const Money &rcAmount) const {
 	bool bIsEqual = false;
 	if (mAmount == rcAmount.mAmount)
 	{
@@ -35,14 +46,15 @@ bool Money::operator == (Money &rcAmount) {
 	}
 	return bIsEqual;
 }
-Money& Money::operator -= (Money &rcAmount) {
+Money& Money::operator -= (const Money &rcAmount) {
 	mAmount -= rcAmount.mAmount;
 	return *this;
 }
-Money& Money::operator += (Money &rcAmount) {
+Money& Money::operator += (const Money &rcAmount) {
 	mAmount += rcAmount.mAmount;
+	return *this;
 }
-bool Money::operator < (Money &rcAmount) {
+bool Money::operator <(const Money &rcAmount) const {
 	bool bIsLess = false;
 	if (mAmount < rcAmount.mAmount)
 	{
@@ -50,7 +62,7 @@ bool Money::operator < (Money &rcAmount) {
 	}
 	return bIsLess;
 }
-bool Money::operator > (Money &rcAmount) {
+bool Money::operator > (const Money &rcAmount) const {
 	bool bIsGreater = false;
 	if (mAmount > rcAmount.mAmount)
 	{
@@ -58,7 +70,7 @@ bool Money::operator > (Money &rcAmount) {
 	}
 	return bIsGreater;
 }
-bool Money::operator <= (Money &rcAmount) {
+bool Money::operator <= (const Money &rcAmount) const {
 	bool bIsLessEq = false;
 	if (mAmount <= rcAmount.mAmount)
 	{
@@ -66,25 +78,28 @@ bool Money::operator <= (Money &rcAmount) {
 	}
 	return bIsLessEq;
 }
-bool Money::operator >= (Money &rcAmount) {
+bool Money::operator >= (const Money &rcAmount) const {
 	bool bIsGreaterEq = false;
 	if (mAmount >= rcAmount.mAmount) {
 		bIsGreaterEq = true;
 	}
 	return bIsGreaterEq;
 }
-bool Money::operator < (int amt) {
+bool Money::operator < (const int amt) const {
 	bool bIsLess = false;
 	if (mAmount < amt) {
 		bIsLess = true;
 	}
 	return bIsLess;
 }
-Money& Money::operator * (double amount) {
-	mAmount *= static_cast<long long>(amount); //might have to static cast whole thing
+Money Money::operator * (const double amount) const {
+	Money cAmount;
+	cAmount = mAmount * static_cast<long long>(amount);
+	return cAmount;
 }
-Money& operator * (double dblAmount, Money& moneyAmount) {
-	moneyAmount.mAmount *= dblAmount;
+Money operator * (double dblAmount, Money& moneyAmount) {
+	moneyAmount.mAmount *= static_cast<long long>(dblAmount);
+	return(moneyAmount);
 }
 std::istream& operator >> (std::istream &rcIn, Money &rcAmount) {
 	rcAmount.read(rcIn);

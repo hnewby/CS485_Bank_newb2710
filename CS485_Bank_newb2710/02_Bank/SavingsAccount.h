@@ -12,7 +12,7 @@
 class SavingsAccount : public IAccount {
 	public:
 		SavingsAccount();
-		SavingsAccount(int acctNum, Money amt, double interestRate,
+		SavingsAccount(int acctNum, Money amt, IInterestRate * pInterestRate,
 			IFee* pcTheFee);
 		~SavingsAccount();
 	private:

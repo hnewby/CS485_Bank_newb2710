@@ -14,7 +14,7 @@ class CheckingAccount : public IAccount {
 	public:
 		CheckingAccount();
 		CheckingAccount(int acctNum, Money amt,
-			double interestRate, IFee* pcTheFee);
+			IInterestRate * pInterestRate, IFee* pcTheFee);
 		~CheckingAccount();
 	private:
 

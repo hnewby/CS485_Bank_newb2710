@@ -13,14 +13,14 @@
 
 class IAccountsContainer {
 	public:
-		IAccountsContainer();
-		~IAccountsContainer();
+		/*IAccountsContainer();
+		virtual ~IAccountsContainer();*/
 		virtual void addAccount(IAccount *pcTheAccount) = 0;
 		virtual int count() = 0;
 		virtual int findAccount(unsigned int) = 0;
 		virtual bool isFull() = 0;
 		virtual IAccount& operator[] (std::size_t index) = 0;
-		virtual IAccount& operator[](std::size_t index) const = 0;
+		virtual const IAccount& operator[](std::size_t index) const = 0;
 
 	private:
 

@@ -46,10 +46,10 @@ bool ArrayAccountsContainer::isFull() {
 IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 	return *mapcAccounts[index];
 }
-IAccount& ArrayAccountsContainer::operator[](std::size_t index) const {
+const IAccount& ArrayAccountsContainer::operator[](std::size_t index) const {
 	return *mapcAccounts[index];
 }
 
-int ArrayAccountsContainer::getAccount(int acctNum) {
-	//is this diff from find?
-}
+//int ArrayAccountsContainer::getAccount(int acctNum) {
+//	//is this diff from find?
+//}

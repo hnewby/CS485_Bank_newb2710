@@ -20,6 +20,7 @@ public:
 	void writeInterest(std::ostream &rcOut);
 	//void read(std::istream &rcIn);
 	bool checkBalance(Money &rcMoney);
+	friend bool operator > (TieredType &rcT1, TieredType &rcT2);
 private:
 	double mInterestAmount;
 	Money mBalanceAmount;

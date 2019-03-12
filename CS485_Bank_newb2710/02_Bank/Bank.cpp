@@ -48,7 +48,7 @@ void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		rcOut.write(std::cout, mpcAccounts[i]);
+		rcOut.write(std::cout, (*mpcAccounts)[i]);
 		std::cout << '\n';
 	}
 	rcOut.displayLines(std::cout);
@@ -66,7 +66,7 @@ void Bank::writeBank(IBankWriter &rcOut) {
 void Bank::deposit(int acctNum, Money amount) {
 	int index;
 	index = mpcAccounts->findAccount(acctNum);
-	(mpcAccounts->operator[](index)).deposit(amount);
+	(*mpcAccounts)[index].deposit(amount);
 }
 //***************************************************************************
 // Function:		withdraw
@@ -79,7 +79,9 @@ void Bank::deposit(int acctNum, Money amount) {
 // Returned:    None
 //***************************************************************************
 void Bank::withdraw(int acctNum, Money amount) {
-	mpcAccounts[getAccount(acctNum)]->withdraw(amount);
+	int index;
+	index = mpcAccounts->findAccount(acctNum);
+	(*mpcAccounts)[index].withdraw(amount);
 }
 //***************************************************************************
 // Function:		getAccount
@@ -90,23 +92,23 @@ void Bank::withdraw(int acctNum, Money amount) {
 //
 // Returned:    int
 //***************************************************************************
-int Bank::getAccount(int acctNum) {
-	bool bIsFound = false;
-	int index = 0;
-
-	while (!bIsFound && index < mMAX_ACCOUNTS)
-	{
-		if (mpcAccounts[index]->getAcctNum() == acctNum)
-		{
-			bIsFound = true;
-		}
-		else
-		{
-			index++;
-		}
-	}
-	return index;
-}
+//int Bank::getAccount(int acctNum) {
+//	bool bIsFound = false;
+//	int index = 0;
+//
+//	while (!bIsFound && index < mMAX_ACCOUNTS)
+//	{
+//		if (mpcAccounts[index]->getAcctNum() == acctNum)
+//		{
+//			bIsFound = true;
+//		}
+//		else
+//		{
+//			index++;
+//		}
+//	}
+//	return index;
+//}
 //***************************************************************************
 // Function:		addAccount
 //
@@ -119,7 +121,7 @@ int Bank::getAccount(int acctNum) {
 void Bank::addAccount(IAccount *pcTheAccount) {
 	if (mNumAccts <= mMAX_ACCOUNTS)
 	{
-		mpcAccounts[mNumAccts] = pcTheAccount;
+		(*mpcAccounts)[mNumAccts] = *pcTheAccount;
 		mNumAccts++;
 	}
 }
@@ -150,7 +152,7 @@ void Bank::print() {
 void Bank::endOfMonthForAll() {
 	for (int i = 0; i < mNumAccts; i++)
 	{
-		mpcAccounts[i]->endOfMonth();
+		(*mpcAccounts)[i].endOfMonth();
 	}
 }
 //***************************************************************************
@@ -163,8 +165,8 @@ void Bank::endOfMonthForAll() {
 // Returned:    None
 //***************************************************************************
 void Bank::deleteAll () {
-	for (int i = 0; i < mNumAccts; i++)
+	/*for (int i = 0; i < mNumAccts; i++)
 	{
-		delete mpcAccounts[i];
-	}
+		delete (*mpcAccounts)[i];
+	}*/
 }
