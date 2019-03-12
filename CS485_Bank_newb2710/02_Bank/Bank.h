@@ -25,6 +25,5 @@ class Bank {
 	private:
 		static int const mMAX_ACCOUNTS = 100;
 		IAccountsContainer *mpcAccounts;
-		//int mNumAccts;
 };
 #endif

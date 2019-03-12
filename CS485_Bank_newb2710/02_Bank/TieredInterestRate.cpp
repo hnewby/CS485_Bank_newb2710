@@ -84,13 +84,11 @@ void TieredInterestRate::read(std::istream &rcIn) {
 	TieredType newTier;
 	int numTiers = 0;
 	rcIn >> numTiers;
-	for (int i = 0; i < numTiers; i++)
-	{
+	for (int i = 0; i < numTiers; i++){
 		addTier(newTier);
 		mvcInterest[i].readBal(rcIn);
 	}
-	for (int i = 0; i < numTiers; i++)
-	{
+	for (int i = 0; i < numTiers; i++){
 		mvcInterest[i].readInterest(rcIn);
 	}
 	sortTiers();
@@ -143,7 +141,8 @@ void TieredInterestRate::addTier(TieredType tier) {
 // Returned:    None
 //***************************************************************************
 void TieredInterestRate::sortTiers() {
-	std::sort(mvcInterest.begin(), mvcInterest.end(), [](TieredType &rcT1, TieredType &rcT2) -> bool {
+	std::sort(mvcInterest.begin(), mvcInterest.end(),
+		[](TieredType &rcT1, TieredType &rcT2) -> bool {
 		return rcT1 > rcT2;
 	});
 }

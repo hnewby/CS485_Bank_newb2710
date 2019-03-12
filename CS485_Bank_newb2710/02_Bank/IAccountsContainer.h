@@ -13,8 +13,6 @@
 
 class IAccountsContainer {
 	public:
-		/*IAccountsContainer();
-		virtual ~IAccountsContainer();*/
 		virtual void addAccount(IAccount *pcTheAccount) = 0;
 		virtual int count() = 0;
 		virtual int findAccount(unsigned int) = 0;
