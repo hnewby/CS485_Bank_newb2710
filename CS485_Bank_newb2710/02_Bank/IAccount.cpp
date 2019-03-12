@@ -148,21 +148,11 @@ std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 // Returned:    ostream
 //***************************************************************************
 std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
-	//const double DIV = 100.00;
-	//const int DECIMAL = 2;
-	//double bal;
-
-	//bal = rcTheAccount.mcAcctBalance / DIV;
-
 	rcOut << rcTheAccount.mAcctNum << ", ";
-	//<<
-		//"$" << std::fixed << std::setprecision(DECIMAL);
-	
 	rcTheAccount.mcAcctBalance.write(rcOut);
 	rcOut << ", ";
-	//<< bal << ", ";
 	rcOut << rcTheAccount.mpcInterestRate << ", ";
-		rcOut << rcTheAccount.mpcFee;
+	rcOut << rcTheAccount.mpcFee;
 	return rcOut;
 }
 //***************************************************************************

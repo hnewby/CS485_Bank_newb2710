@@ -1,5 +1,14 @@
 #include "FlatInterestRate.h"
 
+//***************************************************************************
+// Constructor: FlatInterestRate
+//
+// Description: Initialize FlatInterestRate
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 FlatInterestRate::FlatInterestRate() {
 	mInterestAmount = 0;
 }
