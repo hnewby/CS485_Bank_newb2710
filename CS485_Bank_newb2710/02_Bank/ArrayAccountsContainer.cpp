@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  ArrayAccountsClass.cpp
+// Author:     Hannah Newby
+// Date:       3/12/19
+// Class:      CS485
+// Assignment: ArrayAccountsClass
+// Purpose:    ArrayAccountsClass class implamentation
+//***************************************************************************
 #include "ArrayAccountsContainer.h"
 
 //***************************************************************************

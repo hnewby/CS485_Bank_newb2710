@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  TieredType.cpp
+// Author:     Hannah Newby
+// Date:       3/12/19
+// Class:      CS485
+// Assignment: TieredType
+// Purpose:    TieredType class implamentation
+//***************************************************************************
 #include "TieredType.h"
 #include <iomanip>
 
@@ -62,7 +70,6 @@ void TieredType::writeBalance(std::ostream &rcOut) {
 void TieredType::writeInterest(std::ostream &rcOut) {
 	const double DIV = 100.00;
 	const int DECIMAL = 2;
-	double bal;
 	double interest = mInterestAmount * DIV;
 
 	rcOut << std::fixed << std::setprecision(DECIMAL) << interest << "%";

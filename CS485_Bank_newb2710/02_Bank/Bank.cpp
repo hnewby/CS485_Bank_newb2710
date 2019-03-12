@@ -19,7 +19,7 @@
 // Returned:    None
 //***************************************************************************
 Bank::Bank() {
-	mNumAccts = 0;
+	//mNumAccts = 0;
 	mpcAccounts = new ArrayAccountsContainer();
 
 }

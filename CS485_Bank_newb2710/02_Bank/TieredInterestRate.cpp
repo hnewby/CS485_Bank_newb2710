@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  TieredInterestRate.cpp
+// Author:     Hannah Newby
+// Date:       3/12/19
+// Class:      CS485
+// Assignment: TieredInterestRate
+// Purpose:    TieredInterestRate class implamentation
+//***************************************************************************
 #include "TieredInterestRate.h"
 
 //***************************************************************************
@@ -12,7 +20,6 @@
 TieredInterestRate::TieredInterestRate() {
 	mvcInterest.clear();
 	mNumTiers = 0;
-	//mInterestAmount = 0;
 }
 //***************************************************************************
 // Destructor:  TieredInterestRate

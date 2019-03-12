@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  IInterestRate.cpp
+// Author:     Hannah Newby
+// Date:       3/12/19
+// Class:      CS485
+// Assignment: IInterestRate
+// Purpose:    IInterestRate class implamentation
+//***************************************************************************
 #include "IInterestRate.h"
 
 //***************************************************************************
