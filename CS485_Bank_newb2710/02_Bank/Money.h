@@ -12,7 +12,7 @@
 
 #include <iostream>
 #include <fstream>
-
+#include <iomanip>
 class Money {
 	public:
 		Money();

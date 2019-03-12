@@ -10,21 +10,26 @@ TieredInterestRate::~TieredInterestRate() {
 }
 Money TieredInterestRate::generateInterest(Money &rcMoney) {
 	int tier = findTier(rcMoney);
-	Money interest;
-	interest = mvcInterest[tier].generateInterest(rcMoney);
+	Money interest = 0;
+	if (tier != -1)
+	{
+		interest = mvcInterest[tier].generateInterest(rcMoney);
+	}
 	return interest;
 }
 void TieredInterestRate::write(std::ostream &rcOut) {
-	rcOut << "T";
-	for (int i = 0; i < mNumTiers; i++)
+	rcOut << "T ";
+	for (int i = (mNumTiers - 1); i >= 0; i--)
 	{
 		mvcInterest[i].writeBalance(rcOut);
 	}
-	for (int i = 0; i < mNumTiers; i++)
+	for (int i = (mNumTiers - 1); i >= 0; i--)
 	{
 		mvcInterest[i].writeInterest(rcOut);
+		if (i > 0) {
+			rcOut << " ";
+		}
 	}
-	//rcOut << mInterestAmount;
 }
 void TieredInterestRate::read(std::istream &rcIn) {
 	TieredType newTier;
@@ -44,7 +49,7 @@ void TieredInterestRate::read(std::istream &rcIn) {
 int TieredInterestRate::findTier(Money &rcMoney) {
 	int index = 0;
 	bool bIsFound = false;
-	while (!bIsFound)
+	while (!bIsFound && index < mNumTiers)
 	{
 		if (mvcInterest[index].checkBalance(rcMoney)) {
 			bIsFound = true;
@@ -53,7 +58,11 @@ int TieredInterestRate::findTier(Money &rcMoney) {
 			index++;
 		}
 	}
-	return index++;
+	if (!bIsFound)
+	{
+		index = -1;
+	}
+	return index; // was ++
 }
 
 void TieredInterestRate::addTier(TieredType tier) {

@@ -12,6 +12,7 @@
 #include "Money.h"
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 
 class IInterestRate {
 	public:

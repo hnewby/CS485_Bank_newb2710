@@ -115,6 +115,11 @@ void TransactionalFee::read(std::istream &rcIn) {
 // Returned:    None
 //***************************************************************************
 void TransactionalFee::write(std::ostream &rcOut) {
-	rcOut << mMinBal << ", ";
+	//const double DIV = 100.00;
+	//const int DECIMAL = 2;
+	//double bal = mMinBal / DIV;
+	//rcOut << std::fixed << std::setprecision(DECIMAL) << bal << ", ";
+	mMinBal.write(rcOut);
+	rcOut << ", ";
 	IFee::write(rcOut);
 }

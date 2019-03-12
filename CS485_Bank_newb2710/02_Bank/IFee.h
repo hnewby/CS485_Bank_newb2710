@@ -9,6 +9,7 @@
 #pragma once
 #include <iostream>
 #include "Money.h"
+#include <iomanip>
 class IFee {
 	public:
 		IFee();

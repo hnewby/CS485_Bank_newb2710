@@ -106,5 +106,5 @@ std::ostream& operator << (std::ostream &rcOut, IFee* pcFee) {
 // Returned:    None
 //***************************************************************************
 void IFee::write(std::ostream &rcOut) {
-	rcOut << mAmount;
+	mAmount.write(rcOut);
 }

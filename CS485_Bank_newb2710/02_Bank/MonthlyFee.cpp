@@ -135,6 +135,12 @@ void MonthlyFee::read(std::istream &rcIn){
 // Returned:    None
 //***************************************************************************
 void MonthlyFee::write(std::ostream &rcOut) {
+	//const double DIV = 100.00;
+	//const int DECIMAL = 2;
+	//double bal = mMinBal / DIV;
+	
 	IFee::write(rcOut);
-	rcOut << ", " << mMinBal;
+	rcOut << ", ";
+	mMinBal.write(rcOut);
+	//rcOut << ", " << std::fixed << std::setprecision(DECIMAL) << bal;
 }

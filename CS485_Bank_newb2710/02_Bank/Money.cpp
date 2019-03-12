@@ -94,7 +94,7 @@ bool Money::operator < (const int amt) const {
 }
 Money Money::operator * (const double amount) const {
 	Money cAmount;
-	cAmount = mAmount * static_cast<long long>(amount);
+	cAmount = mAmount * amount;
 	return cAmount;
 }
 Money operator * (double dblAmount, Money& moneyAmount) {
@@ -114,5 +114,9 @@ void Money::read(std::istream& rcIn) {
 	rcIn >> mAmount;
 }
 void Money::write(std::ostream& rcOut) {
-	rcOut << mAmount;
+	const double DIV = 100.00;
+	const int DECIMAL = 2;
+	double bal = mAmount / DIV;
+	rcOut << "$" << std::fixed << std::setprecision(DECIMAL) << bal;
+//	rcOut << mAmount;
 }

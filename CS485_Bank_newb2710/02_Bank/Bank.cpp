@@ -46,8 +46,7 @@ Bank::~Bank() {
 //***************************************************************************
 void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
-	for (int i = 0; i < mpcAccounts->count(); i++)
-	{
+	for (int i = 0; i < mpcAccounts->count(); i++) {
 		rcOut.write(std::cout, (*mpcAccounts)[i]);
 		std::cout << '\n';
 	}
@@ -156,7 +155,7 @@ void Bank::print() {
 // Returned:    None
 //***************************************************************************
 void Bank::endOfMonthForAll() {
-	for (int i = 0; i < mNumAccts; i++)
+	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
 		(*mpcAccounts)[i].endOfMonth();
 	}
