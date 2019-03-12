@@ -12,11 +12,11 @@
 class WithdrawCmd : public ICommand{
 	public:
 		WithdrawCmd();
-		WithdrawCmd(int acctNum, long long amount);
+		WithdrawCmd(int acctNum, Money amount);
 		~WithdrawCmd();
 		void read(std::istream &rcIn);
 		void action(Bank &rcTheBank);
 	private:
 		int mAcctNum;
-		long long mAmt;
+		Money mAmt;
 };

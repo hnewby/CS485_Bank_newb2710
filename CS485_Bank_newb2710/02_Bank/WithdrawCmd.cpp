@@ -29,7 +29,7 @@ WithdrawCmd::WithdrawCmd() : WithdrawCmd(0, 0) {
 //
 // Returned:    None
 //***************************************************************************
-WithdrawCmd::WithdrawCmd(int acctNum, long long amount){
+WithdrawCmd::WithdrawCmd(int acctNum, Money amount){
 	mAcctNum = acctNum;
 	mAmt = amount;
 }

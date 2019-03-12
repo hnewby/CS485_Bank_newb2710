@@ -9,7 +9,8 @@
 #include "IAccount.h"
 #include <string>
 #include <iomanip>
-
+#include "FlatInterestRate.h"
+#include "TieredInterestRate.h"
 //***************************************************************************
 // Constructor: IAccount
 //
@@ -119,8 +120,21 @@ void IAccount::endOfMonth() {
 // Returned:    istream
 //***************************************************************************
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
-	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance >> 
-		*rcTheAccount.mpcInterestRate >> *rcTheAccount.mpcFee;
+	char interestType;
+	//IInterestRate *pcRate = nullptr;
+	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance >> interestType;
+
+
+	switch (interestType) {
+	case 'F':
+		rcTheAccount.mpcInterestRate = new FlatInterestRate();
+		break;
+	case 'T':
+		rcTheAccount.mpcInterestRate = new TieredInterestRate();
+		break;
+	}
+
+		rcIn >> *rcTheAccount.mpcInterestRate >> *rcTheAccount.mpcFee;
 	return (rcIn);
 }
 //***************************************************************************
@@ -141,8 +155,9 @@ std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount) {
 	bal = rcTheAccount.mcAcctBalance / DIV;
 
 	rcOut << rcTheAccount.mAcctNum << ", " <<
-		"$" << std::fixed << std::setprecision(DECIMAL) << bal << ", " 
-		<< rcTheAccount.mpcInterestRate << "%, " << rcTheAccount.mpcFee;
+		"$" << std::fixed << std::setprecision(DECIMAL) << bal << ", ";
+	rcOut << rcTheAccount.mpcInterestRate;
+		rcOut << rcTheAccount.mpcFee;
 	return rcOut;
 }
 //***************************************************************************

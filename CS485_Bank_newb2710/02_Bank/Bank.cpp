@@ -20,7 +20,7 @@
 //***************************************************************************
 Bank::Bank() {
 	mNumAccts = 0;
-	mpcAccounts = new ArrayAccountsContainer;
+	mpcAccounts = new ArrayAccountsContainer();
 
 }
 //***************************************************************************
@@ -46,7 +46,7 @@ Bank::~Bank() {
 //***************************************************************************
 void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
-	for (int i = 0; i < mNumAccts; i++)
+	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
 		rcOut.write(std::cout, (*mpcAccounts)[i]);
 		std::cout << '\n';
@@ -119,11 +119,17 @@ void Bank::withdraw(int acctNum, Money amount) {
 // Returned:    None
 //***************************************************************************
 void Bank::addAccount(IAccount *pcTheAccount) {
-	if (mNumAccts <= mMAX_ACCOUNTS)
-	{
-		(*mpcAccounts)[mNumAccts] = *pcTheAccount;
-		mNumAccts++;
-	}
+	//IAccount* pcAccount;
+	
+	/*if (mNumAccts <= mMAX_ACCOUNTS)
+	{*/
+		mpcAccounts->addAccount(pcTheAccount);
+		//(*mpcAccounts)[mNumAccts].addAccount(pcTheAccount));
+		/*&(*mpcAccounts)[mNumAccts] = pcTheAccount;
+		pcAccount = &(*mpcAccounts)[mNumAccts];
+		pcAccount = pcTheAccount;*/
+	/*	mNumAccts++;
+	}*/
 }
 //***************************************************************************
 // Function:		print

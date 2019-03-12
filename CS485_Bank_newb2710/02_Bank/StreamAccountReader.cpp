@@ -55,6 +55,7 @@ void StreamAccountReader::read(Bank &rcTheBank) {
 		}
 		mcInFile >> *pcAccount;
 		rcTheBank.addAccount(pcAccount);
+		
 	}
 }
 //***************************************************************************

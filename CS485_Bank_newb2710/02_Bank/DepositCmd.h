@@ -12,11 +12,11 @@
 class DepositCmd : public ICommand {
 	public:
 		DepositCmd();
-		DepositCmd(int acctNum, long long amount);
+		DepositCmd(int acctNum, Money amount);
 		~DepositCmd();
 		void read(std::istream &rcIn);
 		void action(Bank &rcTheBank);
 	private:
 		int mAcctNum;
-		long long mAmt;
+		Money mAmt;
 };

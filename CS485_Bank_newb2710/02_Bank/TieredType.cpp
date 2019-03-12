@@ -23,9 +23,14 @@ void TieredType::writeInterest(std::ostream &rcOut) {
 
 	bal = mBalanceAmount / DIV;
 	interest *= DIV;
-	rcOut << std::fixed << std::setprecision(DECIMAL) << mInterestAmount;
+	rcOut << std::fixed << std::setprecision(DECIMAL) << mInterestAmount << "%, ";
 }
-//void read(std::istream &rcIn);
+void TieredType::readBal(std::istream &rcIn) {
+	rcIn >> mBalanceAmount;
+}
+void TieredType::readInterest(std::istream &rcIn) {
+	rcIn >> mInterestAmount;
+}
 bool TieredType::checkBalance(Money &rcMoney) {
 	return (rcMoney > mBalanceAmount);
 }

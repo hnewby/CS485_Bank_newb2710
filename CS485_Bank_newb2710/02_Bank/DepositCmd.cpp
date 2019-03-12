@@ -30,7 +30,7 @@ DepositCmd::DepositCmd() : DepositCmd(0, 0) {
 //
 // Returned:    None
 //***************************************************************************
-DepositCmd::DepositCmd(int acctNum, long long amount) {
+DepositCmd::DepositCmd(int acctNum, Money amount) {
 	mAcctNum = acctNum;
 	mAmt = amount;
 }

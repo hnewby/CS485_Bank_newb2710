@@ -12,7 +12,7 @@
 #include <vector>
 #include "TieredType.h"
 #include <algorithm>
-class TieredInterestRate {
+class TieredInterestRate : public IInterestRate{
 public:
 	TieredInterestRate();
 	~TieredInterestRate();
@@ -20,6 +20,7 @@ public:
 	void write(std::ostream &rcOut);
 	void read(std::istream &rcIn);
 	void addTier(TieredType tier);
+	void sortTiers();
 
 private:
 	int findTier(Money &);

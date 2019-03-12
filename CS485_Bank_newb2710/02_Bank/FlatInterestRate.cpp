@@ -10,8 +10,7 @@ Money FlatInterestRate::generateInterest(Money &rcMoney) {
 	return (rcMoney * mInterestAmount);
 }
 void FlatInterestRate::write(std::ostream &rcOut) {
-	rcOut << "F";
-	rcOut << mInterestAmount;
+	rcOut << "F" << mInterestAmount << "%, ";
 }
 void FlatInterestRate::read(std::istream &rcIn) {
 	rcIn >> mInterestAmount;

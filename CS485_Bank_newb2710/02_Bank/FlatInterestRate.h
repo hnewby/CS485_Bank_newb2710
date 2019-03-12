@@ -11,7 +11,7 @@
 #define FlatInterestRate_h
 #include "IInterestRate.h"
 
-class FlatInterestRate {
+class FlatInterestRate : public IInterestRate{
 	public:
 		FlatInterestRate();
 		~FlatInterestRate();
