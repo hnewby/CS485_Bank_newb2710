@@ -21,8 +21,10 @@ class IInterestRate {
 		virtual Money generateInterest(Money &rcMoney) = 0;
 		virtual void write(std::ostream &rcOut) = 0;
 		virtual void read(std::istream &rcIn) = 0;
-		friend std::istream& operator >> (std::istream &rcIn, IInterestRate &rcRate);
-		friend std::ostream& operator << (std::ostream &rcOut, IInterestRate *pcRate);
+		friend std::istream& operator >> (std::istream &rcIn, 
+			IInterestRate &rcRate);
+		friend std::ostream& operator << (std::ostream &rcOut, 
+			IInterestRate *pcRate);
 
 	private:
 };

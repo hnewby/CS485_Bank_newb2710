@@ -34,8 +34,10 @@ class Money {
 		bool operator < (const int amt) const;
 		Money operator * (const double amount) const;
 		friend Money operator * (double dblAmount,Money& moneyAmount);
-		friend std::istream& operator >> (std::istream &rcIn, Money &rcAmount);
-		friend std::ostream& operator << (std::ostream &rcOut, Money &rcAmount);
+		friend std::istream& operator >> (std::istream &rcIn, 
+			Money &rcAmount);
+		friend std::ostream& operator << (std::ostream &rcOut,
+			Money &rcAmount);
 
 		void read(std::istream& rcIn);
 		void write(std::ostream& rcOut);

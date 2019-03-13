@@ -121,7 +121,8 @@ void IAccount::endOfMonth() {
 //***************************************************************************
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 	char interestType;
-	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance >> interestType;
+	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance
+		>> interestType;
 
 	switch (interestType) {
 		case 'F':

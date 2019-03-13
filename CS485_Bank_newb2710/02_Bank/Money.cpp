@@ -266,7 +266,8 @@ Money Money::operator * (const double amount) const {
 // Returned:    Money
 //***************************************************************************
 Money operator * (double dblAmount, Money& moneyAmount) {
-	moneyAmount.mAmount = static_cast<long long>(moneyAmount.mAmount * dblAmount);
+	moneyAmount.mAmount = static_cast<long long>(moneyAmount.mAmount *
+		dblAmount);
 	return(moneyAmount);
 }
 //***************************************************************************

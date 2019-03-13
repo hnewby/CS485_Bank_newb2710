@@ -123,6 +123,7 @@ IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 //
 // Returned:    const IAccount &
 //***************************************************************************
-const IAccount& ArrayAccountsContainer::operator[](std::size_t index) const {
+const IAccount& ArrayAccountsContainer::operator[](std::size_t index)
+const {
 	return *mapcAccounts[index];
 }

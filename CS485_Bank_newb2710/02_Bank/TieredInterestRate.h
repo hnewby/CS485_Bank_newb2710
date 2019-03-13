@@ -26,7 +26,6 @@ private:
 	void sortTiers();
 	int findTier(Money &);
 	std::vector<TieredType> mvcInterest;
-
 	int mNumTiers = 0;
 };
 #endif
