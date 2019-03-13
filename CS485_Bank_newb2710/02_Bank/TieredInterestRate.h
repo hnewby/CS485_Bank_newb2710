@@ -20,9 +20,10 @@ public:
 	void write(std::ostream &rcOut);
 	void read(std::istream &rcIn);
 	void addTier(TieredType tier);
-	void sortTiers();
+	
 
 private:
+	void sortTiers();
 	int findTier(Money &);
 	std::vector<TieredType> mvcInterest;
 

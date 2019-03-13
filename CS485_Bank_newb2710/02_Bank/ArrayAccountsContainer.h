@@ -12,22 +12,20 @@
 #include "IAccountsContainer.h"
 
 class ArrayAccountsContainer : public IAccountsContainer{
-public:
-	ArrayAccountsContainer();
-	~ArrayAccountsContainer();
-	void addAccount(IAccount *pcTheAccount);
-	int count();
-	int findAccount(unsigned int);
-	bool isFull();
-	IAccount&  operator[] (std::size_t index);
-	const IAccount& operator[](std::size_t index) const;
+	public:
+		ArrayAccountsContainer();
+		~ArrayAccountsContainer();
+		void addAccount(IAccount *pcTheAccount);
+		int count();
+		int findAccount(unsigned int);
+		bool isFull();
+		IAccount&  operator[] (std::size_t index);
+		const IAccount& operator[](std::size_t index) const;
 
 
-private:
-	//int getAccount(int);
-
-	static int const mMAX_ACCOUNTS = 100;
-	IAccount *mapcAccounts[mMAX_ACCOUNTS];
-	int mNumAccts;
+	private:
+		static int const mMAX_ACCOUNTS = 100;
+		IAccount *mapcAccounts[mMAX_ACCOUNTS];
+		int mNumAccts;
 };
 #endif

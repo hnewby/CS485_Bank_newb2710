@@ -252,7 +252,7 @@ bool Money::operator < (const int amt) const {
 //***************************************************************************
 Money Money::operator * (const double amount) const {
 	Money cAmount;
-	cAmount = mAmount * static_cast<long long>(amount);
+	cAmount = static_cast<long long>(mAmount * amount);
 	return cAmount;
 }
 //***************************************************************************
@@ -266,7 +266,7 @@ Money Money::operator * (const double amount) const {
 // Returned:    Money
 //***************************************************************************
 Money operator * (double dblAmount, Money& moneyAmount) {
-	moneyAmount.mAmount *= static_cast<long long>(dblAmount);
+	moneyAmount.mAmount = static_cast<long long>(moneyAmount.mAmount * dblAmount);
 	return(moneyAmount);
 }
 //***************************************************************************

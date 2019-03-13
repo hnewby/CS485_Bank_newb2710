@@ -23,7 +23,6 @@ class Bank {
 		void endOfMonthForAll();
 		void deleteAll();
 	private:
-		static int const mMAX_ACCOUNTS = 100;
 		IAccountsContainer *mpcAccounts;
 };
 #endif
