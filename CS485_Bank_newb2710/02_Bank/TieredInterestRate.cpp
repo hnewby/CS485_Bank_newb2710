@@ -18,7 +18,7 @@
 // Returned:    None
 //***************************************************************************
 TieredInterestRate::TieredInterestRate() {
-	mvcInterest.clear();
+	//mvcInterest.clear();
 	mNumTiers = 0;
 }
 //***************************************************************************
@@ -31,7 +31,11 @@ TieredInterestRate::TieredInterestRate() {
 // Returned:    None
 //***************************************************************************
 TieredInterestRate::~TieredInterestRate() {
-
+	while (mvcInterest.size() > 0)
+	{
+		mvcInterest.pop_back();
+	}
+	//mvcInterest.clear();
 }
 //***************************************************************************
 // Function:		generateInterest

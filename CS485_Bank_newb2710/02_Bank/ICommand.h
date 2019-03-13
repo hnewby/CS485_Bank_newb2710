@@ -15,7 +15,7 @@
 class ICommand {
 	public:
 		ICommand();
-		~ICommand();
+		virtual ~ICommand();
 		virtual void action(Bank &rcTheBank) = 0;
 		virtual void read(std::istream &rcIn) = 0;;
 		friend std::istream& operator >> (std::istream &rcIn,

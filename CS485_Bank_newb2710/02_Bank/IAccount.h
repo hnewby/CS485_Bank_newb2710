@@ -16,7 +16,7 @@
 class IAccount {
 	public:
 		IAccount();
-		~IAccount();
+		virtual ~IAccount();
 		IAccount(int acctNum, Money acctBalance, IInterestRate * pInterestRate,
 			IFee* pcTheFee);
 		int getAcctNum();

@@ -19,9 +19,7 @@
 // Returned:    None
 //***************************************************************************
 Bank::Bank() {
-	//mNumAccts = 0;
 	mpcAccounts = new ArrayAccountsContainer();
-
 }
 //***************************************************************************
 // Destructor:  Bank
@@ -83,32 +81,6 @@ void Bank::withdraw(int acctNum, Money amount) {
 	(*mpcAccounts)[index].withdraw(amount);
 }
 //***************************************************************************
-// Function:		getAccount
-//
-// Description: given account number find index in array
-//
-// Parameters:  acctNum - the account number
-//
-// Returned:    int
-//***************************************************************************
-//int Bank::getAccount(int acctNum) {
-//	bool bIsFound = false;
-//	int index = 0;
-//
-//	while (!bIsFound && index < mMAX_ACCOUNTS)
-//	{
-//		if (mpcAccounts[index]->getAcctNum() == acctNum)
-//		{
-//			bIsFound = true;
-//		}
-//		else
-//		{
-//			index++;
-//		}
-//	}
-//	return index;
-//}
-//***************************************************************************
 // Function:		addAccount
 //
 // Description: add account* to array of accounts
@@ -118,17 +90,7 @@ void Bank::withdraw(int acctNum, Money amount) {
 // Returned:    None
 //***************************************************************************
 void Bank::addAccount(IAccount *pcTheAccount) {
-	//IAccount* pcAccount;
-	
-	/*if (mNumAccts <= mMAX_ACCOUNTS)
-	{*/
-		mpcAccounts->addAccount(pcTheAccount);
-		//(*mpcAccounts)[mNumAccts].addAccount(pcTheAccount));
-		/*&(*mpcAccounts)[mNumAccts] = pcTheAccount;
-		pcAccount = &(*mpcAccounts)[mNumAccts];
-		pcAccount = pcTheAccount;*/
-	/*	mNumAccts++;
-	}*/
+	mpcAccounts->addAccount(pcTheAccount);
 }
 //***************************************************************************
 // Function:		print
@@ -170,8 +132,9 @@ void Bank::endOfMonthForAll() {
 // Returned:    None
 //***************************************************************************
 void Bank::deleteAll () {
-	/*for (int i = 0; i < mNumAccts; i++)
+	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
-		delete (*mpcAccounts)[i];
-	}*/
+		delete &(*mpcAccounts)[i];
+	}
+	delete mpcAccounts;
 }

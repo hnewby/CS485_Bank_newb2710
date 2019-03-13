@@ -21,7 +21,6 @@
 // Returned:    None
 //***************************************************************************
 IAccount::IAccount() {
-	//mcAcctBalance = 0;
 	mAcctNum = 0;
 	mpcInterestRate = nullptr;
 	mpcFee = nullptr;
@@ -36,6 +35,7 @@ IAccount::IAccount() {
 // Returned:    None
 //***************************************************************************
 IAccount::~IAccount() {
+	delete mpcInterestRate;
 	delete mpcFee;
 }
 //***************************************************************************
@@ -121,20 +121,18 @@ void IAccount::endOfMonth() {
 //***************************************************************************
 std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount) {
 	char interestType;
-	//IInterestRate *pcRate = nullptr;
 	rcIn >> rcTheAccount.mAcctNum >> rcTheAccount.mcAcctBalance >> interestType;
 
-
 	switch (interestType) {
-	case 'F':
-		rcTheAccount.mpcInterestRate = new FlatInterestRate();
-		break;
-	case 'T':
-		rcTheAccount.mpcInterestRate = new TieredInterestRate();
-		break;
+		case 'F':
+			rcTheAccount.mpcInterestRate = new FlatInterestRate();
+			break;
+		case 'T':
+			rcTheAccount.mpcInterestRate = new TieredInterestRate();
+			break;
 	}
 
-		rcIn >> *rcTheAccount.mpcInterestRate >> *rcTheAccount.mpcFee;
+	rcIn >> *rcTheAccount.mpcInterestRate >> *rcTheAccount.mpcFee;
 	return (rcIn);
 }
 //***************************************************************************

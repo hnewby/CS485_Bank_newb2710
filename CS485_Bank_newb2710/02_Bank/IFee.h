@@ -14,7 +14,7 @@ class IFee {
 	public:
 		IFee();
 		IFee(Money amount);
-		~IFee();
+		virtual ~IFee();
 		virtual Money chargeMonthlyFee(const Money balance) = 0;
 		virtual Money chargeDepositFee(const Money balance) = 0;
 		virtual Money chargeWithdrawFee(const Money balance) = 0;

@@ -17,7 +17,7 @@
 class IInterestRate {
 	public:
 		IInterestRate();
-		~IInterestRate();
+		virtual ~IInterestRate();
 		virtual Money generateInterest(Money &rcMoney) = 0;
 		virtual void write(std::ostream &rcOut) = 0;
 		virtual void read(std::istream &rcIn) = 0;
