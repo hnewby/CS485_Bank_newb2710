@@ -591,6 +591,8 @@ runCommand(ICommand*) : void</panel_attributes>
     </coordinates>
     <panel_attributes>Money
 --
+-mCurException : CurencyMismatchException
+-meCurrency : Currency
 - mAmount : long long
 --
 +Money ()
@@ -612,7 +614,7 @@ runCommand(ICommand*) : void</panel_attributes>
 &lt;&lt;friend&gt;&gt;operator *(double, Money&amp;) : Money &amp;
 +read(std::istream&amp;) : void
 +write(std::ostream&amp;) : void
-</panel_attributes>
+lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -905,14 +907,57 @@ FlatInterestRate(double)
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLActor</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>2616</x>
-      <y>1476</y>
-      <w>72</w>
-      <h>132</h>
+      <x>108</x>
+      <y>264</y>
+      <w>252</w>
+      <h>228</h>
     </coordinates>
-    <panel_attributes>Actor</panel_attributes>
+    <panel_attributes>Currency
+--
+-name : string
+--
+&lt;&lt;friend&gt;&gt;operator &gt;&gt;(std::istream &amp;, Currency&amp;) : std::istream&amp;
+&lt;&lt;friend&gt;&gt;operator &lt;&lt;(std::ostream &amp;, Currency&amp;) : std::ostream&amp;
++ operator == (Currency &amp;) :  bool
+lw=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1884</x>
+      <y>1284</y>
+      <w>252</w>
+      <h>228</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Money::Currency
+--
+USD
+GBP
+EUR
+YEN
+lw=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2244</x>
+      <y>1284</y>
+      <w>252</w>
+      <h>228</h>
+    </coordinates>
+    <panel_attributes>CurrencyMismatchException
+--
+-mException : exception
+-mMessage : string
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+lw=5</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
