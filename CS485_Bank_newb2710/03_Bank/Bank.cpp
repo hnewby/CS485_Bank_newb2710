@@ -45,7 +45,12 @@ Bank::~Bank() {
 void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mpcAccounts->count(); i++) {
-		rcOut.write(std::cout, (*mpcAccounts)[i]);
+		try {
+			rcOut.write(std::cout, (*mpcAccounts)[i]);
+		}
+		catch (const std::range_error &e) {
+			std::cout << e.what() << '\n';
+		}
 		std::cout << '\n';
 	}
 	rcOut.displayLines(std::cout);
@@ -61,9 +66,14 @@ void Bank::writeBank(IBankWriter &rcOut) {
 // Returned:    None
 //***************************************************************************
 void Bank::deposit(int acctNum, Money amount) {
-	int index;
-	index = mpcAccounts->findAccount(acctNum);
-	(*mpcAccounts)[index].deposit(amount);
+	try {
+		int index;
+		index = mpcAccounts->findAccount(acctNum);
+		(*mpcAccounts)[index].deposit(amount);
+	}
+	catch (const std::range_error &e) {
+		std::cout << e.what() << '\n';
+	}
 }
 //***************************************************************************
 // Function:		withdraw
@@ -76,9 +86,15 @@ void Bank::deposit(int acctNum, Money amount) {
 // Returned:    None
 //***************************************************************************
 void Bank::withdraw(int acctNum, Money amount) {
-	int index;
-	index = mpcAccounts->findAccount(acctNum);
-	(*mpcAccounts)[index].withdraw(amount);
+	try {
+		int index;
+		index = mpcAccounts->findAccount(acctNum);
+		(*mpcAccounts)[index].withdraw(amount);
+	}
+	catch (const std::range_error &e) {
+		std::cout << e.what() << '\n';
+	}
+
 }
 //***************************************************************************
 // Function:		addAccount
@@ -119,7 +135,12 @@ void Bank::print() {
 void Bank::endOfMonthForAll() {
 	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
-		(*mpcAccounts)[i].endOfMonth();
+		try {
+			(*mpcAccounts)[i].endOfMonth();
+		}
+		catch (const std::range_error &e) {
+			std::cout << e.what() << '\n';
+		}
 	}
 }
 //***************************************************************************
@@ -134,7 +155,12 @@ void Bank::endOfMonthForAll() {
 void Bank::deleteAll () {
 	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
-		delete &(*mpcAccounts)[i];
+		try {
+			delete &(*mpcAccounts)[i];
+		}
+		catch (const std::range_error &e) {
+			std::cout << e.what() << '\n';
+		}
 	}
 	delete mpcAccounts;
 }

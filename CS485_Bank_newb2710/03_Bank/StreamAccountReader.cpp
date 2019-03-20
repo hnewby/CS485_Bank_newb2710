@@ -54,7 +54,12 @@ void StreamAccountReader::read(Bank &rcTheBank) {
 				break;
 		}
 		mcInFile >> *pcAccount;
-		rcTheBank.addAccount(pcAccount);
+		try {
+			rcTheBank.addAccount(pcAccount);
+		}
+		catch (const std::bad_array_new_length &e) {
+			std::cout << e.what() << '\n';
+		}
 	}
 }
 //***************************************************************************

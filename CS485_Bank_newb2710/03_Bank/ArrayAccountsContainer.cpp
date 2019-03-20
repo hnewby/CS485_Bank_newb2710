@@ -46,6 +46,9 @@ void ArrayAccountsContainer::addAccount(IAccount *pcTheAccount) {
 		mapcAccounts[mNumAccts] = pcTheAccount;
 		mNumAccts++;
 	}
+	else {
+		throw std::exception("Account container full");
+	}
 }
 //***************************************************************************
 // Function:		counts
@@ -71,18 +74,28 @@ int ArrayAccountsContainer::count() {
 int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
+	if (acctNum < 0 || acctNum > mMAX_ACCOUNTS) {
+		throw std::exception("Invalid index");
+	}
+	else {
+		//exception if wrong account given
 
-	//exception if wrong account given
-
-	while (!bIsFound && index < mMAX_ACCOUNTS) // can use isFull
-	{
-		if (mapcAccounts[index]->getAcctNum() == acctNum)
+		while (!bIsFound && index < mNumAccts) // can use isFull
 		{
-			bIsFound = true;
-		}
-		else
-		{
-			index++;
+			try {
+				if (mapcAccounts[index]->getAcctNum() == acctNum)
+				{
+					bIsFound = true;
+				}
+				else
+				{
+					index++;
+				}
+			}
+			catch (const std::range_error &e) {
+				std::cout << e.what() << '\n';
+			}
+			
 		}
 	}
 	return index;
@@ -114,6 +127,9 @@ bool ArrayAccountsContainer::isFull() {
 // Returned:    IAccount &
 //***************************************************************************
 IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
+	if (index < 0 || index > mMAX_ACCOUNTS) {
+		throw std::exception("Invalid index");
+	}
 	return  *mapcAccounts[index];
 }
 //***************************************************************************
@@ -127,5 +143,8 @@ IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 //***************************************************************************
 const IAccount& ArrayAccountsContainer::operator[](std::size_t index)
 const {
+	if (index < 0 || index > mMAX_ACCOUNTS) {
+		throw std::exception("Invalid index");
+	}
 	return *mapcAccounts[index];
 }

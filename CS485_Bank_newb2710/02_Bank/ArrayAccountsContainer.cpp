@@ -74,13 +74,18 @@ int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 
 	while (!bIsFound && index < mMAX_ACCOUNTS) // can use isFull
 	{
-		if (mapcAccounts[index]->getAcctNum() == acctNum)
-		{
-			bIsFound = true;
+		try {
+			if (mapcAccounts[index]->getAcctNum() == acctNum)
+			{
+				bIsFound = true;
+			}
+			else
+			{
+				index++;
+			}
 		}
-		else
-		{
-			index++;
+		catch (const std::range_error &e) {
+			std::cout << e.what() << '\n';
 		}
 	}
 	return index;
