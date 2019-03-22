@@ -21,7 +21,7 @@
 // Returned:    None
 //***************************************************************************
 IAccount::IAccount() {
-	mAcctNum = 0;
+	//mAcctNum = 0;
 	mpcInterestRate = nullptr;
 	mpcFee = nullptr;
 }

@@ -15,7 +15,7 @@
 #include <iomanip>
 #include <unordered_map>
 
-enum class Currency {USD, GBP, EUR, YEN};
+enum class Currency {USD, GBP, EUR, YEN, ERR};
 class Money {
 	public:
 		Money();
@@ -46,7 +46,7 @@ class Money {
 		void write(std::ostream& rcOut);
 
 	private:
-		bool checkCurrency(Currency &rcCurr); // check for exception
+		void checkCurrency(const Currency &rcCurr) const; // check for exception
 		long long mAmount;
 		Currency meCurrency;
 		const static std::unordered_map<std::string, Currency>strToEnum;

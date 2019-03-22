@@ -14,14 +14,16 @@ const std::unordered_map<std::string, Currency> Money::strToEnum{
 	{"USD", Currency::USD},
 	{"GBP", Currency::GBP},
 	{"EUR", Currency::EUR},
-	{"YEN", Currency::YEN}
+	{"YEN", Currency::YEN},
+	{"ERR", Currency::ERR}
 };
 
 const std::unordered_map<Currency, std::string> Money::enumToStr{
 	{Currency::USD, "USD"},
 	{Currency::GBP, "GBP"},
 	{Currency::EUR, "EUR"},
-	{Currency::YEN, "YEN"}
+	{Currency::YEN, "YEN"},
+	{Currency::ERR, "ERR" }
 };
 
 
@@ -36,6 +38,7 @@ const std::unordered_map<Currency, std::string> Money::enumToStr{
 //***************************************************************************
 Money::Money() {
 	mAmount = 0;
+	meCurrency = strToEnum.at("ERR");
 }
 //***************************************************************************
 // Constructor: Money
@@ -48,6 +51,7 @@ Money::Money() {
 //***************************************************************************
 Money::Money(long long amount) {
 	mAmount = amount;
+	meCurrency = strToEnum.at("ERR");
 }
 //***************************************************************************
 // Destructor:  Money
@@ -59,7 +63,7 @@ Money::Money(long long amount) {
 // Returned:    None
 //***************************************************************************
 Money::~Money() {
-
+	meCurrency = strToEnum.at("ERR");
 }
 //***************************************************************************
 // Function:		operator +
@@ -72,7 +76,14 @@ Money::~Money() {
 //***************************************************************************
 Money Money::operator + (const Money &rcAmount) const {
 	Money cAdd;
-	cAdd = mAmount + rcAmount.mAmount;
+	//this->checkCurrency(rcAmount.meCurrency);
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		cAdd = mAmount + rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return cAdd;
 }
 //***************************************************************************
@@ -86,7 +97,13 @@ Money Money::operator + (const Money &rcAmount) const {
 //***************************************************************************
 Money Money::operator - (const Money &rcAmount) const {
 	Money cSub;
-	cSub = mAmount - rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		cSub = mAmount - rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return cSub;
 }
 //***************************************************************************
@@ -100,7 +117,13 @@ Money Money::operator - (const Money &rcAmount) const {
 //***************************************************************************
 Money Money::operator / (const Money &rcAmount) const {
 	Money cAmount;
-	cAmount = mAmount / rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		cAmount = mAmount / rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return cAmount;
 }
 //***************************************************************************
@@ -128,7 +151,13 @@ double Money::operator / (const double amount) const {
 //***************************************************************************
 Money Money::operator * (const Money &rcAmount) const {
 	Money cAmount;
-	cAmount = mAmount * rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		cAmount = mAmount * rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return cAmount;
 }
 //***************************************************************************
@@ -141,7 +170,13 @@ Money Money::operator * (const Money &rcAmount) const {
 // Returned:    Money&
 //***************************************************************************
 Money& Money::operator = (const Money &rcAmount) {
-	mAmount = rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		mAmount = rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return *this;
 }
 //***************************************************************************
@@ -155,8 +190,14 @@ Money& Money::operator = (const Money &rcAmount) {
 //***************************************************************************
 bool Money::operator == (const Money &rcAmount) const {
 	bool bIsEqual = false;
-	if (mAmount == rcAmount.mAmount){
-		bIsEqual = true;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		if (mAmount == rcAmount.mAmount) {
+			bIsEqual = true;
+		}
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
 	}
 	return bIsEqual;
 }
@@ -170,7 +211,13 @@ bool Money::operator == (const Money &rcAmount) const {
 // Returned:    Money&
 //***************************************************************************
 Money& Money::operator -= (const Money &rcAmount) {
-	mAmount -= rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		mAmount -= rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return *this;
 }
 //***************************************************************************
@@ -183,7 +230,13 @@ Money& Money::operator -= (const Money &rcAmount) {
 // Returned:    Money&
 //***************************************************************************
 Money& Money::operator += (const Money &rcAmount) {
-	mAmount += rcAmount.mAmount;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		mAmount += rcAmount.mAmount;
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 	return *this;
 }
 //***************************************************************************
@@ -197,9 +250,15 @@ Money& Money::operator += (const Money &rcAmount) {
 //***************************************************************************
 bool Money::operator <(const Money &rcAmount) const {
 	bool bIsLess = false;
-	if (mAmount < rcAmount.mAmount)
-	{
-		bIsLess = true;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		if (mAmount < rcAmount.mAmount)
+		{
+			bIsLess = true;
+		}
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
 	}
 	return bIsLess;
 }
@@ -214,15 +273,29 @@ bool Money::operator <(const Money &rcAmount) const {
 //***************************************************************************
 bool Money::operator > (const Money &rcAmount) const {
 	bool bIsGreater = false;
-	if (mAmount > rcAmount.mAmount) {
-		bIsGreater = true;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		if (mAmount > rcAmount.mAmount) {
+			bIsGreater = true;
+		}
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
 	}
 	return bIsGreater;
 }
+
+//comment
 bool Money::operator <= (const Money &rcAmount) const {
 	bool bIsLessEq = false;
-	if (mAmount <= rcAmount.mAmount) {
-		bIsLessEq = true;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		if (mAmount <= rcAmount.mAmount) {
+			bIsLessEq = true;
+		}
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
 	}
 	return bIsLessEq;
 }
@@ -237,8 +310,14 @@ bool Money::operator <= (const Money &rcAmount) const {
 //***************************************************************************
 bool Money::operator >= (const Money &rcAmount) const {
 	bool bIsGreaterEq = false;
-	if (mAmount >= rcAmount.mAmount) {
-		bIsGreaterEq = true;
+	try {
+		checkCurrency(rcAmount.meCurrency);
+		if (mAmount >= rcAmount.mAmount) {
+			bIsGreaterEq = true;
+		}
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
 	}
 	return bIsGreaterEq;
 }
@@ -356,16 +435,19 @@ void Money::write(std::ostream& rcOut) {
 //
 // Returned:    bool
 //***************************************************************************
-bool Money::checkCurrency(Currency &rcCurr) {
+void Money::checkCurrency(const Currency &rcCurr) const {
 	bool bIsMatch = true;
-	if (meCurrency != rcCurr)
+	std::string cur1, cur2;
+	//cur1 = enumToStr.at(meCurrency);
+	//cur2 = enumToStr.at(cCurr);
+	if (meCurrency != rcCurr && meCurrency != Currency::ERR && rcCurr != Currency::ERR)
 	{
-		try {
+		
 			throw CurrencyMismatchException(0);
-		}
-		catch (const CurrencyMismatchException &e) {
+		
+		/*catch (const CurrencyMismatchException &e) {
 			std::cout << e.what() << std::endl;
-		}
+		}*/
 	}
-	return bIsMatch;
+	//return bIsMatch;
 }

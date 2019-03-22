@@ -42,7 +42,7 @@ ArrayAccountsContainer::~ArrayAccountsContainer() {
 // Returned:    None
 //***************************************************************************
 void ArrayAccountsContainer::addAccount(IAccount *pcTheAccount) {
-	if (mNumAccts <= mMAX_ACCOUNTS) {
+	if (mNumAccts < mMAX_ACCOUNTS) {
 		mapcAccounts[mNumAccts] = pcTheAccount;
 		mNumAccts++;
 	}
@@ -74,29 +74,19 @@ int ArrayAccountsContainer::count() {
 int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
-	if (acctNum < 0 || acctNum > mMAX_ACCOUNTS) {
-		throw std::exception("Invalid index");
-	}
-	else {
 		//exception if wrong account given
 
-		while (!bIsFound && index < mNumAccts) // can use isFull
-		{
-			try {
-				if (mapcAccounts[index]->getAcctNum() == acctNum)
-				{
-					bIsFound = true;
-				}
-				else
-				{
-					index++;
-				}
+	while (!bIsFound && index < mNumAccts) // can use isFull
+	{
+			if (mapcAccounts[index]->getAcctNum() == acctNum) //index
+			{
+				bIsFound = true;
 			}
-			catch (const std::range_error &e) {
-				std::cout << e.what() << '\n';
+			else
+			{
+				index++;
 			}
-			
-		}
+		
 	}
 	return index;
 }
@@ -127,10 +117,11 @@ bool ArrayAccountsContainer::isFull() {
 // Returned:    IAccount &
 //***************************************************************************
 IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
-	if (index < 0 || index > mMAX_ACCOUNTS) {
+	if (index < 0 || index > mNumAccts) {
 		throw std::exception("Invalid index");
 	}
 	return  *mapcAccounts[index];
+
 }
 //***************************************************************************
 // Function:		operator[] const
@@ -143,7 +134,7 @@ IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 //***************************************************************************
 const IAccount& ArrayAccountsContainer::operator[](std::size_t index)
 const {
-	if (index < 0 || index > mMAX_ACCOUNTS) {
+	if (index < 0 || index > mNumAccts) {
 		throw std::exception("Invalid index");
 	}
 	return *mapcAccounts[index];

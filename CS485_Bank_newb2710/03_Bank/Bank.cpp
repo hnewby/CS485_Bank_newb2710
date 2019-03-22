@@ -9,6 +9,7 @@
 #include "Bank.h"
 #include "ScreenBankWriter.h"
 #include "ArrayAccountsContainer.h"
+#include "CurrencyMismatchException.h"
 //***************************************************************************
 // Constructor: Bank
 //
@@ -71,7 +72,7 @@ void Bank::deposit(int acctNum, Money amount) {
 		index = mpcAccounts->findAccount(acctNum);
 		(*mpcAccounts)[index].deposit(amount);
 	}
-	catch (const std::range_error &e) {
+	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
 	}
 }
@@ -91,7 +92,7 @@ void Bank::withdraw(int acctNum, Money amount) {
 		index = mpcAccounts->findAccount(acctNum);
 		(*mpcAccounts)[index].withdraw(amount);
 	}
-	catch (const std::range_error &e) {
+	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
 	}
 
@@ -106,7 +107,13 @@ void Bank::withdraw(int acctNum, Money amount) {
 // Returned:    None
 //***************************************************************************
 void Bank::addAccount(IAccount *pcTheAccount) {
-	mpcAccounts->addAccount(pcTheAccount);
+	try {
+		mpcAccounts->addAccount(pcTheAccount);
+	}
+	catch (const std::bad_array_new_length &e) {
+		std::cout << e.what() << '\n';
+	}
+	
 }
 //***************************************************************************
 // Function:		print

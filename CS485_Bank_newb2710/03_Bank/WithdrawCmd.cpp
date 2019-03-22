@@ -7,7 +7,7 @@
 // Purpose:    WithdrawCmd class implamentation
 //***************************************************************************
 #include "WithdrawCmd.h"
-
+#include "CurrencyMismatchException.h"
 //***************************************************************************
 // Constructor: WithdrawCmd
 //
@@ -67,5 +67,10 @@ void WithdrawCmd::read(std::istream &rcIn) {
 // Returned:    None
 //***************************************************************************
 void WithdrawCmd::action(Bank &rcTheBank) {
-	rcTheBank.withdraw(mAcctNum, mAmt);
+	try {
+		rcTheBank.withdraw(mAcctNum, mAmt);
+	}
+	catch (const CurrencyMismatchException &e) {
+		std::cout << e.what() << '\n';
+	}
 }

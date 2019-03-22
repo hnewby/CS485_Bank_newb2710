@@ -7,7 +7,7 @@
 // Purpose:    BankApp class implamentation
 //***************************************************************************
 #include "BankApp.h"
-
+#include "CurrencyMismatchException.h"
 //***************************************************************************
 // Constructor: BankApp
 //
@@ -42,7 +42,13 @@ BankApp::~BankApp() {
 // Returned:    None
 //***************************************************************************
 void BankApp::readAccounts(IAccountReader &rcAcctReader) {
-	rcAcctReader.read(mcTheBank);
+	try {
+		rcAcctReader.read(mcTheBank);
+	}
+	catch (const std::bad_array_new_length &e) {
+		std::cout << e.what() << '\n';
+	}
+	
 	
 }
 //***************************************************************************
@@ -58,10 +64,15 @@ void BankApp::readAccounts(IAccountReader &rcAcctReader) {
 void BankApp::readCommand(ICommandReader &rcCmdReader) {
 	ICommand *pcTheCmd = nullptr;
 	do {
-		pcTheCmd = rcCmdReader.read();
-		if (pcTheCmd != nullptr)// be careful of when to delete pcTheCmd
-		{
-			runCommand(pcTheCmd);
+		try {
+			pcTheCmd = rcCmdReader.read();
+			if (pcTheCmd != nullptr)// be careful of when to delete pcTheCmd
+			{
+				runCommand(pcTheCmd);
+			}
+		}
+		catch (const CurrencyMismatchException &e) {
+			std::cout << e.what() << '\n';
 		}
 		delete pcTheCmd;
 	} while (pcTheCmd != nullptr);
