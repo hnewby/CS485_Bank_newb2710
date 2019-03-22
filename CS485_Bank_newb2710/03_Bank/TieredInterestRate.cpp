@@ -47,7 +47,7 @@ TieredInterestRate::~TieredInterestRate() {
 Money TieredInterestRate::generateInterest(Money &rcMoney) {
 	int tier = findTier(rcMoney);
 	Money interest = 0;
-	if (tier != -1) {
+	if (tier != -1 && rcMoney > 0) {
 		interest = mvcInterest[tier].generateInterest(rcMoney);
 	}
 	return interest;

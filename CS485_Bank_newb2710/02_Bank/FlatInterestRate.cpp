@@ -7,7 +7,7 @@
 // Purpose:    FlatInterestRate class implamentation
 //***************************************************************************
 #include "FlatInterestRate.h"
-
+#include <stdlib.h>
 //***************************************************************************
 // Constructor: FlatInterestRate
 //
@@ -42,7 +42,12 @@ FlatInterestRate::~FlatInterestRate() {
 // Returned:    Money
 //***************************************************************************
 Money FlatInterestRate::generateInterest(Money &rcMoney) {
-	return (rcMoney * mInterestAmount);
+	Money amount = 0;
+	if (rcMoney > 0)
+	{
+		amount = (rcMoney * mInterestAmount);
+	}
+	return amount;
 }
 //***************************************************************************
 // Function:		write

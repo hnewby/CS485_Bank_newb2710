@@ -76,7 +76,6 @@ Money::~Money() {
 //***************************************************************************
 Money Money::operator + (const Money &rcAmount) const {
 	Money cAdd;
-	//this->checkCurrency(rcAmount.meCurrency);
 	try {
 		checkCurrency(rcAmount.meCurrency);
 		cAdd = mAmount + rcAmount.mAmount;
@@ -284,8 +283,15 @@ bool Money::operator > (const Money &rcAmount) const {
 	}
 	return bIsGreater;
 }
-
-//comment
+//***************************************************************************
+// Function:		operator <=
+//
+// Description: check if less than or equal to
+//
+// Parameters:  rcAmount - amount of money to check
+//
+// Returned:    bool
+//***************************************************************************
 bool Money::operator <= (const Money &rcAmount) const {
 	bool bIsLessEq = false;
 	try {
@@ -437,17 +443,10 @@ void Money::write(std::ostream& rcOut) {
 //***************************************************************************
 void Money::checkCurrency(const Currency &rcCurr) const {
 	bool bIsMatch = true;
-	std::string cur1, cur2;
-	//cur1 = enumToStr.at(meCurrency);
-	//cur2 = enumToStr.at(cCurr);
-	if (meCurrency != rcCurr && meCurrency != Currency::ERR && rcCurr != Currency::ERR)
+
+	if (meCurrency != rcCurr && meCurrency != Currency::ERR &&
+		rcCurr != Currency::ERR)
 	{
-		
 			throw CurrencyMismatchException(0);
-		
-		/*catch (const CurrencyMismatchException &e) {
-			std::cout << e.what() << std::endl;
-		}*/
 	}
-	//return bIsMatch;
 }
