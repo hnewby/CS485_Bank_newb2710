@@ -19,7 +19,7 @@
 // Returned:    None
 //***************************************************************************
 CurrencyMismatchException::CurrencyMismatchException(std::string mes) {
-	std::string errMessage = "CurrencyMismatchException:" + mes;
+	std::string errMessage = "CurrencyMismatchException: " + mes;
 
 	mpszMessage = new char[errMessage.size() + 1];
 

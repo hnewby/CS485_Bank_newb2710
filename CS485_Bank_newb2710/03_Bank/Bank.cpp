@@ -111,6 +111,7 @@ void Bank::addAccount(IAccount *pcTheAccount) {
 		mpcAccounts->addAccount(pcTheAccount);
 	}
 	catch (const std::bad_array_new_length &e) {
+		delete pcTheAccount;
 		std::cout << e.what() << '\n';
 	}
 	
