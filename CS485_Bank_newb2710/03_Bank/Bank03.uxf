@@ -587,15 +587,18 @@ runCommand(ICommand*) : void</panel_attributes>
       <x>780</x>
       <y>888</y>
       <w>504</w>
-      <h>492</h>
+      <h>504</h>
     </coordinates>
     <panel_attributes>Money
 --
 -meCurrency : Currency
 - mAmount : long long
+-strToEnum : unorderedMap&lt;string, Currency&gt;
+-enumToStr : unorderedMap&lt;Currency, string&gt;
 --
 +Money ()
 +Money(long long)
++Money(long long, Currency)
 +~Money ()
 + operator + (Money &amp;) : Money &amp;
 + operator - (Money &amp;) : Money &amp;
@@ -613,8 +616,8 @@ runCommand(ICommand*) : void</panel_attributes>
 &lt;&lt;friend&gt;&gt;operator *(double, Money&amp;) : Money &amp;
 +read(std::istream&amp;) : void
 +write(std::ostream&amp;) : void
-- checkCurrency (Currency &amp;) : bool
-lw=5</panel_attributes>
+- checkCurrency (Currency &amp;) : void
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -921,7 +924,7 @@ USD
 GBP
 EUR
 YEN
-lw=5</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -934,15 +937,14 @@ lw=5</panel_attributes>
     </coordinates>
     <panel_attributes>CurrencyMismatchException
 --
-mValue : int
--mMessage : string
+-mpszMessage : char *
 --
-+CurrencyMismatchException(int, string)
++CurrencyMismatchException(char*)
 +CurrencyMismatchException(const CurrencyMismatchException &amp;rcOther)
 +~CurrencyMismatchException()
 +operator = (CurrencyMismatchException cother) : CurrencyMismatchException&amp; 
 /+what() : const char */
-lw=5</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

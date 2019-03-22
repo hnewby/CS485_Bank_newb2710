@@ -7,7 +7,7 @@
 // Purpose:    ArrayAccountsClass class implamentation
 //***************************************************************************
 #include "ArrayAccountsContainer.h"
-
+#include <exception>
 //***************************************************************************
 // Constructor: ArrayAccountsContainer
 //
@@ -47,7 +47,7 @@ void ArrayAccountsContainer::addAccount(IAccount *pcTheAccount) {
 		mNumAccts++;
 	}
 	else {
-		throw std::exception("Account container full");
+		throw std::bad_array_new_length();
 	}
 }
 //***************************************************************************
@@ -84,7 +84,6 @@ int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 			{
 				index++;
 			}
-		
 	}
 	return index;
 }
@@ -116,7 +115,7 @@ bool ArrayAccountsContainer::isFull() {
 //***************************************************************************
 IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 	if (index < 0 || index > mNumAccts) {
-		throw std::exception("Invalid index");
+		throw std::range_error("Invalid index");
 	}
 	return  *mapcAccounts[index];
 
@@ -133,7 +132,7 @@ IAccount& ArrayAccountsContainer::operator[] (std::size_t index) {
 const IAccount& ArrayAccountsContainer::operator[](std::size_t index)
 const {
 	if (index < 0 || index > mNumAccts) {
-		throw std::exception("Invalid index");
+		throw std::range_error("Invalid index");
 	}
 	return *mapcAccounts[index];
 }

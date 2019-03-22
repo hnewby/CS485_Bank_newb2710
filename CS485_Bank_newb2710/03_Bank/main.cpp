@@ -10,8 +10,7 @@
 #include "StreamAccountReader.h"
 #include "BankApp.h"
 #include <string>
-#include <vld.h>
-#include "ArrayAccountsContainer.h"
+//#include <vld.h>
 //***************************************************************************
 // Function:		main
 //
@@ -25,7 +24,6 @@ int main() {
 	BankApp cBankApp;
 	ICommandReader* pcCommandReader = new StreamCommandReader;
 	IAccountReader* pcAccountReader = new StreamAccountReader;
-	
 	pcAccountReader->openAccountsDB("Accounts.txt");
 	pcCommandReader->openCommands("Commands.txt");
 
@@ -33,11 +31,12 @@ int main() {
 		cBankApp.readAccounts(*pcAccountReader);
 		cBankApp.readCommand(*pcCommandReader);
 	}
-	catch (const std::exception &e) {
+	catch (const std::bad_array_new_length &e) {
 		std::cout << e.what() << std::endl;
 	}
-	
-	
+	catch (const std::range_error &e) {
+	std::cout << e.what() << std::endl;
+	}
 
 	pcAccountReader->closeAccountsDB();
 	pcCommandReader->closeCommands();

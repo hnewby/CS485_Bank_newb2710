@@ -54,6 +54,20 @@ Money::Money(long long amount) {
 	meCurrency = strToEnum.at("ERR");
 }
 //***************************************************************************
+// Constructor: Money
+//
+// Description: Initialize Money
+//
+// Parameters:  amount - amount to inititialize money to
+//							cur		 - currency inializing to
+//
+// Returned:    None
+//***************************************************************************
+Money::Money(long long amount, Currency cur) {
+	mAmount = amount;
+	meCurrency = cur;
+}
+//***************************************************************************
 // Destructor:  Money
 //
 // Description: Deconstructor for Money
@@ -413,7 +427,6 @@ void Money::read(std::istream& rcIn) {
 	std::string currency;
 	rcIn >> currency >> mAmount;
 	meCurrency = strToEnum.at(currency);
-	//meCurrency = strToEnum[currency];
 }
 //***************************************************************************
 // Function:		write

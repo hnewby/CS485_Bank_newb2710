@@ -42,14 +42,8 @@ BankApp::~BankApp() {
 // Returned:    None
 //***************************************************************************
 void BankApp::readAccounts(IAccountReader &rcAcctReader) {
-	try {
 		rcAcctReader.read(mcTheBank);
-	}
-	catch (const std::bad_array_new_length &e) {
-		std::cout << e.what() << '\n';
-	}
-	
-	
+
 }
 //***************************************************************************
 // Function:		readCommand

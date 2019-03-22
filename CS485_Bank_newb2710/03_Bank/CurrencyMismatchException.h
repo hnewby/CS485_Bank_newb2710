@@ -1,4 +1,3 @@
-#pragma once
 //***************************************************************************
 // File name:  CurrencyMismatchException.h
 // Author:     Hannah Newby
@@ -7,6 +6,7 @@
 // Assignment: Bank
 // Purpose:    CurrencyMismatchException class header
 //***************************************************************************
+#pragma once
 #ifndef CurrencyMismatchException_h
 #define CurrencyMismatchException_h
 #include <exception>
