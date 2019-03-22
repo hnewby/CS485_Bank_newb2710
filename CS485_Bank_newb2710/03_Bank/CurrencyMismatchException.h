@@ -10,10 +10,10 @@
 #ifndef CurrencyMismatchException_h
 #define CurrencyMismatchException_h
 #include <exception>
-
+#include <string>
 class CurrencyMismatchException : public std::exception{
 public:
-	CurrencyMismatchException(int value = 0);
+	CurrencyMismatchException(std::string mes);
 	CurrencyMismatchException(const CurrencyMismatchException & rcOther);
 	~CurrencyMismatchException();
 
@@ -22,7 +22,6 @@ public:
 	virtual const char* what() const override;
 
 private:
-	int mValue;
 	char *mpszMessage = nullptr;
 };
 #endif

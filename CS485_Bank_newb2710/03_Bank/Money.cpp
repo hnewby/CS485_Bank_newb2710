@@ -447,6 +447,6 @@ void Money::checkCurrency(const Currency &rcCurr) const {
 	if (meCurrency != rcCurr && meCurrency != Currency::ERR &&
 		rcCurr != Currency::ERR)
 	{
-			throw CurrencyMismatchException(0);
+			throw CurrencyMismatchException("Currencies do not match");
 	}
 }

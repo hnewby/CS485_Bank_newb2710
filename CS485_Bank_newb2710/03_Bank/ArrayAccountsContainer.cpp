@@ -74,11 +74,9 @@ int ArrayAccountsContainer::count() {
 int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
-		//exception if wrong account given
-
 	while (!bIsFound && index < mNumAccts) // can use isFull
 	{
-			if (mapcAccounts[index]->getAcctNum() == acctNum) //index
+			if (mapcAccounts[index]->getAcctNum() == acctNum)
 			{
 				bIsFound = true;
 			}
