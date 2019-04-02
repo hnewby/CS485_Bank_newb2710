@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
+<diagram program="umlet" version="14.3.0">
   <help_text>Space for diagram float</help_text>
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
-      <y>35</y>
-      <w>217</w>
-      <h>210</h>
+      <x>702</x>
+      <y>45</y>
+      <w>279</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>Bank
 --
@@ -24,16 +24,18 @@
 +print () : void
 +endOfMonthForAll () : void
 +deleteAll () : void
++backup () : void
+lw=5
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1484</x>
-      <y>329</y>
-      <w>378</w>
-      <h>203</h>
+      <x>1908</x>
+      <y>423</y>
+      <w>486</w>
+      <h>261</h>
     </coordinates>
     <panel_attributes>IAccount
 --
@@ -53,16 +55,17 @@
 #checkNegBal () : bool
 &lt;&lt;friend&gt;&gt;operator &gt;&gt;(std::istream &amp;, Account&amp;) : std::istream&amp;
 &lt;&lt;friend&gt;&gt;operator &lt;&lt;(std::ostream &amp;, Account&amp;) : std::ostream&amp;
-</panel_attributes>
++accept (IAccountVisitor*) : void
+lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1407</x>
-      <y>567</y>
-      <w>294</w>
-      <h>98</h>
+      <x>1809</x>
+      <y>729</y>
+      <w>378</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>CheckingAccount
 --
@@ -70,17 +73,17 @@
 +CheckingAccount()
 +Checking (int, Money, InterestRate, Fee)
 +~CheckingAccount ()
-
-</panel_attributes>
++accept (IAccountVisitor*) : void
+lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1757</x>
-      <y>560</y>
-      <w>280</w>
-      <h>98</h>
+      <x>2259</x>
+      <y>720</y>
+      <w>360</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>SavingsAccount
 --
@@ -89,18 +92,18 @@
 +SavingsAccount) 
 +SavingsAccount(int, Money, InterestRate, Fee)
 +~SavingsAccount ()
-
-
++accept (IAccountVisitor*) : void
+lw=5
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>224</y>
-      <w>735</w>
-      <h>140</h>
+      <x>972</x>
+      <y>288</y>
+      <w>945</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;300.0;10.0;300.0;30.0;730.0;30.0;730.0;180.0;1030.0;180.0</additional_attributes>
@@ -108,10 +111,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1645</x>
-      <y>525</y>
-      <w>21</w>
-      <h>56</h>
+      <x>2115</x>
+      <y>675</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -119,10 +122,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1785</x>
-      <y>525</y>
-      <w>21</w>
-      <h>49</h>
+      <x>2295</x>
+      <y>675</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -130,10 +133,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1603</x>
-      <y>140</y>
-      <w>21</w>
-      <h>203</h>
+      <x>2061</x>
+      <y>180</y>
+      <w>27</w>
+      <h>261</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
@@ -141,10 +144,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>938</x>
-      <y>42</y>
-      <w>161</w>
-      <h>70</h>
+      <x>1206</x>
+      <y>54</y>
+      <w>207</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>IAccountReader
 --
@@ -159,10 +162,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>931</x>
-      <y>133</y>
-      <w>168</w>
-      <h>77</h>
+      <x>1197</x>
+      <y>171</y>
+      <w>216</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>StreamAccountReader
 --
@@ -178,10 +181,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1113</x>
-      <y>42</y>
-      <w>224</w>
-      <h>70</h>
+      <x>1431</x>
+      <y>54</y>
+      <w>288</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>IBankWriter
 --
@@ -196,10 +199,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1099</x>
-      <y>126</y>
-      <w>238</w>
-      <h>84</h>
+      <x>1413</x>
+      <y>162</y>
+      <w>306</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>ScreenBankWriter
 --
@@ -212,10 +215,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>532</x>
-      <y>21</y>
-      <w>462</w>
-      <h>126</h>
+      <x>684</x>
+      <y>27</y>
+      <w>594</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>640.0;30.0;640.0;10.0;10.0;10.0;10.0;160.0;20.0;160.0</additional_attributes>
@@ -223,10 +226,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
-      <y>21</y>
-      <w>686</w>
-      <h>147</h>
+      <x>666</x>
+      <y>27</y>
+      <w>882</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>960.0;30.0;960.0;10.0;10.0;10.0;10.0;190.0;40.0;190.0</additional_attributes>
@@ -234,10 +237,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>105</y>
-      <w>21</w>
-      <h>42</h>
+      <x>1305</x>
+      <y>135</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -245,10 +248,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1169</x>
-      <y>105</y>
-      <w>21</w>
-      <h>35</h>
+      <x>1503</x>
+      <y>135</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -256,10 +259,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1484</x>
+      <x>1908</x>
       <y>0</y>
-      <w>350</w>
-      <h>147</h>
+      <w>450</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>IFee
 --
@@ -280,10 +283,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1344</x>
-      <y>175</y>
-      <w>252</w>
-      <h>126</h>
+      <x>1728</x>
+      <y>225</y>
+      <w>324</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>TransactionalFee
 --
@@ -301,10 +304,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1540</x>
-      <y>140</y>
-      <w>21</w>
-      <h>49</h>
+      <x>1980</x>
+      <y>180</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -312,10 +315,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1624</x>
-      <y>175</y>
-      <w>252</w>
-      <h>147</h>
+      <x>2088</x>
+      <y>225</y>
+      <w>324</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>MonthlyFee
 --
@@ -337,10 +340,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1715</x>
-      <y>140</y>
-      <w>21</w>
-      <h>49</h>
+      <x>2205</x>
+      <y>180</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -348,10 +351,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>658</x>
-      <y>385</y>
-      <w>168</w>
-      <h>91</h>
+      <x>846</x>
+      <y>495</y>
+      <w>216</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>WithdrawCmd
 --
@@ -367,10 +370,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>287</y>
-      <w>308</w>
-      <h>84</h>
+      <x>432</x>
+      <y>369</y>
+      <w>396</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>ICommand
 --
@@ -386,10 +389,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>406</y>
-      <w>147</w>
-      <h>91</h>
+      <x>648</x>
+      <y>522</y>
+      <w>189</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>DepositCmd
 --
@@ -406,10 +409,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>343</x>
-      <y>406</y>
-      <w>147</w>
-      <h>84</h>
+      <x>441</x>
+      <y>522</y>
+      <w>189</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>PrintCmd
 --
@@ -424,10 +427,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>182</x>
-      <y>406</y>
-      <w>147</w>
-      <h>84</h>
+      <x>234</x>
+      <y>522</y>
+      <w>189</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>MonthCmd
 --
@@ -442,10 +445,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>777</x>
-      <y>49</y>
-      <w>154</w>
-      <h>70</h>
+      <x>999</x>
+      <y>63</y>
+      <w>198</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>ICommandReader
 --
@@ -460,10 +463,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>133</y>
-      <w>161</w>
-      <h>77</h>
+      <x>990</x>
+      <y>171</y>
+      <w>207</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>StreamCommandReader
 --
@@ -479,10 +482,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>847</x>
-      <y>112</y>
-      <w>21</w>
-      <h>35</h>
+      <x>1089</x>
+      <y>144</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -490,10 +493,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
-      <y>28</y>
-      <w>329</w>
-      <h>133</h>
+      <x>693</x>
+      <y>36</y>
+      <w>423</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>450.0;30.0;450.0;10.0;10.0;10.0;10.0;170.0</additional_attributes>
@@ -501,10 +504,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
-      <y>357</y>
-      <w>56</w>
-      <h>42</h>
+      <x>819</x>
+      <y>459</y>
+      <w>72</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;40.0</additional_attributes>
@@ -512,10 +515,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>364</y>
-      <w>21</w>
-      <h>56</h>
+      <x>702</x>
+      <y>468</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -523,10 +526,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>364</y>
-      <w>21</w>
-      <h>56</h>
+      <x>576</x>
+      <y>468</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -534,10 +537,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>301</x>
-      <y>364</y>
-      <w>77</w>
-      <h>56</h>
+      <x>387</x>
+      <y>468</y>
+      <w>99</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;60.0</additional_attributes>
@@ -545,10 +548,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>301</x>
-      <y>161</y>
-      <w>49</w>
-      <h>182</h>
+      <x>387</x>
+      <y>207</y>
+      <w>63</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;240.0;50.0;240.0</additional_attributes>
@@ -556,10 +559,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>35</y>
-      <w>217</w>
-      <h>133</h>
+      <x>342</x>
+      <y>45</y>
+      <w>279</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>BankApp
 --
@@ -573,10 +576,10 @@ runCommand(ICommand*) : void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>476</x>
-      <y>56</y>
-      <w>84</w>
-      <h>133</h>
+      <x>612</x>
+      <y>72</y>
+      <w>108</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;170.0;100.0;170.0</additional_attributes>
@@ -584,10 +587,10 @@ runCommand(ICommand*) : void</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>455</x>
-      <y>518</y>
-      <w>294</w>
-      <h>294</h>
+      <x>585</x>
+      <y>648</y>
+      <w>378</w>
+      <h>432</h>
     </coordinates>
     <panel_attributes>Money
 --
@@ -617,38 +620,40 @@ runCommand(ICommand*) : void</panel_attributes>
 +read(std::istream&amp;) : void
 +write(std::ostream&amp;) : void
 - checkCurrency (Currency &amp;) : void
+-getAmount () long long
+- getCurrency () : Currency
++convert (double) : void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>252</y>
-      <w>210</w>
-      <h>133</h>
+      <x>1062</x>
+      <y>324</y>
+      <w>270</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>IAccountsContainer
 --
 --
 + IAccountsContainer()
 +~IAccountsContainer()
-+addAccount(IAccount *) = 0
-+count() = 0
-+findAccount(unsigned int) = 0
-+isFull() = 0
-+operator[](std::size_t) = 0
-+operator[](std::size_t) const = 0
++addAccount(IAccount *) = 0 : void
++count() = 0 : int
++findAccount(unsigned int) = 0 : int
++isFull() = 0 : bool
++applyVisitor (IAccountVisitor *) = 0 : void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>798</x>
-      <y>476</y>
-      <w>231</w>
-      <h>161</h>
+      <x>1026</x>
+      <y>612</y>
+      <w>297</w>
+      <h>207</h>
     </coordinates>
     <panel_attributes>ArrayAccountsContainer
 --
@@ -658,22 +663,22 @@ runCommand(ICommand*) : void</panel_attributes>
 --
 + ArrayAccountsContainer()
 +~ArrayAccountsContainer()
-+addAccount(IAccount *)
-+count()
-+findAccount(unsigned int)
-+isFull()
-+operator[](std::size_t)
-+operator[](std::size_t) const
++addAccount(IAccount *) : void
++count() : int
++findAccount(unsigned int) : int
++isFull() : bool
++applyVisitor (IAccountVisitor *) : void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>903</x>
-      <y>378</y>
-      <w>21</w>
-      <h>112</h>
+      <x>1161</x>
+      <y>486</y>
+      <w>27</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
@@ -681,10 +686,10 @@ runCommand(ICommand*) : void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>714</x>
-      <y>238</y>
-      <w>126</w>
-      <h>56</h>
+      <x>918</x>
+      <y>306</y>
+      <w>162</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0;160.0;60.0</additional_attributes>
@@ -692,76 +697,76 @@ runCommand(ICommand*) : void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>588</x>
-      <y>490</y>
-      <w>21</w>
-      <h>42</h>
+      <x>639</x>
+      <y>621</y>
+      <w>27</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>469</y>
-      <w>21</w>
+      <x>873</x>
+      <y>603</y>
+      <w>27</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>371</y>
-      <w>756</w>
-      <h>308</h>
+      <x>954</x>
+      <y>477</y>
+      <w>972</w>
+      <h>396</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>1060.0;10.0;920.0;10.0;920.0;420.0;10.0;410.0</additional_attributes>
+    <additional_attributes>1060.0;10.0;920.0;10.0;920.0;420.0;10.0;390.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>294</y>
-      <w>651</w>
-      <h>392</h>
+      <x>954</x>
+      <y>378</y>
+      <w>837</w>
+      <h>504</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>900.0;10.0;910.0;540.0;10.0;540.0</additional_attributes>
+    <additional_attributes>900.0;10.0;910.0;540.0;10.0;520.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>224</y>
-      <w>1386</w>
-      <h>476</h>
+      <x>954</x>
+      <y>288</y>
+      <w>1782</w>
+      <h>612</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>1620.0;10.0;1960.0;10.0;1960.0;660.0;10.0;660.0</additional_attributes>
+    <additional_attributes>1620.0;10.0;1960.0;10.0;1960.0;660.0;10.0;640.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>14</y>
-      <w>756</w>
-      <h>644</h>
+      <x>954</x>
+      <y>18</y>
+      <w>972</w>
+      <h>837</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>1060.0;10.0;850.0;10.0;850.0;900.0;10.0;900.0</additional_attributes>
+    <additional_attributes>1060.0;10.0;850.0;10.0;850.0;910.0;10.0;910.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>14</x>
-      <y>791</y>
-      <w>189</w>
-      <h>133</h>
+      <x>18</x>
+      <y>1017</y>
+      <w>243</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>FlatInterestRate
 --
@@ -778,10 +783,10 @@ FlatInterestRate(double)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>35</x>
-      <y>504</y>
-      <w>413</w>
-      <h>133</h>
+      <x>45</x>
+      <y>648</y>
+      <w>531</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>IInterestRate
 --
@@ -800,10 +805,10 @@ FlatInterestRate(double)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>791</y>
-      <w>217</w>
-      <h>140</h>
+      <x>270</x>
+      <y>1017</y>
+      <w>279</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>TieredInterestRate
 --
@@ -823,10 +828,10 @@ FlatInterestRate(double)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>833</y>
-      <w>273</w>
-      <h>133</h>
+      <x>576</x>
+      <y>1089</y>
+      <w>351</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>TierdType
 --
@@ -846,10 +851,10 @@ FlatInterestRate(double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>854</y>
-      <w>42</w>
-      <h>21</h>
+      <x>540</x>
+      <y>1107</y>
+      <w>54</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -857,10 +862,10 @@ FlatInterestRate(double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>630</y>
-      <w>21</w>
-      <h>175</h>
+      <x>180</x>
+      <y>810</y>
+      <w>27</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
@@ -868,10 +873,10 @@ FlatInterestRate(double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>630</y>
-      <w>21</w>
-      <h>175</h>
+      <x>288</x>
+      <y>810</y>
+      <w>27</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
@@ -880,9 +885,9 @@ FlatInterestRate(double)
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>378</y>
-      <w>2100</w>
-      <h>616</h>
+      <y>486</y>
+      <w>2700</w>
+      <h>792</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>2660.0;10.0;2980.0;10.0;2980.0;850.0;10.0;860.0;10.0;230.0;50.0;230.0</additional_attributes>
@@ -890,21 +895,21 @@ FlatInterestRate(double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>294</y>
-      <w>665</w>
-      <h>399</h>
+      <x>954</x>
+      <y>378</y>
+      <w>855</w>
+      <h>513</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>930.0;10.0;930.0;550.0;10.0;550.0</additional_attributes>
+    <additional_attributes>930.0;10.0;930.0;550.0;10.0;530.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1498</x>
-      <y>812</y>
-      <w>98</w>
-      <h>49</h>
+      <x>2547</x>
+      <y>1143</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Hannah Newby</panel_attributes>
     <additional_attributes/>
@@ -912,10 +917,10 @@ FlatInterestRate(double)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>714</y>
-      <w>147</w>
-      <h>84</h>
+      <x>1080</x>
+      <y>918</y>
+      <w>189</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Money::Currency
@@ -930,10 +935,10 @@ YEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1057</x>
-      <y>693</y>
-      <w>364</w>
-      <h>119</h>
+      <x>1359</x>
+      <y>891</y>
+      <w>468</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>CurrencyMismatchException
 --
@@ -950,10 +955,10 @@ YEN
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>546</y>
-      <w>112</w>
-      <h>203</h>
+      <x>954</x>
+      <y>702</y>
+      <w>144</w>
+      <h>261</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;270.0;140.0;270.0</additional_attributes>
@@ -961,10 +966,10 @@ YEN
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>553</y>
-      <w>329</w>
-      <h>168</h>
+      <x>954</x>
+      <y>711</y>
+      <w>423</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0;40.0;220.0;450.0;220.0</additional_attributes>
@@ -972,10 +977,10 @@ YEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1043</x>
-      <y>490</y>
-      <w>252</w>
-      <h>133</h>
+      <x>1341</x>
+      <y>630</y>
+      <w>324</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>MapAccountsContainer
 --
@@ -983,37 +988,42 @@ YEN
 --
 +MapAccountsContainer()
 +~MapAccountsContainer()
-+addAccount(IAccount *)
-+count()
-+findAccount(unsigned int)
-+operator[](std::size_t)
-+operator[](std::size_t) const
++addAccount(IAccount *) : void
++count() : int
++findAccount(unsigned int) : int
++isFull() : bool
++applyVisitor (IAccountVisitor *) : void
+
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>875</x>
-      <y>840</y>
-      <w>392</w>
-      <h>56</h>
+      <x>1125</x>
+      <y>1080</y>
+      <w>504</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>CurrencyConversion
 --
--mCurrencyConversion : unorderedMap &lt;currency, Currency&gt; &lt;&lt;static&gt;&gt;
+-mCurrencyConversion : unorderedMap &lt;(currency, Currency), double&gt; 
+-mCurrencyFile :string
 --
-+getInstance() : unorderedMap &lt;currency, Currency&gt; &lt;&lt;static&gt;&gt;
+-CurrencyConversion(string)
+-~CurrencyConversion()
++getInstance() :  CurrencyConversion&amp; &lt;&lt;static&gt;&gt;
++convert (Currency, Currency) : double
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>21</y>
-      <w>742</w>
-      <h>651</h>
+      <x>972</x>
+      <y>27</y>
+      <w>954</w>
+      <h>837</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>1040.0;10.0;840.0;10.0;840.0;910.0;10.0;910.0</additional_attributes>
@@ -1021,10 +1031,10 @@ lw=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1029</x>
-      <y>350</y>
-      <w>35</w>
-      <h>154</h>
+      <x>1323</x>
+      <y>450</y>
+      <w>45</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;30.0;10.0;30.0;200.0</additional_attributes>
@@ -1032,12 +1042,12 @@ lw=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1078</x>
-      <y>357</y>
-      <w>252</w>
-      <h>56</h>
+      <x>1944</x>
+      <y>954</y>
+      <w>324</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>AccountVisitor
+    <panel_attributes>IAccountVisitor
 --
 --
 +visit (CheckingAccount &amp;) = 0 : void
@@ -1048,38 +1058,40 @@ lw=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1092</x>
-      <y>427</y>
-      <w>224</w>
-      <h>56</h>
+      <x>1764</x>
+      <y>1053</y>
+      <w>288</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>BackupVisitor
 --
+-mCheckingFile : string
+-mSavingsFile : string
 --
 +visit (CheckingAccount &amp;) : void
 +visit (SavingsAccount &amp;) : void
-+displayBackup (ostream &amp;) : void
++backupVisitor(string) : void
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1176</x>
-      <y>406</y>
-      <w>21</w>
-      <h>35</h>
+      <x>1872</x>
+      <y>1017</y>
+      <w>117</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>110.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>28</x>
-      <y>406</y>
-      <w>147</w>
-      <h>84</h>
+      <x>36</x>
+      <y>522</y>
+      <w>189</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>BackupCmd
 --
@@ -1095,12 +1107,68 @@ lw=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>133</x>
-      <y>343</y>
-      <w>217</w>
-      <h>77</h>
+      <x>171</x>
+      <y>441</y>
+      <w>279</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>290.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2295</x>
+      <y>1053</y>
+      <w>198</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PrintVisitor
+--
+-mPrintFile : string
+--
++visit (CheckingAccount &amp;) : void
++visit (SavingsAccount &amp;) : void
++prinitVisitor(string) : void
+lw=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2079</x>
+      <y>1053</y>
+      <w>198</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>MonthVisitor
+--
+--
++visit (CheckingAccount &amp;) : void
++visit (SavingsAccount &amp;) : void
+lw=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2151</x>
+      <y>1017</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2241</x>
+      <y>1017</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;40.0</additional_attributes>
   </element>
 </diagram>
