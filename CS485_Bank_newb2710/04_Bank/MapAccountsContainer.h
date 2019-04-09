@@ -18,7 +18,7 @@ public:
 	~MapAccountsContainer();
 	void addAccount(IAccount *pcTheAccount);
 	int count();
-	int findAccount(unsigned int);
+	IAccount* findAccount(unsigned int);
 	bool isFull();
 	void applyVisitor(IAccountVisitor *);
 

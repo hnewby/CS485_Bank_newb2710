@@ -21,7 +21,7 @@ public:
 
 
 private:
-	std::ostream mChecking;
-	std::ostream mSavings;
+	std::ofstream mChecking;
+	std::ofstream mSavings;
 };
 #endif

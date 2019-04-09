@@ -50,3 +50,16 @@ CheckingAccount::CheckingAccount(int acctNum, Money amt,
 CheckingAccount::~CheckingAccount() {
 
 }
+//***************************************************************************
+// Function:		accept
+//
+// Description: accept visitor and call visit
+//
+// Parameters:  pcAcctVisitor - pointer to account visitor using
+//
+// Returned:    None
+//***************************************************************************
+void CheckingAccount::accept(IAccountVisitor *pcActVisitor) {
+	pcActVisitor->visit(*this);
+
+}

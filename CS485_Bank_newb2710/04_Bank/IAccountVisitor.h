@@ -15,7 +15,7 @@
 class IAccountVisitor {
 public:
 	IAccountVisitor();
-	~IAccountVisitor();
+	virtual ~IAccountVisitor();
 	virtual void visit(CheckingAccount &rcCheckingAct) = 0;
 	virtual void visit(SavingsAccount &rcSavingsAct) = 0;
 

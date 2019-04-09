@@ -1,91 +1,72 @@
 //***************************************************************************
-// File name:  ArrayAccountsClass.cpp
+// File name:  MapAccountsClass.cpp
 // Author:     Hannah Newby
-// Date:       3/12/19
+// Date:       4/9/19
 // Class:      CS485
-// Assignment: ArrayAccountsClass
-// Purpose:    ArrayAccountsClass class implamentation
+// Assignment: Bank
+// Purpose:    MapAccountsClass class implamentation
 //***************************************************************************
-#include "ArrayAccountsContainer.h"
-#include <exception>
+#include "MapAccountsContainer.h"
+
 //***************************************************************************
-// Constructor: ArrayAccountsContainer
+// Constructor: MapAccountsContainer
 //
-// Description: Initialize Array container
+// Description: Initialize Map container
 //
 // Parameters:  None
 //
 // Returned:    None
 //***************************************************************************
-ArrayAccountsContainer::ArrayAccountsContainer() {
-	mNumAccts = 0;
+MapAccountsContainer::MapAccountsContainer(){
 }
 //***************************************************************************
-// Destructor:  ArrayAccountsContainter
+// Destructor:  MapAccountsContainter
 //
-// Description: Deconstructor for ArrayAccountsContainer
+// Description: Deconstructor for MapAccountsContainer
 //
 // Parameters:  None
 //
 // Returned:    None
 //***************************************************************************
-ArrayAccountsContainer::~ArrayAccountsContainer() {
-
+MapAccountsContainer::~MapAccountsContainer(){
 }
 //***************************************************************************
 // Function:		addAccount
 //
-// Description: adds account to array
+// Description: adds account to map
 //
 // Parameters:  pcTheAccount - pointer to the account to add
 //
 // Returned:    None
 //***************************************************************************
-void ArrayAccountsContainer::addAccount(IAccount *pcTheAccount) {
-	if (mNumAccts < mMAX_ACCOUNTS) {
-		mapcAccounts[mNumAccts] = pcTheAccount;
-		mNumAccts++;
-	}
-	else {
-		throw std::bad_array_new_length();
-	}
+void MapAccountsContainer::addAccount(IAccount * pcTheAccount){
+	
+	mpcAccounts.insert(pcTheAccount->getAcctNum(), pcTheAccount);
 }
 //***************************************************************************
-// Function:		counts
+// Function:		count
 //
-// Description: returns how many accounts in array
+// Description: returns how many accounts in map
 //
 // Parameters:  None
 //
 // Returned:    int
 //***************************************************************************
-int ArrayAccountsContainer::count() {
-	return mNumAccts;
+int MapAccountsContainer::count(){
+	
+	return mpcAccounts.size();
 }
 //***************************************************************************
 // Function:		findAccount
 //
-// Description: find account in array given account num
+// Description: gets account from Map
 //
-// Parameters:  acctNum - account number searching for
+// Parameters:  acctNum - account number looking for
 //
-// Returned:    int
+// Returned:    IAccount*
 //***************************************************************************
-IAccount* ArrayAccountsContainer::findAccount(unsigned int acctNum) {
-	bool bIsFound = false;
-	int index = 0;
-	while (!bIsFound && index < mNumAccts) // can use isFull
-	{
-			if (mapcAccounts[index]->getAcctNum() == acctNum)
-			{
-				bIsFound = true;
-			}
-			else
-			{
-				index++;
-			}
-	}
-	return mapcAccounts[index];
+IAccount * MapAccountsContainer::findAccount(unsigned int acctNum) {
+	return mpcAccounts.find(acctNum);
 }
 //***************************************************************************
 // Function:		isFull
@@ -96,13 +77,8 @@ IAccount* ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 //
 // Returned:    bool
 //***************************************************************************
-bool ArrayAccountsContainer::isFull() {
-	bool bIsFull = false;
-	if (mNumAccts >= mMAX_ACCOUNTS)
-	{
-		bIsFull = true;
-	}
-	return bIsFull;
+bool MapAccountsContainer::isFull(){
+	return false;
 }
 //***************************************************************************
 // Function:		applyVisitor
@@ -113,9 +89,8 @@ bool ArrayAccountsContainer::isFull() {
 //
 // Returned:    None
 //***************************************************************************
-void ArrayAccountsContainer::applyVisitor(IAccountVisitor *pcAcctVisitor)
-{
-	for (int i = 0; i < mNumAccts; i++) {
-		mapcAccounts[i]->accept(pcAcctVisitor);
+void MapAccountsContainer::applyVisitor(IAccountVisitor * pcAcctVisitor){
+	for (int i = 0; i < mpcAccounts.size(); i++) {
+		mpcAccounts.at(i)->accept(pcAcctVisitor);
 	}
 }

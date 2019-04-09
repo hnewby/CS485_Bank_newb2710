@@ -49,3 +49,16 @@ SavingsAccount::SavingsAccount(int acctNum, Money amt,
 SavingsAccount::~SavingsAccount() {
 
 }
+//***************************************************************************
+// Function:		accept
+//
+// Description: accept visitor and call visit
+//
+// Parameters:  pcAcctVisitor - pointer to account visitor using
+//
+// Returned:    None
+//***************************************************************************
+void SavingsAccount::accept(IAccountVisitor *pcActVisitor) {
+	pcActVisitor->visit(*this);
+
+}

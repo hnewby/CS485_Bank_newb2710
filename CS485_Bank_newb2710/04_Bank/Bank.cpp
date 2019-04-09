@@ -174,11 +174,21 @@ void Bank::deleteAll () {
 	}
 	delete mpcAccounts;
 }
-
+//***************************************************************************
+// Function:		backup
+//
+// Description: creates a backup visitor
+//
+// Parameters:  checkingFile - name of file to send checking accounts
+//							savingFile	 - name of file to send savings accounts
+//
+// Returned:    None
+//***************************************************************************
 void Bank::backup(std::string checkingFile, std::string savingFile)
 {
 	IAccountVisitor *pcAcctVisitor;
 	
 	pcAcctVisitor = new BackupVisitor(checkingFile, savingFile);
+	mpcAccounts->applyVisitor(pcAcctVisitor);
 	
 }

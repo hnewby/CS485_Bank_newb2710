@@ -45,12 +45,12 @@ class Money {
 
 		void read(std::istream& rcIn);
 		void write(std::ostream& rcOut);
-
+		const static std::unordered_map<std::string, Currency>strToEnum;
+		const static std::unordered_map<Currency, std::string>enumToStr;
 	private:
 		void checkCurrency(const Currency &rcCurr) const; // check for exception
 		long long mAmount;
 		Currency meCurrency;
-		const static std::unordered_map<std::string, Currency>strToEnum;
-		const static std::unordered_map<Currency, std::string>enumToStr;
+		
 };
 #endif

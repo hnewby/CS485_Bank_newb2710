@@ -21,6 +21,6 @@ public:
 
 
 private:
-	std::ostream mDisplay;
+	std::ofstream mDisplay;
 
 #endif

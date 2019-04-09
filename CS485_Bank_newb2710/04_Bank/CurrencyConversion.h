@@ -9,6 +9,7 @@
 #pragma once
 #include <string>
 #include "Money.h"
+#include <unordered_map>
 class CurrencyConversion {
 	public:
 		static CurrencyConversion& getInstance();
@@ -19,4 +20,6 @@ class CurrencyConversion {
 		~CurrencyConversion();
 		CurrencyConversion(CurrencyConversion const&) = delete;
 		CurrencyConversion& operator=(CurrencyConversion const&) = delete;
+
+		std::unordered_map < std::pair<Currency, Currency>, double > mCurrencyConversion;
 };

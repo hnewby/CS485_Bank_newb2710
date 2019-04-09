@@ -117,9 +117,11 @@
   <ItemGroup>
     <ClCompile Include="ArrayAccountsContainer.cpp" />
     <ClCompile Include="BackupCmd.cpp" />
+    <ClCompile Include="BackupVisitor.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankApp.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
+    <ClCompile Include="CurrencyConversion.cpp" />
     <ClCompile Include="CurrencyMismatchException.cpp" />
     <ClCompile Include="DepositCmd.cpp" />
     <ClCompile Include="FlatInterestRate.cpp" />
@@ -127,10 +129,13 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IFee.cpp" />
     <ClCompile Include="IInterestRate.cpp" />
+    <ClCompile Include="MapAccountsContainer.cpp" />
     <ClCompile Include="Money.cpp" />
     <ClCompile Include="MonthCmd.cpp" />
     <ClCompile Include="MonthlyFee.cpp" />
+    <ClCompile Include="MonthVisitor.cpp" />
     <ClCompile Include="PrintCmd.cpp" />
+    <ClCompile Include="PrintVisitor.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />
     <ClCompile Include="ScreenBankWriter.cpp" />
     <ClCompile Include="StreamAccountReader.cpp" />
