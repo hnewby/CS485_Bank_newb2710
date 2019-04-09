@@ -24,7 +24,7 @@
 +print () : void
 +endOfMonthForAll () : void
 +deleteAll () : void
-+backup () : void
++backup (string, string) : void
 lw=5
 </panel_attributes>
     <additional_attributes/>
@@ -55,7 +55,7 @@ lw=5
 #checkNegBal () : bool
 &lt;&lt;friend&gt;&gt;operator &gt;&gt;(std::istream &amp;, Account&amp;) : std::istream&amp;
 &lt;&lt;friend&gt;&gt;operator &lt;&lt;(std::ostream &amp;, Account&amp;) : std::ostream&amp;
-+accept (IAccountVisitor*) : void
+/+accept (IAccountVisitor*) = 0: void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -73,7 +73,7 @@ lw=5</panel_attributes>
 +CheckingAccount()
 +Checking (int, Money, InterestRate, Fee)
 +~CheckingAccount ()
-+accept (IAccountVisitor*) : void
+/+accept (IAccountVisitor*) : void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -92,7 +92,7 @@ lw=5</panel_attributes>
 +SavingsAccount) 
 +SavingsAccount(int, Money, InterestRate, Fee)
 +~SavingsAccount ()
-+accept (IAccountVisitor*) : void
+/+accept (IAccountVisitor*) : void/
 lw=5
 </panel_attributes>
     <additional_attributes/>
@@ -191,7 +191,7 @@ lw=5
 
 --
 +displayLines(ostream) = 0: void
-+write(ostream&amp;, Account &amp;) = 0 :void
++write(ostream&amp;, IAccount &amp;) = 0 :void
 
 </panel_attributes>
     <additional_attributes/>
@@ -208,8 +208,8 @@ lw=5
 --
 
 --
-+displayLines () : void
-+writeAcctTransation (Account &amp;) : bool</panel_attributes>
++displayLines (ostream &amp;) : void
++write(ostream&amp;, IAccount &amp;) :void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -620,8 +620,6 @@ runCommand(ICommand*) : void</panel_attributes>
 +read(std::istream&amp;) : void
 +write(std::ostream&amp;) : void
 - checkCurrency (Currency &amp;) : void
--getAmount () long long
-- getCurrency () : Currency
 +convert (double) : void
 </panel_attributes>
     <additional_attributes/>
@@ -644,6 +642,7 @@ runCommand(ICommand*) : void</panel_attributes>
 +findAccount(unsigned int) = 0 : int
 +isFull() = 0 : bool
 +applyVisitor (IAccountVisitor *) = 0 : void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -663,11 +662,12 @@ runCommand(ICommand*) : void</panel_attributes>
 --
 + ArrayAccountsContainer()
 +~ArrayAccountsContainer()
-+addAccount(IAccount *) : void
-+count() : int
-+findAccount(unsigned int) : int
-+isFull() : bool
-+applyVisitor (IAccountVisitor *) : void
+/+addAccount(IAccount *) : void/
+/+count() : int/
+/+findAccount(unsigned int) : int/
+/+isFull() : bool/
+/+applyVisitor (IAccountVisitor *) : void/
+-sort () : void
 
 </panel_attributes>
     <additional_attributes/>
@@ -984,15 +984,16 @@ YEN
     </coordinates>
     <panel_attributes>MapAccountsContainer
 --
--mpAccounts : unorderedMap&lt;int, IAccount*&gt; 
+-mpAccounts : map&lt;int, IAccount*&gt; 
 --
 +MapAccountsContainer()
 +~MapAccountsContainer()
-+addAccount(IAccount *) : void
-+count() : int
-+findAccount(unsigned int) : int
-+isFull() : bool
-+applyVisitor (IAccountVisitor *) : void
+/+addAccount(IAccount *) : void/
+/+count() : int/
+/+findAccount(unsigned int) : int/
+/+isFull() : bool/
+/+applyVisitor (IAccountVisitor *) : void/
+
 
 lw=5</panel_attributes>
     <additional_attributes/>
@@ -1003,17 +1004,18 @@ lw=5</panel_attributes>
       <x>1125</x>
       <y>1080</y>
       <w>504</w>
-      <h>117</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>CurrencyConversion
 --
 -mCurrencyConversion : unorderedMap &lt;(currency, Currency), double&gt; 
--mCurrencyFile :string
 --
 -CurrencyConversion(string)
 -~CurrencyConversion()
 +getInstance() :  CurrencyConversion&amp; &lt;&lt;static&gt;&gt;
 +convert (Currency, Currency) : double
+-CurrencyConversion (CurrencyConversion const&amp;) = delete
+-operator=(CurrencyConversion const&amp;) = delete : CurrencyConversion&amp;
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1043,15 +1045,17 @@ lw=5</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1944</x>
-      <y>954</y>
+      <y>927</y>
       <w>324</w>
-      <h>72</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>IAccountVisitor
 --
 --
-+visit (CheckingAccount &amp;) = 0 : void
-+visit (SavingsAccount &amp;) = 0 : void
++IAccountVisitor()
++~IAccountVisitor()
+/+visit (CheckingAccount &amp;) = 0 : void/
+/+visit (SavingsAccount &amp;) = 0 : void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1061,16 +1065,17 @@ lw=5</panel_attributes>
       <x>1764</x>
       <y>1053</y>
       <w>288</w>
-      <h>108</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>BackupVisitor
 --
--mCheckingFile : string
--mSavingsFile : string
+-mChecking : ostream
+-mSavings : ostream
 --
-+visit (CheckingAccount &amp;) : void
-+visit (SavingsAccount &amp;) : void
-+backupVisitor(string) : void
++BackupVisitor(string, string)
++~BackupVisitor()
+/+visit (CheckingAccount &amp;) : void/
+/+visit (SavingsAccount &amp;) : void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1091,11 +1096,12 @@ lw=5</panel_attributes>
       <x>36</x>
       <y>522</y>
       <w>189</w>
-      <h>108</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>BackupCmd
 --
-
+-mCheckingFile: string
+-mSavingsFile : string
 --
 +BackupCmd()
 +~BackupCmd
@@ -1121,15 +1127,16 @@ lw=5</panel_attributes>
       <x>2295</x>
       <y>1053</y>
       <w>198</w>
-      <h>90</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>PrintVisitor
 --
--mPrintFile : string
+-mPrint : ostream
 --
-+visit (CheckingAccount &amp;) : void
-+visit (SavingsAccount &amp;) : void
-+prinitVisitor(string) : void
++PrintVisitor(string)
++~PrintVisitor()
+/+visit (CheckingAccount &amp;) : void/
+/+visit (SavingsAccount &amp;) : void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1144,8 +1151,10 @@ lw=5</panel_attributes>
     <panel_attributes>MonthVisitor
 --
 --
-+visit (CheckingAccount &amp;) : void
-+visit (SavingsAccount &amp;) : void
++MonthVisitor()
++~MonthVisitor()
+/+visit (CheckingAccount &amp;) : void/
+/+visit (SavingsAccount &amp;) : void/
 lw=5</panel_attributes>
     <additional_attributes/>
   </element>
