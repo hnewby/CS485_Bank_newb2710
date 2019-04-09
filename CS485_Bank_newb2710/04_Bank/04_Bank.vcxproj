@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArrayAccountsContainer.cpp" />
+    <ClCompile Include="BackupCmd.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankApp.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
@@ -141,24 +142,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayAccountsContainer.h" />
+    <ClInclude Include="BackupCmd.h" />
+    <ClInclude Include="BackupVisitor.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="BankApp.h" />
     <ClInclude Include="CheckingAccount.h" />
+    <ClInclude Include="CurrencyConversion.h" />
     <ClInclude Include="CurrencyMismatchException.h" />
     <ClInclude Include="DepositCmd.h" />
     <ClInclude Include="FlatInterestRate.h" />
     <ClInclude Include="IAccount.h" />
     <ClInclude Include="IAccountReader.h" />
     <ClInclude Include="IAccountsContainer.h" />
+    <ClInclude Include="IAccountVisitor.h" />
     <ClInclude Include="IBankWriter.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="ICommandReader.h" />
     <ClInclude Include="IFee.h" />
     <ClInclude Include="IInterestRate.h" />
+    <ClInclude Include="MapAccountsContainer.h" />
     <ClInclude Include="Money.h" />
     <ClInclude Include="MonthCmd.h" />
     <ClInclude Include="MonthlyFee.h" />
+    <ClInclude Include="MonthVisitor.h" />
     <ClInclude Include="PrintCmd.h" />
+    <ClInclude Include="PrintVisitor.h" />
     <ClInclude Include="SavingsAccount.h" />
     <ClInclude Include="ScreenBankWriter.h" />
     <ClInclude Include="StreamAccountReader.h" />

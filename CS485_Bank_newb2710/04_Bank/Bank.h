@@ -22,6 +22,7 @@ class Bank {
 		void print();
 		void endOfMonthForAll();
 		void deleteAll();
+		void backup(std::string checkingFile, std::string savingsFile);
 	private:
 		IAccountsContainer *mpcAccounts;
 };

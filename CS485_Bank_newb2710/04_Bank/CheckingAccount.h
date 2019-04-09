@@ -16,6 +16,7 @@ class CheckingAccount : public IAccount {
 		CheckingAccount(int acctNum, Money amt,
 			IInterestRate * pInterestRate, IFee* pcTheFee);
 		~CheckingAccount();
+		void accept(IAccountVisitor *pcActVisitor);
 	private:
 
 };

@@ -15,6 +15,7 @@ class SavingsAccount : public IAccount {
 		SavingsAccount(int acctNum, Money amt, IInterestRate * pInterestRate,
 			IFee* pcTheFee);
 		~SavingsAccount();
+		void accept(IAccountVisitor *pcActVisitor);
 	private:
 
 };

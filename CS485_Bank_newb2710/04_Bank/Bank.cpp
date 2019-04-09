@@ -10,6 +10,7 @@
 #include "ScreenBankWriter.h"
 #include "ArrayAccountsContainer.h"
 #include "CurrencyMismatchException.h"
+#include "BackupVisitor.h"
 //***************************************************************************
 // Constructor: Bank
 //
@@ -172,4 +173,12 @@ void Bank::deleteAll () {
 		}
 	}
 	delete mpcAccounts;
+}
+
+void Bank::backup(std::string checkingFile, std::string savingFile)
+{
+	IAccountVisitor *pcAcctVisitor;
+	
+	pcAcctVisitor = new BackupVisitor(checkingFile, savingFile);
+	
 }

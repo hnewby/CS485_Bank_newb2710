@@ -10,7 +10,7 @@
 #ifndef ArrayAccountsContainer_h
 #define ArrayAccountsContainer_h
 #include "IAccountsContainer.h"
-
+#include "IAccountVisitor.h"
 class ArrayAccountsContainer : public IAccountsContainer{
 	public:
 		ArrayAccountsContainer();
@@ -19,11 +19,11 @@ class ArrayAccountsContainer : public IAccountsContainer{
 		int count();
 		int findAccount(unsigned int);
 		bool isFull();
-		IAccount&  operator[] (std::size_t index);
-		const IAccount& operator[](std::size_t index) const;
+		void applyVisitor(IAccountVisitor *);
 
 
 	private:
+		void sort();
 		static int const mMAX_ACCOUNTS = 100;
 		IAccount *mapcAccounts[mMAX_ACCOUNTS];
 		int mNumAccts;

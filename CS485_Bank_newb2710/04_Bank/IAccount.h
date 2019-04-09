@@ -12,7 +12,7 @@
 #include "IFee.h"
 #include "IInterestRate.h"
 #include <iostream>
-
+#include "IAccountVisitor.h"
 class IAccount {
 	public:
 		IAccount();
@@ -27,7 +27,7 @@ class IAccount {
 			IAccount &rcTheAccount);
 		friend std::ostream& operator << (std::ostream &rcOut,
 			IAccount &rcTheAccount);
-
+		virtual void accept(IAccountVisitor *pcActVisitor) = 0;
 	protected:
 		bool checkNegBal();
 
