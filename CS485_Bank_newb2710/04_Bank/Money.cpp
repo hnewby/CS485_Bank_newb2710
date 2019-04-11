@@ -9,6 +9,7 @@
 #include "Money.h"
 #include "CurrencyMismatchException.h"
 #include <string>
+#include "CurrencyConversion.h"
 const std::unordered_map<std::string, Currency> Money::strToEnum{
 	
 	{"USD", Currency::USD},
@@ -169,7 +170,7 @@ Money Money::operator * (const Money &rcAmount) const {
 		cAmount = mAmount * rcAmount.mAmount;
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return cAmount;
 }
@@ -188,7 +189,7 @@ Money& Money::operator = (const Money &rcAmount) {
 		mAmount = rcAmount.mAmount;
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return *this;
 }
@@ -210,7 +211,7 @@ bool Money::operator == (const Money &rcAmount) const {
 		}
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return bIsEqual;
 }
@@ -229,7 +230,7 @@ Money& Money::operator -= (const Money &rcAmount) {
 		mAmount -= rcAmount.mAmount;
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return *this;
 }
@@ -248,7 +249,7 @@ Money& Money::operator += (const Money &rcAmount) {
 		mAmount += rcAmount.mAmount;
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return *this;
 }
@@ -271,7 +272,7 @@ bool Money::operator <(const Money &rcAmount) const {
 		}
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return bIsLess;
 }
@@ -293,7 +294,7 @@ bool Money::operator > (const Money &rcAmount) const {
 		}
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return bIsGreater;
 }
@@ -315,7 +316,7 @@ bool Money::operator <= (const Money &rcAmount) const {
 		}
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return bIsLessEq;
 }
@@ -337,7 +338,7 @@ bool Money::operator >= (const Money &rcAmount) const {
 		}
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 	return bIsGreaterEq;
 }
@@ -415,6 +416,34 @@ std::ostream& operator << (std::ostream &rcOut, Money &rcAmount) {
 	return rcOut;
 }
 //***************************************************************************
+// Function:		readCurrency
+//
+// Description: read in currency
+//
+// Parameters:  rcIn - reference to istream
+//
+// Returned:    void
+//***************************************************************************
+void Money::readCurrency(std::istream & rcIn){
+	std::string currency;
+	rcIn >> currency;
+	meCurrency = strToEnum.at(currency);
+}
+//***************************************************************************
+// Function:		writeCurrency
+//
+// Description: write out currency
+//
+// Parameters:  rcOut - reference to ostream
+//
+// Returned:    void
+//***************************************************************************
+void Money::writeCurrency(std::ostream & rcOut) {
+	std::string currency;
+	currency = enumToStr.at(meCurrency);
+	rcOut << currency;
+}
+//***************************************************************************
 // Function:		read
 //
 // Description: read into money
@@ -424,9 +453,10 @@ std::ostream& operator << (std::ostream &rcOut, Money &rcAmount) {
 // Returned:    void
 //***************************************************************************
 void Money::read(std::istream& rcIn) {
-	std::string currency;
-	rcIn >> currency >> mAmount;
-	meCurrency = strToEnum.at(currency);
+	//std::string currency;
+	readCurrency(rcIn);
+	rcIn >> mAmount;
+	//meCurrency = strToEnum.at(currency);
 }
 //***************************************************************************
 // Function:		write
@@ -441,9 +471,20 @@ void Money::write(std::ostream& rcOut) {
 	const double DIV = 100.00;
 	const int DECIMAL = 2;
 	double bal = mAmount / DIV;
-	std::string currency;
-	currency = enumToStr.at(meCurrency);
-	rcOut << currency << std::fixed << std::setprecision(DECIMAL) << bal;
+	writeCurrency(rcOut);
+	rcOut << std::fixed << std::setprecision(DECIMAL) << bal;
+}
+//***************************************************************************
+// Function:		getCurrency
+//
+// Description: creturn current currency in money
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+Currency Money::getCurrency(){
+	return meCurrency;
 }
 //***************************************************************************
 // Function:		checkCurrency
@@ -455,11 +496,11 @@ void Money::write(std::ostream& rcOut) {
 // Returned:    bool
 //***************************************************************************
 void Money::checkCurrency(const Currency &rcCurr) const {
-	bool bIsMatch = true;
-
-	if (meCurrency != rcCurr && meCurrency != Currency::ERR &&
-		rcCurr != Currency::ERR)
+	double exchange;
+	CurrencyConversion& lookup = CurrencyConversion::getInstance();
+	exchange = lookup.convert(meCurrency, rcCurr);
+	if (exchange == -1)
 	{
-			throw CurrencyMismatchException("Currencies do not match");
+			throw CurrencyMismatchException("No conversion\n");
 	}
 }

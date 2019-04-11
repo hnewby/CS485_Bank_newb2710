@@ -65,8 +65,8 @@ int MapAccountsContainer::count(){
 //
 // Returned:    IAccount*
 //***************************************************************************
-IAccount * MapAccountsContainer::findAccount(unsigned int acctNum) {
-	return mpcAccounts.find(acctNum);
+int MapAccountsContainer::findAccount(unsigned int acctNum) {
+	return distance(mpcAccounts.begin(), mpcAccounts.find(acctNum));
 }
 //***************************************************************************
 // Function:		isFull
@@ -93,4 +93,16 @@ void MapAccountsContainer::applyVisitor(IAccountVisitor * pcAcctVisitor){
 	for (int i = 0; i < mpcAccounts.size(); i++) {
 		mpcAccounts.at(i)->accept(pcAcctVisitor);
 	}
+}
+//***************************************************************************
+// Function:		getAccount
+//
+// Description: get account at given index
+//
+// Parameters:  index - index in map
+//
+// Returned:    IAccount *
+//***************************************************************************
+IAccount * MapAccountsContainer::getAccount(int index){
+	return mpcAccounts.at(index);
 }

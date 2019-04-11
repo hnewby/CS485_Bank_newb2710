@@ -28,6 +28,7 @@ class IAccount {
 		friend std::ostream& operator << (std::ostream &rcOut,
 			IAccount &rcTheAccount);
 		virtual void accept(IAccountVisitor *pcActVisitor) = 0;
+		
 	protected:
 		bool checkNegBal();
 

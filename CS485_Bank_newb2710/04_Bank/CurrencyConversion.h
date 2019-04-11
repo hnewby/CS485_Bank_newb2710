@@ -16,6 +16,7 @@ class CurrencyConversion {
 		double convert(Currency, Currency);
 
 	private:
+		CurrencyConversion(); //need to return instance
 		CurrencyConversion(std::string file);
 		~CurrencyConversion();
 		CurrencyConversion(CurrencyConversion const&) = delete;

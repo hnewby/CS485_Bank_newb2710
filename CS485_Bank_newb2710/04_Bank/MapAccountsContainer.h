@@ -18,10 +18,10 @@ public:
 	~MapAccountsContainer();
 	void addAccount(IAccount *pcTheAccount);
 	int count();
-	IAccount* findAccount(unsigned int);
+	int findAccount(unsigned int);
 	bool isFull();
 	void applyVisitor(IAccountVisitor *);
-
+	IAccount * getAccount(int index);
 
 private:
 	std::map<int, IAccount*> mpcAccounts;

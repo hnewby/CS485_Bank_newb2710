@@ -71,7 +71,7 @@ int ArrayAccountsContainer::count() {
 //
 // Returned:    int
 //***************************************************************************
-IAccount* ArrayAccountsContainer::findAccount(unsigned int acctNum) {
+int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
 	while (!bIsFound && index < mNumAccts) // can use isFull
@@ -85,7 +85,7 @@ IAccount* ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 				index++;
 			}
 	}
-	return mapcAccounts[index];
+	return index;
 }
 //***************************************************************************
 // Function:		isFull
@@ -118,4 +118,16 @@ void ArrayAccountsContainer::applyVisitor(IAccountVisitor *pcAcctVisitor)
 	for (int i = 0; i < mNumAccts; i++) {
 		mapcAccounts[i]->accept(pcAcctVisitor);
 	}
+}
+//***************************************************************************
+// Function:		getAccount
+//
+// Description: get account at given index
+//
+// Parameters:  index - index in array
+//
+// Returned:    IAccount *
+//***************************************************************************
+IAccount * ArrayAccountsContainer::getAccount(int index){
+	return mapcAccounts[index];
 }

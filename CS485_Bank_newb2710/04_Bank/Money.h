@@ -42,9 +42,11 @@ class Money {
 			Money &rcAmount);
 		friend std::ostream& operator << (std::ostream &rcOut,
 			Money &rcAmount);
-
+		void readCurrency(std::istream& rcIn);
+		void writeCurrency(std::ostream& rcOut);
 		void read(std::istream& rcIn);
 		void write(std::ostream& rcOut);
+		Currency getCurrency();
 		const static std::unordered_map<std::string, Currency>strToEnum;
 		const static std::unordered_map<Currency, std::string>enumToStr;
 	private:

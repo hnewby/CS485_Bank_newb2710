@@ -8,9 +8,10 @@
 //***************************************************************************
 #include "Bank.h"
 #include "ScreenBankWriter.h"
-#include "ArrayAccountsContainer.h"
+#include "Map AccountsContainer.h"
 #include "CurrencyMismatchException.h"
 #include "BackupVisitor.h"
+#include "MonthVisitor.h"
 //***************************************************************************
 // Constructor: Bank
 //
@@ -21,7 +22,7 @@
 // Returned:    None
 //***************************************************************************
 Bank::Bank() {
-	mpcAccounts = new ArrayAccountsContainer();
+	mpcAccounts = new MapAccountsContainer();
 }
 //***************************************************************************
 // Destructor:  Bank
@@ -48,7 +49,7 @@ void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
 	for (int i = 0; i < mpcAccounts->count(); i++) {
 		try {
-			rcOut.write(std::cout, (*mpcAccounts)[i]);
+			rcOut.write(std::cout, *(*mpcAccounts).getAccount(i));
 		}
 		catch (const std::range_error &e) {
 			std::cout << e.what() << '\n';
@@ -71,7 +72,7 @@ void Bank::deposit(int acctNum, Money amount) {
 	try {
 		int index;
 		index = mpcAccounts->findAccount(acctNum);
-		(*mpcAccounts)[index].deposit(amount);
+		(*mpcAccounts).getAccount(index)->deposit(amount);
 	}
 	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
@@ -91,7 +92,7 @@ void Bank::withdraw(int acctNum, Money amount) {
 	try {
 		int index;
 		index = mpcAccounts->findAccount(acctNum);
-		(*mpcAccounts)[index].withdraw(amount);
+		(*mpcAccounts).getAccount(index)->withdraw(amount);
 	}
 	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
@@ -128,7 +129,7 @@ void Bank::addAccount(IAccount *pcTheAccount) {
 // Returned:    None
 //***************************************************************************
 void Bank::print() {
-	IBankWriter* pcWriter = new ScreenBankWriter; // where am I deleteing?
+	IBankWriter* pcWriter = new ScreenBankWriter; 
 
 	writeBank(*pcWriter);
 	delete pcWriter;
@@ -143,7 +144,14 @@ void Bank::print() {
 // Returned:    None
 //***************************************************************************
 void Bank::endOfMonthForAll() {
-	for (int i = 0; i < mpcAccounts->count(); i++)
+
+	IAccountVisitor *pcAcctVisitor;
+
+	pcAcctVisitor = new MonthVisitor();
+	mpcAccounts->applyVisitor(pcAcctVisitor);
+
+
+	/*for (int i = 0; i < mpcAccounts->count(); i++)
 	{
 		try {
 			(*mpcAccounts)[i].endOfMonth();
@@ -151,7 +159,7 @@ void Bank::endOfMonthForAll() {
 		catch (const std::range_error &e) {
 			std::cout << e.what() << '\n';
 		}
-	}
+	}*/
 }
 //***************************************************************************
 // Function:		deleteAll
@@ -166,7 +174,7 @@ void Bank::deleteAll () {
 	for (int i = 0; i < mpcAccounts->count(); i++)
 	{
 		try {
-			delete &(*mpcAccounts)[i];
+			delete &*(*mpcAccounts).getAccount(i);
 		}
 		catch (const std::range_error &e) {
 			std::cout << e.what() << '\n';
