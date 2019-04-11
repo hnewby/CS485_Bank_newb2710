@@ -19,4 +19,3 @@ private:
 	std::string mCheckingFile;
 	std::string mSavingsFile;
 };
-};

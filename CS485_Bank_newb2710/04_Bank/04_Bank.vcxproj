@@ -129,6 +129,7 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IFee.cpp" />
     <ClCompile Include="IInterestRate.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="MapAccountsContainer.cpp" />
     <ClCompile Include="Money.cpp" />
     <ClCompile Include="MonthCmd.cpp" />

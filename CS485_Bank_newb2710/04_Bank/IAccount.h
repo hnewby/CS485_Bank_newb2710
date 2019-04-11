@@ -6,36 +6,35 @@
 // Assignment: Bank
 // Purpose:    Account class header
 //***************************************************************************
+#pragma once
 #ifndef IAccount_h
 #define IAccount_h
 #include "Money.h"
 #include "IFee.h"
 #include "IInterestRate.h"
 #include <iostream>
-#include "IAccountVisitor.h"
+//#include "IAccountVisitor.h"
+class IAccountVisitor;
 class IAccount {
-	public:
-		IAccount();
-		virtual ~IAccount();
-		IAccount(int acctNum, Money acctBalance, IInterestRate * pInterestRate,
-			IFee* pcTheFee);
-		int getAcctNum();
-		void deposit(Money amt);
-		void withdraw(Money amt);
-		void endOfMonth();
-		friend std::istream& operator >> (std::istream &rcIn,
-			IAccount &rcTheAccount);
-		friend std::ostream& operator << (std::ostream &rcOut,
-			IAccount &rcTheAccount);
-		virtual void accept(IAccountVisitor *pcActVisitor) = 0;
-		
-	protected:
-		bool checkNegBal();
+public:
+	IAccount();
+	virtual ~IAccount();
+	IAccount(int acctNum, Money acctBalance, IInterestRate * pInterestRate, IFee* pcTheFee);
+	int getAcctNum();
+	void deposit(Money amt);
+	void withdraw(Money amt);
+	void endOfMonth();
+	friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
+	friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
+	virtual void accept(IAccountVisitor *pcActVisitor) = 0;
 
-	private:
-		int mAcctNum;
-		Money mcAcctBalance;
-		IInterestRate* mpcInterestRate;
-		IFee *mpcFee;
+protected:
+	bool checkNegBal();
+
+private:
+	int mAcctNum;
+	Money mcAcctBalance;
+	IInterestRate* mpcInterestRate;
+	IFee *mpcFee;
 };
 #endif

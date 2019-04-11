@@ -8,7 +8,7 @@
 //***************************************************************************
 #include "Bank.h"
 #include "ScreenBankWriter.h"
-#include "Map AccountsContainer.h"
+#include "MapAccountsContainer.h"
 #include "CurrencyMismatchException.h"
 #include "BackupVisitor.h"
 #include "MonthVisitor.h"
@@ -130,7 +130,6 @@ void Bank::addAccount(IAccount *pcTheAccount) {
 //***************************************************************************
 void Bank::print() {
 	IBankWriter* pcWriter = new ScreenBankWriter; 
-
 	writeBank(*pcWriter);
 	delete pcWriter;
 }

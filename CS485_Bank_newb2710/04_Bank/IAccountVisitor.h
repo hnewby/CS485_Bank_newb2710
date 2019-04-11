@@ -9,9 +9,10 @@
 #pragma once
 #ifndef IAccountVisitor_h
 #define IAccountVisitor_h
-#include "CheckingAccount.h"
-#include "SavingsAccount.h"
-
+//#include "CheckingAccount.h"
+//#include "SavingsAccount.h"
+class CheckingAccount;
+class SavingsAccount;
 class IAccountVisitor {
 public:
 	IAccountVisitor();

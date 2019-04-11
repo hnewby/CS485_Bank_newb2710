@@ -60,5 +60,6 @@ void BackupVisitor::visit(CheckingAccount & rcCheckingAct){
 // Returned:    None
 //***************************************************************************
 void BackupVisitor::visit(SavingsAccount & rcSavingsAct) {
+
 	mSavings << rcSavingsAct;
 }

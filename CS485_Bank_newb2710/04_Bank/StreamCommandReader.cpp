@@ -11,6 +11,7 @@
 #include "DepositCmd.h"
 #include "PrintCmd.h"
 #include "MonthCmd.h"
+#include "BackupCmd.h"
 
 //***************************************************************************
 // Function:		openCommands
@@ -59,6 +60,11 @@ ICommand* StreamCommandReader::read() {
 			break;
 		case 'M':
 			pcCmd = new MonthCmd();
+			break;
+		case 'B':
+			std::string chF, saF;
+			mcInFile >> chF >> saF;
+			pcCmd = new BackupCmd(chF, saF);
 			break;
 		}
 		mcInFile >> *pcCmd;

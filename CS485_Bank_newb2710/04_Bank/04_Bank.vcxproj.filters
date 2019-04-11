@@ -102,6 +102,9 @@
     <ClCompile Include="CurrencyConversion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayAccountsContainer.h">
@@ -123,9 +126,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FlatInterestRate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IAccount.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IAccountReader.h">
@@ -204,6 +204,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CurrencyConversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAccount.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

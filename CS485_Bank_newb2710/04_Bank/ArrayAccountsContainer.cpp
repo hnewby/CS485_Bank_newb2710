@@ -45,6 +45,7 @@ void ArrayAccountsContainer::addAccount(IAccount *pcTheAccount) {
 	if (mNumAccts < mMAX_ACCOUNTS) {
 		mapcAccounts[mNumAccts] = pcTheAccount;
 		mNumAccts++;
+		sort();
 	}
 	else {
 		throw std::bad_array_new_length();
@@ -130,4 +131,25 @@ void ArrayAccountsContainer::applyVisitor(IAccountVisitor *pcAcctVisitor)
 //***************************************************************************
 IAccount * ArrayAccountsContainer::getAccount(int index){
 	return mapcAccounts[index];
+}
+//***************************************************************************
+// Function:		sort
+//
+// Description: sort the array by acct # accending
+//
+// Parameters:  None
+//
+// Returned:		None
+//***************************************************************************
+void ArrayAccountsContainer::sort(){
+	IAccount *pTemp;
+	for (int i = 0; i < mNumAccts; i++) {
+		for (int j = 1; j < mNumAccts - 1; j++) {
+			if (mapcAccounts[j]->getAcctNum() > mapcAccounts[i]->getAcctNum()) {
+				pTemp = mapcAccounts[j];
+				mapcAccounts[j] = mapcAccounts[i];
+				mapcAccounts[i] = pTemp;
+			}
+		}
+	}
 }

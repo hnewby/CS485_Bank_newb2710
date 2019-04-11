@@ -6,6 +6,7 @@
 // Assignment: Bank
 // Purpose:    Account class header
 //***************************************************************************
+#pragma once
 #ifndef IAccount_h
 #define IAccount_h
 #include "Money.h"
