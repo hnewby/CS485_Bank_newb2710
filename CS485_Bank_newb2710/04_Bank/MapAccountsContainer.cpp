@@ -40,8 +40,8 @@ MapAccountsContainer::~MapAccountsContainer(){
 // Returned:    None
 //***************************************************************************
 void MapAccountsContainer::addAccount(IAccount * pcTheAccount){
-	
-	mpcAccounts.insert(pcTheAccount->getAcctNum(), pcTheAccount);
+
+	mpcAccounts.insert({ pcTheAccount->getAcctNum(), pcTheAccount });
 }
 //***************************************************************************
 // Function:		count
@@ -54,7 +54,7 @@ void MapAccountsContainer::addAccount(IAccount * pcTheAccount){
 //***************************************************************************
 int MapAccountsContainer::count(){
 	
-	return mpcAccounts.size();
+	return static_cast<int>(mpcAccounts.size());
 }
 //***************************************************************************
 // Function:		findAccount
@@ -66,7 +66,7 @@ int MapAccountsContainer::count(){
 // Returned:    IAccount*
 //***************************************************************************
 int MapAccountsContainer::findAccount(unsigned int acctNum) {
-	return distance(mpcAccounts.begin(), mpcAccounts.find(acctNum));
+	return static_cast<int>(distance(mpcAccounts.begin(), mpcAccounts.find(acctNum)));
 }
 //***************************************************************************
 // Function:		isFull

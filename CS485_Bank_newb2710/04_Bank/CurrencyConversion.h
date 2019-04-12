@@ -14,6 +14,7 @@ class CurrencyConversion {
 	public:
 		static CurrencyConversion& getInstance();
 		double convert(Currency, Currency);
+		void insert(Currency, Currency, double);
 
 	private:
 		CurrencyConversion(); //need to return instance

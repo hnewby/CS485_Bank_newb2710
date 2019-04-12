@@ -16,6 +16,10 @@
 #include <unordered_map>
 
 enum class Currency {USD, GBP, EUR, YEN, ERR};
+std::istream& operator >> (std::istream &rcIn,
+	Currency &rcCurr);
+const static std::unordered_map<std::string, Currency>strToEnum;
+const static std::unordered_map<Currency, std::string>enumToStr;
 class Money {
 	public:
 		Money();
@@ -55,8 +59,7 @@ class Money {
 
 
 
-		const static std::unordered_map<std::string, Currency>strToEnum;
-		const static std::unordered_map<Currency, std::string>enumToStr;
+		
 	private:
 		double checkCurrency(const Currency &rcCurr) const; // check for exception
 		long long mAmount;

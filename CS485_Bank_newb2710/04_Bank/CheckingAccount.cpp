@@ -7,7 +7,7 @@
 // Purpose:    Checking Account class implamentation
 //***************************************************************************
 #include "CheckingAccount.h"
-
+#include "IAccountVisitor.h"
 //***************************************************************************
 // Constructor: CheckingAccount
 //

@@ -10,7 +10,7 @@
 #include "CurrencyMismatchException.h"
 #include <string>
 #include "CurrencyConversion.h"
-const std::unordered_map<std::string, Currency> Money::strToEnum{
+const std::unordered_map<std::string, Currency> strToEnum{
 	
 	{"USD", Currency::USD},
 	{"GBP", Currency::GBP},
@@ -19,7 +19,7 @@ const std::unordered_map<std::string, Currency> Money::strToEnum{
 	{"ERR", Currency::ERR}
 };
 
-const std::unordered_map<Currency, std::string> Money::enumToStr{
+const std::unordered_map<Currency, std::string> enumToStr{
 	{Currency::USD, "USD"},
 	{Currency::GBP, "GBP"},
 	{Currency::EUR, "EUR"},
@@ -396,6 +396,12 @@ Money Money::operator * (const double amount) const {
 	Money cAmount;
 	cAmount = static_cast<long long>(mAmount * amount);
 	return cAmount;
+}
+std::istream & operator>>(std::istream & rcIn, Currency & rcCurr)
+{
+	std::string currency;
+	rcIn >> currency;
+	rcCurr = strToEnum.at(currency);
 }
 //***************************************************************************
 // Function:		operator  *
