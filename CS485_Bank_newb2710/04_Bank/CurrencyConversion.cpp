@@ -26,7 +26,7 @@ CurrencyConversion::CurrencyConversion(std::string file) {
 
 CurrencyConversion::~CurrencyConversion(){
 }
-CurrencyConversion & CurrencyConversion::getInstance()
+CurrencyConversion& CurrencyConversion::getInstance()
 {
 	static CurrencyConversion instance;
 	return instance;

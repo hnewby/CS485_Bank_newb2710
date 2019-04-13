@@ -10,6 +10,7 @@
 #include <string>
 #include "Money.h"
 #include <unordered_map>
+#include <map>
 class CurrencyConversion {
 	public:
 		static CurrencyConversion& getInstance();

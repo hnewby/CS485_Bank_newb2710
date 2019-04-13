@@ -10,6 +10,8 @@
 #include "CurrencyMismatchException.h"
 #include <string>
 #include "CurrencyConversion.h"
+//const static std::unordered_map<std::string, Currency>strToEnum;
+//const static std::unordered_map<Currency, std::string>enumToStr;
 const std::unordered_map<std::string, Currency> strToEnum{
 	
 	{"USD", Currency::USD},
@@ -402,6 +404,7 @@ std::istream & operator>>(std::istream & rcIn, Currency & rcCurr)
 	std::string currency;
 	rcIn >> currency;
 	rcCurr = strToEnum.at(currency);
+	return rcIn;
 }
 //***************************************************************************
 // Function:		operator  *

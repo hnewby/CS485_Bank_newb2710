@@ -18,8 +18,7 @@
 enum class Currency {USD, GBP, EUR, YEN, ERR};
 std::istream& operator >> (std::istream &rcIn,
 	Currency &rcCurr);
-const static std::unordered_map<std::string, Currency>strToEnum;
-const static std::unordered_map<Currency, std::string>enumToStr;
+
 class Money {
 	public:
 		Money();
@@ -57,7 +56,8 @@ class Money {
 		double getExRate(Currency &rcCurr);
 		Money calcExchange(Money &rcMoney);
 
-
+		const static std::unordered_map<std::string, Currency>strToEnum;
+		const static std::unordered_map<Currency, std::string>enumToStr;
 
 		
 	private:
