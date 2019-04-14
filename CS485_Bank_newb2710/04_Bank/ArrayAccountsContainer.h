@@ -17,7 +17,7 @@ class ArrayAccountsContainer : public IAccountsContainer{
 		~ArrayAccountsContainer();
 		void addAccount(IAccount *pcTheAccount);
 		int count();
-		int findAccount(unsigned int acctNum);
+		IAccount * findAccount(unsigned int acctNum);
 		bool isFull();
 		void applyVisitor(IAccountVisitor *);
 		IAccount * getAccount(int index);

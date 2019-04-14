@@ -15,6 +15,7 @@ class IBankWriter {
 	public:
 		virtual void displayLines(std::ostream &rcOut) = 0;
 		virtual void write(std::ostream &rcOut, IAccount &rcTheAccount) = 0;
+		//virtual std::ofstream getStream() = 0;
 	private:
 		
 };

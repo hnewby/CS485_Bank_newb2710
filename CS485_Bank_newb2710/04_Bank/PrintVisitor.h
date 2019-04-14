@@ -14,7 +14,7 @@
 #include "IAccountVisitor.h"
 class PrintVisitor : public IAccountVisitor {
 public:
-	PrintVisitor(std::string printFile);
+	PrintVisitor();
 	~PrintVisitor();
 	void visit(CheckingAccount &rcCheckingAct);
 	void visit(SavingsAccount &rcSavingsAct);

@@ -220,5 +220,8 @@
     <Text Include="Commands.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="CurrencyConversions.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

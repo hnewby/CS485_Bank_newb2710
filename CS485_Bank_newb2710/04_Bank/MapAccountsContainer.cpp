@@ -64,9 +64,9 @@ int MapAccountsContainer::count(){
 // Parameters:  acctNum - account number looking for
 //
 // Returned:    IAccount*
-//***************************************************************************
-int MapAccountsContainer::findAccount(unsigned int acctNum) {
-	return static_cast<int>(distance(mpcAccounts.begin(), mpcAccounts.find(acctNum)));
+IAccount * MapAccountsContainer::findAccount(unsigned int acctNum) {
+	auto it = mpcAccounts.find(acctNum);
+	return mpcAccounts.at(it->first);// static_cast<int>(distance(mpcAccounts.begin(), mpcAccounts.find(acctNum)) + 1);
 }
 //***************************************************************************
 // Function:		isFull
@@ -90,8 +90,12 @@ bool MapAccountsContainer::isFull(){
 // Returned:    None
 //***************************************************************************
 void MapAccountsContainer::applyVisitor(IAccountVisitor * pcAcctVisitor){
-	for (int i = 0; i < mpcAccounts.size(); i++) {
-		mpcAccounts.at(i)->accept(pcAcctVisitor);
+	//mpcAccounts::iterator it = mpcAccounts.begin();
+//	while (it != mpcAccounts.end()) {}
+	for (auto it=mpcAccounts.begin(); it != mpcAccounts.end(); it++) {
+	//for (int i = 0; i < mpcAccounts.size(); i++) {
+	
+		mpcAccounts.at(it->first)->accept(pcAcctVisitor);
 	}
 }
 //***************************************************************************
@@ -104,5 +108,7 @@ void MapAccountsContainer::applyVisitor(IAccountVisitor * pcAcctVisitor){
 // Returned:    IAccount *
 //***************************************************************************
 IAccount * MapAccountsContainer::getAccount(int index){
-	return mpcAccounts.at(index);
+	auto it = mpcAccounts.begin();
+	std::advance(it, index);
+	return mpcAccounts.at(it->first);
 }

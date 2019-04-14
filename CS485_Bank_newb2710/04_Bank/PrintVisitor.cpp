@@ -17,11 +17,12 @@
 //
 // Returned:    None
 //***************************************************************************
-PrintVisitor::PrintVisitor(std::string printFile) {
-	mDisplay.open(printFile);
+PrintVisitor::PrintVisitor() {
+	/*mDisplay.open(printFile);
 	if (mDisplay.fail()) {
 		std::cout << "file failed to open\n";
-	}
+	}*/
+	//mDisplay = std::cout;
 }
 //***************************************************************************
 // Destructor:  PrintVisitor
@@ -33,7 +34,7 @@ PrintVisitor::PrintVisitor(std::string printFile) {
 // Returned:    None
 //**************************************************************************
 PrintVisitor::~PrintVisitor() {
-	mDisplay.close();
+	//mDisplay.close();
 }
 //***************************************************************************
 // Function:		visit
@@ -45,7 +46,7 @@ PrintVisitor::~PrintVisitor() {
 // Returned:    None
 //***************************************************************************
 void PrintVisitor::visit(CheckingAccount & rcCheckingAct) {
-	mDisplay << rcCheckingAct;
+	std::cout << rcCheckingAct << std::endl;
 }
 //***************************************************************************
 // Function:		visit
@@ -57,5 +58,5 @@ void PrintVisitor::visit(CheckingAccount & rcCheckingAct) {
 // Returned:    None
 //***************************************************************************
 void PrintVisitor::visit(SavingsAccount & rcSavingsAct) {
-	mDisplay << rcSavingsAct;
+	std::cout << rcSavingsAct << std::endl;
 }

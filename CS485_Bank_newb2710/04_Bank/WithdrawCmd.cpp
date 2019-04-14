@@ -67,10 +67,10 @@ void WithdrawCmd::read(std::istream &rcIn) {
 // Returned:    None
 //***************************************************************************
 void WithdrawCmd::action(Bank &rcTheBank) {
-	try {
+	//try {
 		rcTheBank.withdraw(mAcctNum, mAmt);
-	}
-	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 }

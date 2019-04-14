@@ -1,7 +1,9 @@
 
 #include "CurrencyConversion.h"
 
+CurrencyConversion::CurrencyConversion() {
 
+}
 
 CurrencyConversion::CurrencyConversion(std::string file) {
 	//std::ifstream currFile;

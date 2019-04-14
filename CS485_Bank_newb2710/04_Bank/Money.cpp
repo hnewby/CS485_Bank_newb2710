@@ -94,14 +94,14 @@ Money::~Money() {
 Money Money::operator + (const Money &rcAmount) const {
 	Money cAdd;
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		cAdd = mAmount + const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
+		cAdd = mAmount + const_cast<Money&>(rcAmount).convert(exchange);
+	/*}
 	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
-	}
+	}*/
 	return cAdd;
 }
 //***************************************************************************
@@ -116,14 +116,14 @@ Money Money::operator + (const Money &rcAmount) const {
 Money Money::operator - (const Money &rcAmount) const {
 	Money cSub;
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		cSub = mAmount - const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
+		cSub = mAmount - const_cast<Money&>(rcAmount).convert(exchange);
+	/*}
 	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
-	}
+	}*/
 	return cSub;
 }
 //***************************************************************************
@@ -138,14 +138,14 @@ Money Money::operator - (const Money &rcAmount) const {
 Money Money::operator / (const Money &rcAmount) const {
 	Money cAmount;
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		cAmount = mAmount / const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
+		cAmount = mAmount / const_cast<Money&>(rcAmount).convert(exchange);
+	/*}
 	catch (const CurrencyMismatchException &e) {
 		std::cout << e.what() << '\n';
-	}
+	}*/
 	return cAmount;
 }
 //***************************************************************************
@@ -174,13 +174,13 @@ double Money::operator / (const double amount) const {
 Money Money::operator * (const Money &rcAmount) const {
 	Money cAmount;
 	double exchange;
-	try {
+	//try {
 		exchange = checkCurrency(rcAmount.meCurrency);
-		cAmount = mAmount * const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+		cAmount = mAmount * const_cast<Money&>(rcAmount).convert(exchange);
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return cAmount;
 }
 //***************************************************************************
@@ -194,14 +194,14 @@ Money Money::operator * (const Money &rcAmount) const {
 //***************************************************************************
 Money& Money::operator = (const Money &rcAmount) {
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		mAmount = const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+		mAmount = const_cast<Money&>(rcAmount).convert(exchange);
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return *this;
 }
 //***************************************************************************
@@ -216,16 +216,17 @@ Money& Money::operator = (const Money &rcAmount) {
 bool Money::operator == (const Money &rcAmount) const {
 	bool bIsEqual = false;
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		if (mAmount == const_cast<Money&>(rcAmount).convert(exchange).mAmount) {
+		
+		if (mAmount == const_cast<Money&>(rcAmount).convert(exchange)) {
 			bIsEqual = true;
 		}
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return bIsEqual;
 }
 //***************************************************************************
@@ -239,14 +240,14 @@ bool Money::operator == (const Money &rcAmount) const {
 //***************************************************************************
 Money& Money::operator -= (const Money &rcAmount) {
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		mAmount -= const_cast<Money&>(rcAmount).convert(exchange).mAmount;
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+		mAmount -= const_cast<Money&>(rcAmount).convert(exchange);
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return *this;
 }
 //***************************************************************************
@@ -260,14 +261,15 @@ Money& Money::operator -= (const Money &rcAmount) {
 //***************************************************************************
 Money& Money::operator += (const Money &rcAmount) {
 	double exchange;
-	try {
+	//try {
 		
 		exchange = checkCurrency(rcAmount.meCurrency);
-		mAmount += const_cast<Money&>(rcAmount).convert(exchange).mAmount;//calcExchange(const_cast<Money>(rcAmount)).mAmount;
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+		mAmount += const_cast<Money&>(rcAmount).convert(exchange);//calcExchange(const_cast<Money>(rcAmount)).mAmount;
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	
+	//	//std::cout << e.what() << '\n';
+	//}
 	return *this;
 }
 //***************************************************************************
@@ -285,7 +287,7 @@ bool Money::operator <(const Money &rcAmount) const {
 	try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		if (mAmount < const_cast<Money&>(rcAmount).convert(exchange).mAmount)
+		if (mAmount < const_cast<Money&>(rcAmount).convert(exchange))
 		{
 			bIsLess = true;
 		}
@@ -307,16 +309,16 @@ bool Money::operator <(const Money &rcAmount) const {
 bool Money::operator > (const Money &rcAmount) const {
 	bool bIsGreater = false;
 	double exchange;
-	try {
+	///try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		if (mAmount > const_cast<Money&>(rcAmount).convert(exchange).mAmount) {
+		if (mAmount > const_cast<Money&>(rcAmount).convert(exchange)) {
 			bIsGreater = true;
 		}
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return bIsGreater;
 }
 //***************************************************************************
@@ -332,16 +334,16 @@ bool Money::operator <= (const Money &rcAmount) const {
 	bool bIsLessEq = false;
 
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		if (mAmount <= const_cast<Money&>(rcAmount).convert(exchange).mAmount){
+		if (mAmount <= const_cast<Money&>(rcAmount).convert(exchange)){
 			bIsLessEq = true;
 		}
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return bIsLessEq;
 }
 //***************************************************************************
@@ -357,16 +359,16 @@ bool Money::operator >= (const Money &rcAmount) const {
 	bool bIsGreaterEq = false;
 	//double exhange
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
-		if (mAmount >= const_cast<Money&>(rcAmount).convert(exchange).mAmount){
+		if (mAmount >= const_cast<Money&>(rcAmount).convert(exchange)){
 			bIsGreaterEq = true;
 		}
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return bIsGreaterEq;
 }
 //***************************************************************************
@@ -399,6 +401,16 @@ Money Money::operator * (const double amount) const {
 	cAmount = static_cast<long long>(mAmount * amount);
 	return cAmount;
 }
+//***************************************************************************
+// Function:		operator  >>
+//
+// Description:	read in currency
+//
+// Parameters:  rcIn	 - stream to read from
+//							rcCurr - reference to currenecy to read into
+//
+// Returned:    Money
+//***************************************************************************
 std::istream & operator>>(std::istream & rcIn, Currency & rcCurr)
 {
 	std::string currency;
@@ -529,10 +541,9 @@ Currency Money::getCurrency(){
 //
 // Returned:		Money
 //***************************************************************************
-Money Money::convert(double exchange){
-	Money cMon;
-	cMon = mAmount * exchange;
-	return cMon;
+long long Money::convert(double exchange){
+	 return static_cast<long long>(mAmount * exchange);
+
 }
 //***************************************************************************
 // Function:		checkCurrency
@@ -545,11 +556,28 @@ Money Money::convert(double exchange){
 //***************************************************************************
 double Money::checkCurrency(const Currency &rcCurr) const {
 	double exchange;
-	CurrencyConversion& lookup = CurrencyConversion::getInstance();
-	exchange = lookup.convert(meCurrency, rcCurr);
-	if (exchange == -1)
-	{
-			throw CurrencyMismatchException("No conversion\n");
+	if (meCurrency == rcCurr || meCurrency == Currency::ERR ||
+		rcCurr == Currency::ERR) {
+		exchange = 1;
+	}
+	else {
+		CurrencyConversion& lookup = CurrencyConversion::getInstance();
+		exchange = lookup.convert(meCurrency, rcCurr);
+		if (exchange == -1)
+		{
+			exchange = lookup.convert(rcCurr, meCurrency);
+			if (exchange == -1) {
+				throw CurrencyMismatchException("No conversion\n");
+			}
+			else {
+
+			}
+		}
+		else {
+			double temp;
+			temp = 1 / exchange;
+			exchange = temp;
+		}
 	}
 	return exchange;
 }

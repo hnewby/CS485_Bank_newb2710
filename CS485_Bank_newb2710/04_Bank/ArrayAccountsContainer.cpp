@@ -72,7 +72,7 @@ int ArrayAccountsContainer::count() {
 //
 // Returned:    int
 //***************************************************************************
-int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
+IAccount * ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 	bool bIsFound = false;
 	int index = 0;
 	while (!bIsFound && index < mNumAccts) // can use isFull
@@ -86,7 +86,7 @@ int ArrayAccountsContainer::findAccount(unsigned int acctNum) {
 				index++;
 			}
 	}
-	return index;
+	return mapcAccounts[index];
 }
 //***************************************************************************
 // Function:		isFull

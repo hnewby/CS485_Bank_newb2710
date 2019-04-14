@@ -14,5 +14,6 @@ class ScreenBankWriter : public IBankWriter {
 	public:
 		void displayLines(std::ostream &rcOut);
 		void write(std::ostream &rcOut, IAccount &rcTheAccount);
+		//std::ofstream getStream();
 	private:
 };

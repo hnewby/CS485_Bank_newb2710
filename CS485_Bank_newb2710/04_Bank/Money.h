@@ -20,6 +20,8 @@ std::istream& operator >> (std::istream &rcIn,
 	Currency &rcCurr);
 
 class Money {
+	//const static std::unordered_map<std::string, Currency>strToEnum;
+	//const static std::unordered_map<Currency, std::string>enumToStr;
 	public:
 		Money();
 		Money(long long amount);
@@ -52,12 +54,11 @@ class Money {
 
 
 		Currency getCurrency();
-		Money convert(double exchange);
+		long long convert(double exchange);
 		double getExRate(Currency &rcCurr);
 		Money calcExchange(Money &rcMoney);
 
-		const static std::unordered_map<std::string, Currency>strToEnum;
-		const static std::unordered_map<Currency, std::string>enumToStr;
+		
 
 		
 	private:

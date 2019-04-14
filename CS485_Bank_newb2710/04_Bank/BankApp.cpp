@@ -58,7 +58,7 @@ void BankApp::readAccounts(IAccountReader &rcAcctReader) {
 void BankApp::readCommand(ICommandReader &rcCmdReader) {
 	ICommand *pcTheCmd = nullptr;
 	do {
-		try {
+	try {
 			pcTheCmd = rcCmdReader.read();
 			if (pcTheCmd != nullptr)// be careful of when to delete pcTheCmd
 			{
@@ -66,7 +66,7 @@ void BankApp::readCommand(ICommandReader &rcCmdReader) {
 			}
 		}
 		catch (const CurrencyMismatchException &e) {
-			std::cout << e.what() << '\n';
+			//std::cout << e.what() << '\n';
 		}
 		delete pcTheCmd;
 	} while (pcTheCmd != nullptr);

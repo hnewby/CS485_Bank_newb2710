@@ -15,10 +15,11 @@ class IAccountsContainer {
 	public:
 		virtual void addAccount(IAccount *pcTheAccount) = 0;
 		virtual int count() = 0;
-		virtual int findAccount(unsigned int) = 0;
+		virtual IAccount * findAccount(unsigned int) = 0;
 		virtual bool isFull() = 0;
 		virtual void applyVisitor(IAccountVisitor *pcAccountVisitor) = 0;
 		virtual IAccount * getAccount(int index) = 0;
+	
 	private:
 
 };

@@ -24,6 +24,7 @@ public:
 	void deposit(Money amt);
 	void withdraw(Money amt);
 	void endOfMonth();
+
 	friend std::istream& operator >> (std::istream &rcIn, IAccount &rcTheAccount);
 	friend std::ostream& operator << (std::ostream &rcOut, IAccount &rcTheAccount);
 	virtual void accept(IAccountVisitor *pcActVisitor) = 0;

@@ -48,7 +48,7 @@ BackupVisitor::~BackupVisitor(){
 // Returned:    None
 //***************************************************************************
 void BackupVisitor::visit(CheckingAccount & rcCheckingAct){
-	mChecking << rcCheckingAct;
+	mChecking << rcCheckingAct << std::endl;
 }
 //***************************************************************************
 // Function:		visit
@@ -60,6 +60,5 @@ void BackupVisitor::visit(CheckingAccount & rcCheckingAct){
 // Returned:    None
 //***************************************************************************
 void BackupVisitor::visit(SavingsAccount & rcSavingsAct) {
-
-	mSavings << rcSavingsAct;
+	mSavings << rcSavingsAct << std::endl;
 }

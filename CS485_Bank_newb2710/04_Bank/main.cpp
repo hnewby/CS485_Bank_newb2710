@@ -11,6 +11,7 @@
 #include "CurrencyConversion.h"
 #include "BankApp.h"
 #include <string>
+#include "CurrencyMismatchException.h"
 //#include <vld.h>
 //***************************************************************************
 // Function:		main
@@ -36,7 +37,7 @@ int main() {
 	if (currFile.fail()) {
 		std::cout << "Currency file failed to open";
 	}
-	while (currFile) {
+	while (!currFile.eof()) {
 		currFile >> cCur1 >> cCur2 >> exchange;
 		cConversion.insert(cCur1, cCur2, exchange);
 	}
@@ -46,17 +47,24 @@ int main() {
 		cBankApp.readAccounts(*pcAccountReader);
 		cBankApp.readCommand(*pcCommandReader);
 	}
+	catch (const CurrencyMismatchException &e) {
+		//	//std::cout << e.what() << '\n';
+	}
 	catch (const std::bad_array_new_length &e) {
 		std::cout << e.what() << std::endl;
 	}
 	catch (const std::range_error &e) {
 		std::cout << e.what() << std::endl;
 	}
+	catch (const std::out_of_range &e) {
+		std::cout << e.what() << std::endl;
+	}
+	
 	
 	pcAccountReader->closeAccountsDB();
 	pcCommandReader->closeCommands();
-
+	currFile.close();
 	delete pcAccountReader;
 	delete pcCommandReader;
-	return EXIT_SUCCESS;
+		return EXIT_SUCCESS;
 }

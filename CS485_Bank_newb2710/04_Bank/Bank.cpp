@@ -12,6 +12,7 @@
 #include "CurrencyMismatchException.h"
 #include "BackupVisitor.h"
 #include "MonthVisitor.h"
+#include "PrintVisitor.h"
 //***************************************************************************
 // Constructor: Bank
 //
@@ -47,15 +48,10 @@ Bank::~Bank() {
 //***************************************************************************
 void Bank::writeBank(IBankWriter &rcOut) {
 	rcOut.displayLines(std::cout);
-	for (int i = 0; i < mpcAccounts->count(); i++) {
-		try {
-			rcOut.write(std::cout, *(*mpcAccounts).getAccount(i));
-		}
-		catch (const std::range_error &e) {
-			std::cout << e.what() << '\n';
-		}
-		std::cout << '\n';
-	}
+	IAccountVisitor *pcAcctVisitor;
+
+	pcAcctVisitor = new PrintVisitor();
+	mpcAccounts->applyVisitor(pcAcctVisitor);
 	rcOut.displayLines(std::cout);
 }
 //***************************************************************************
@@ -70,12 +66,11 @@ void Bank::writeBank(IBankWriter &rcOut) {
 //***************************************************************************
 void Bank::deposit(int acctNum, Money amount) {
 	try {
-		int index;
-		index = mpcAccounts->findAccount(acctNum);
-		(*mpcAccounts).getAccount(index)->deposit(amount);
+		(mpcAccounts->findAccount(acctNum))->deposit(amount);
+		
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 }
 //***************************************************************************
@@ -90,12 +85,10 @@ void Bank::deposit(int acctNum, Money amount) {
 //***************************************************************************
 void Bank::withdraw(int acctNum, Money amount) {
 	try {
-		int index;
-		index = mpcAccounts->findAccount(acctNum);
-		(*mpcAccounts).getAccount(index)->withdraw(amount);
+		(mpcAccounts->findAccount(acctNum))->withdraw(amount);
 	}
 	catch (const CurrencyMismatchException &e) {
-		std::cout << e.what() << '\n';
+		//std::cout << e.what() << '\n';
 	}
 
 }
@@ -145,11 +138,13 @@ void Bank::print() {
 void Bank::endOfMonthForAll() {
 
 	IAccountVisitor *pcAcctVisitor;
-
-	pcAcctVisitor = new MonthVisitor();
-	mpcAccounts->applyVisitor(pcAcctVisitor);
-
-
+	try {
+		pcAcctVisitor = new MonthVisitor();
+		mpcAccounts->applyVisitor(pcAcctVisitor);
+	}
+	catch (const std::range_error &e) {
+		std::cout << e.what() << '\n';
+	}
 	/*for (int i = 0; i < mpcAccounts->count(); i++)
 	{
 		try {
