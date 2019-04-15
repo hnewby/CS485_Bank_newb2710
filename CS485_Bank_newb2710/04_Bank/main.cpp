@@ -1,7 +1,7 @@
 //***************************************************************************
 // File name:  main.cpp
 // Author:     Hannah Newby
-// Date:       2/28/19
+// Date:       4/15/19
 // Class:      CS485
 // Assignment: Bank
 // Purpose:    driver for bank
@@ -12,7 +12,7 @@
 #include "BankApp.h"
 #include <string>
 #include "CurrencyMismatchException.h"
-#include <vld.h>
+//#include <vld.h>
 //***************************************************************************
 // Function:		main
 //
@@ -33,6 +33,7 @@ int main() {
 	CurrencyConversion& cConversion = CurrencyConversion::getInstance();
 	Currency cCur1, cCur2;
 	double exchange;
+
 	currFile.open(currencyFile);
 	if (currFile.fail()) {
 		std::cout << "Currency file failed to open";
@@ -42,14 +43,12 @@ int main() {
 		cConversion.insert(cCur1, cCur2, exchange);
 	}
 
-
 	try {
 		cBankApp.readAccounts(*pcAccountReader);
 		cBankApp.readCommand(*pcCommandReader);
 	}
 	catch (const CurrencyMismatchException &e) {
 		e.what(); //swallow
-		//	//std::cout << e.what() << '\n';
 	}
 	catch (const std::bad_array_new_length &e) {
 		std::cout << e.what() << std::endl;
@@ -64,5 +63,5 @@ int main() {
 	currFile.close();
 	delete pcAccountReader;
 	delete pcCommandReader;
-		return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

@@ -71,7 +71,6 @@ void Bank::deposit(int acctNum, Money amount) {
 	}
 	catch (const CurrencyMismatchException &e) {
 		e.what();//swallow
-		//std::cout << e.what() << '\n';
 	}
 }
 //***************************************************************************
@@ -90,7 +89,6 @@ void Bank::withdraw(int acctNum, Money amount) {
 	}
 	catch (const CurrencyMismatchException &e) {
 		e.what();//swallow
-		//std::cout << e.what() << '\n';
 	}
 
 }

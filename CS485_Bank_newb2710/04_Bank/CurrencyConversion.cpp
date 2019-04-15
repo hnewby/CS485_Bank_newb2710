@@ -1,50 +1,79 @@
-
+//***************************************************************************
+// File name:  CurrencyConversion.cpp
+// Author:     Hannah Newby
+// Date:       4/15/19
+// Class:      CS485
+// Assignment: Bank
+// Purpose:    CurrencyConversion class implamentation
+//***************************************************************************
 #include "CurrencyConversion.h"
 
+//***************************************************************************
+// Constructor: CurrencyConversion
+//
+// Description: Initialize CurrencyConversion
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 CurrencyConversion::CurrencyConversion() {
 
 }
-
-CurrencyConversion::CurrencyConversion(std::string file) {
-	//std::ifstream currFile;
-	//Money cMoney1, cMoney2;
-	//std::string currency1, currency2;
-	//Currency cCur1, cCur2;
-	//double exchange;
-	//currFile.open(file);
-	//if (currFile.fail()) {
-	//	std::cout << "Currency file failed to open";
-	//}
-
-	//while (currFile) {
-	//	cMoney1.readCurrency(currFile);
-	//	cMoney2.readCurrency(currFile);
-	//	currFile >> exchange;
-	//	cCur1 = cMoney1.getCurrency();
-	//	cCur2 = cMoney2.getCurrency();
-	//	mCurrencyConversion.insert({ std::make_pair(cCur1, cCur2), exchange });
-	//}
-}
-
+//***************************************************************************
+// Destructor:  CurrencyConversion
+//
+// Description: Deconstructor for CurrencyConversion
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 CurrencyConversion::~CurrencyConversion(){
 }
-CurrencyConversion& CurrencyConversion::getInstance()
-{
+//***************************************************************************
+// Function:		getInstance
+//
+// Description: return currency conversion singleton
+//
+// Parameters:  None
+//
+// Returned:    CurrencyConversion&
+//***************************************************************************
+CurrencyConversion& CurrencyConversion::getInstance(){
 	static CurrencyConversion instance;
 	return instance;
 }
-
-double CurrencyConversion::convert(Currency c1, Currency c2)
-{
-	if (mCurrencyConversion.find({ std::make_pair(c1, c2) }) == mCurrencyConversion.end()) {
+//***************************************************************************
+// Function:		convert
+//
+// Description: get conversion rate between two currencies
+//
+// Parameters:  cCur1 - currency 1
+//							cCur2 - currency 2
+//
+// Returned:    double
+//***************************************************************************
+double CurrencyConversion::convert(Currency cCur1, Currency cCur2){
+	if (mCurrencyConversion.find({ std::make_pair(cCur1, cCur2) })
+		== mCurrencyConversion.end()) {
 		return -1;
 	}
 	else {
-		return mCurrencyConversion.at({ std::make_pair(c1, c2) });
+		return mCurrencyConversion.at({ std::make_pair(cCur1, cCur2) });
 	}
 }
-
-void CurrencyConversion::insert(Currency cCur1, Currency cCur2, double exchange)
-{
+//***************************************************************************
+// Function:		insert
+//
+// Description: insert a conversion into HT
+//
+// Parameters:  cCur1		 - first currency in conversion
+//							cCur2		 - second currency in conversion
+//							exchange - exchnage rate
+//
+// Returned:    none
+//***************************************************************************
+void CurrencyConversion::insert(Currency cCur1, Currency cCur2, double exchange){
 	mCurrencyConversion.insert({ std::make_pair(cCur1, cCur2), exchange });
 }

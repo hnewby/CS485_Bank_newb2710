@@ -19,7 +19,6 @@ public:
 	void visit(CheckingAccount &rcCheckingAct);
 	void visit(SavingsAccount &rcSavingsAct);
 
-
 private:
 };
 #endif

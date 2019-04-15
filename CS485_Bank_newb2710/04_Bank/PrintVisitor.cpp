@@ -18,11 +18,6 @@
 // Returned:    None
 //***************************************************************************
 PrintVisitor::PrintVisitor() {
-	/*mDisplay.open(printFile);
-	if (mDisplay.fail()) {
-		std::cout << "file failed to open\n";
-	}*/
-	//mDisplay = std::cout;
 }
 //***************************************************************************
 // Destructor:  PrintVisitor
@@ -34,7 +29,6 @@ PrintVisitor::PrintVisitor() {
 // Returned:    None
 //**************************************************************************
 PrintVisitor::~PrintVisitor() {
-	//mDisplay.close();
 }
 //***************************************************************************
 // Function:		visit

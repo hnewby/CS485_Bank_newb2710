@@ -18,7 +18,8 @@
 //
 // Returned:    None
 //***************************************************************************
-BackupVisitor::BackupVisitor(std::string checkingFile, std::string savingFile){
+BackupVisitor::BackupVisitor(std::string checkingFile,
+	std::string savingFile){
 	mChecking.open(checkingFile);
 	mSavings.open(savingFile);
 	if (mChecking.fail() || mSavings.fail()) {

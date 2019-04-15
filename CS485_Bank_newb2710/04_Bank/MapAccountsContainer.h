@@ -22,7 +22,6 @@ public:
 	bool isFull();
 	void applyVisitor(IAccountVisitor *);
 	IAccount * getAccount(int index);
-
 private:
 	std::map<int, IAccount*> mpcAccounts;
 };

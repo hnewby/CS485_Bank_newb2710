@@ -18,8 +18,6 @@
 // Returned:    None
 //***************************************************************************
 MapAccountsContainer::MapAccountsContainer(){
-	
-	mpcAccounts.clear();
 }
 //***************************************************************************
 // Destructor:  MapAccountsContainter
@@ -31,7 +29,6 @@ MapAccountsContainer::MapAccountsContainer(){
 // Returned:    None
 //***************************************************************************
 MapAccountsContainer::~MapAccountsContainer(){
-	//mpcAccounts.clear();
 	mpcAccounts.erase(mpcAccounts.begin(), mpcAccounts.end());
 }
 //***************************************************************************
@@ -44,7 +41,6 @@ MapAccountsContainer::~MapAccountsContainer(){
 // Returned:    None
 //***************************************************************************
 void MapAccountsContainer::addAccount(IAccount * pcTheAccount){
-
 	mpcAccounts.insert({ pcTheAccount->getAcctNum(), pcTheAccount });
 }
 //***************************************************************************
@@ -57,7 +53,6 @@ void MapAccountsContainer::addAccount(IAccount * pcTheAccount){
 // Returned:    int
 //***************************************************************************
 int MapAccountsContainer::count(){
-	
 	return static_cast<int>(mpcAccounts.size());
 }
 //***************************************************************************
@@ -68,9 +63,10 @@ int MapAccountsContainer::count(){
 // Parameters:  acctNum - account number looking for
 //
 // Returned:    IAccount*
+//***************************************************************************
 IAccount * MapAccountsContainer::findAccount(unsigned int acctNum) {
 	auto it = mpcAccounts.find(acctNum);
-	return mpcAccounts.at(it->first);// static_cast<int>(distance(mpcAccounts.begin(), mpcAccounts.find(acctNum)) + 1);
+	return mpcAccounts.at(it->first);
 }
 //***************************************************************************
 // Function:		isFull
@@ -94,11 +90,7 @@ bool MapAccountsContainer::isFull(){
 // Returned:    None
 //***************************************************************************
 void MapAccountsContainer::applyVisitor(IAccountVisitor * pcAcctVisitor){
-	//mpcAccounts::iterator it = mpcAccounts.begin();
-//	while (it != mpcAccounts.end()) {}
 	for (auto it=mpcAccounts.begin(); it != mpcAccounts.end(); it++) {
-	//for (int i = 0; i < mpcAccounts.size(); i++) {
-	
 		mpcAccounts.at(it->first)->accept(pcAcctVisitor);
 	}
 }
@@ -116,3 +108,4 @@ IAccount * MapAccountsContainer::getAccount(int index){
 	std::advance(it, index);
 	return mpcAccounts.at(it->first);
 }
+

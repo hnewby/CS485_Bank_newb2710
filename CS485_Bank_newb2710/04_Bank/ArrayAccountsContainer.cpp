@@ -1,5 +1,5 @@
 //***************************************************************************
-// File name:  ArrayAccountsClass.cpp
+// File name:  ArrayAccountsContainer.cpp
 // Author:     Hannah Newby
 // Date:       3/12/19
 // Class:      CS485
