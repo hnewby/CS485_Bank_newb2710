@@ -12,7 +12,7 @@
 #include "BankApp.h"
 #include <string>
 #include "CurrencyMismatchException.h"
-//#include <vld.h>
+#include <vld.h>
 //***************************************************************************
 // Function:		main
 //
@@ -48,15 +48,13 @@ int main() {
 		cBankApp.readCommand(*pcCommandReader);
 	}
 	catch (const CurrencyMismatchException &e) {
+		e.what(); //swallow
 		//	//std::cout << e.what() << '\n';
 	}
 	catch (const std::bad_array_new_length &e) {
 		std::cout << e.what() << std::endl;
 	}
 	catch (const std::range_error &e) {
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::out_of_range &e) {
 		std::cout << e.what() << std::endl;
 	}
 	

@@ -35,7 +35,6 @@ Bank::Bank() {
 // Returned:    None
 //***************************************************************************
 Bank::~Bank() {
-	
 }
 //***************************************************************************
 // Function:		writeBank
@@ -53,6 +52,7 @@ void Bank::writeBank(IBankWriter &rcOut) {
 	pcAcctVisitor = new PrintVisitor();
 	mpcAccounts->applyVisitor(pcAcctVisitor);
 	rcOut.displayLines(std::cout);
+	delete pcAcctVisitor;
 }
 //***************************************************************************
 // Function:		deposit
@@ -70,6 +70,7 @@ void Bank::deposit(int acctNum, Money amount) {
 		
 	}
 	catch (const CurrencyMismatchException &e) {
+		e.what();//swallow
 		//std::cout << e.what() << '\n';
 	}
 }
@@ -88,6 +89,7 @@ void Bank::withdraw(int acctNum, Money amount) {
 		(mpcAccounts->findAccount(acctNum))->withdraw(amount);
 	}
 	catch (const CurrencyMismatchException &e) {
+		e.what();//swallow
 		//std::cout << e.what() << '\n';
 	}
 
@@ -141,19 +143,12 @@ void Bank::endOfMonthForAll() {
 	try {
 		pcAcctVisitor = new MonthVisitor();
 		mpcAccounts->applyVisitor(pcAcctVisitor);
+		delete pcAcctVisitor;
 	}
 	catch (const std::range_error &e) {
 		std::cout << e.what() << '\n';
 	}
-	/*for (int i = 0; i < mpcAccounts->count(); i++)
-	{
-		try {
-			(*mpcAccounts)[i].endOfMonth();
-		}
-		catch (const std::range_error &e) {
-			std::cout << e.what() << '\n';
-		}
-	}*/
+	
 }
 //***************************************************************************
 // Function:		deleteAll
@@ -192,5 +187,5 @@ void Bank::backup(std::string checkingFile, std::string savingFile)
 	
 	pcAcctVisitor = new BackupVisitor(checkingFile, savingFile);
 	mpcAccounts->applyVisitor(pcAcctVisitor);
-	
+	delete pcAcctVisitor;
 }

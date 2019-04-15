@@ -18,6 +18,8 @@
 // Returned:    None
 //***************************************************************************
 MapAccountsContainer::MapAccountsContainer(){
+	
+	mpcAccounts.clear();
 }
 //***************************************************************************
 // Destructor:  MapAccountsContainter
@@ -29,6 +31,8 @@ MapAccountsContainer::MapAccountsContainer(){
 // Returned:    None
 //***************************************************************************
 MapAccountsContainer::~MapAccountsContainer(){
+	//mpcAccounts.clear();
+	mpcAccounts.erase(mpcAccounts.begin(), mpcAccounts.end());
 }
 //***************************************************************************
 // Function:		addAccount

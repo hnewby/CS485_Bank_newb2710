@@ -284,17 +284,17 @@ Money& Money::operator += (const Money &rcAmount) {
 bool Money::operator <(const Money &rcAmount) const {
 	bool bIsLess = false;
 	double exchange;
-	try {
+	//try {
 
 		exchange = checkCurrency(rcAmount.meCurrency);
 		if (mAmount < const_cast<Money&>(rcAmount).convert(exchange))
 		{
 			bIsLess = true;
 		}
-	}
-	catch (const CurrencyMismatchException &e) {
-		//std::cout << e.what() << '\n';
-	}
+	//}
+	//catch (const CurrencyMismatchException &e) {
+	//	//std::cout << e.what() << '\n';
+	//}
 	return bIsLess;
 }
 //***************************************************************************

@@ -66,6 +66,7 @@ void BankApp::readCommand(ICommandReader &rcCmdReader) {
 			}
 		}
 		catch (const CurrencyMismatchException &e) {
+			e.what();//swallow
 			//std::cout << e.what() << '\n';
 		}
 		delete pcTheCmd;

@@ -90,6 +90,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -191,8 +192,12 @@
   <ItemGroup>
     <Text Include="AccountHundo.txt" />
     <Text Include="Accounts.txt" />
+    <Text Include="c.txt" />
+    <Text Include="checkingBackup_1.txt" />
     <Text Include="Commands.txt" />
     <Text Include="CurrencyConversions.txt" />
+    <Text Include="s.txt" />
+    <Text Include="savingsBackup_1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

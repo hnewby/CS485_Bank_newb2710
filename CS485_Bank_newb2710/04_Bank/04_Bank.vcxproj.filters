@@ -223,5 +223,17 @@
     <Text Include="CurrencyConversions.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="c.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="s.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="checkingBackup_1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="savingsBackup_1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
