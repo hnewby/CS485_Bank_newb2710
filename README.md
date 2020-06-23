@@ -24,8 +24,8 @@ TYPE(C) Acct# CurrencyType InitialBalance INTEREST CurrenncyType MinBalance Curr
 W - Withdraw\
 D - Deposit\
 P - Print all accounts (in the same order they appear in Accounts.txt) \
-M - Charge monthly fees to savings accounts and Generate Interest in all accounts (in that order).\
-B - backup all checking accounts to a checking file and all savings accounts to a savings file 
+M - Charge monthly fees to savings accounts and generate interest in all accounts (in that order).\
+B - Backup all checking accounts to a checking file and all savings accounts to a savings file. 
 
 # Sample Test Case
 Set 04_Bank as the startup project and run
